@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.image-back{
+  background: url('../src/Imagenes/login.png');
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+
+
+.ant-descriptions-view{
+
+  border:solid 2px rgb(3, 3, 62) !important;
+}
+
+.ant-descriptions-item-label{
+
+  background: rgb(3, 3, 62) !important;
+  color: white !important;
+  font-size:18px !important;
+}
+
+
+.ant-descriptions-title{
+
+  font-size: 25px !important;
+  text-align: center !important;
+  color: rgb(3, 3, 62) !important;
+  text-decoration: underline !important;
+}
