@@ -195,7 +195,7 @@ const AppProfile = () => {
           onOk={handleConfirm}
           onCancel={handleCancel}
           footer={[
-            <Button style={{background:'rgb(3, 3, 62)',color: 'white' }} key="accept" type="primary" onClick={() => { handleConfirm(); navigate('/onboarding'); }}>
+            <Button style={{background:'rgb(3, 3, 62)',color: 'white', fontSize:'15px' }} key="accept" type="primary" onClick={() => { handleConfirm(); navigate('/onboarding'); }}>
               Accept
             </Button>
           ]}

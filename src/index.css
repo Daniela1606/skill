@@ -55,3 +55,9 @@ code {
   text-align: center !important;
 
 }
+
+.ant-modal-footer{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
