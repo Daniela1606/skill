@@ -20,7 +20,7 @@ const PublicRoute = () => {
 
 
                 <Route
-                    path='/profile'
+                    path='/profile/:id'
                     element={<Profile />}
                 />
 

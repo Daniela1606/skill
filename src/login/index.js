@@ -34,16 +34,15 @@ const AppLogin = () => {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => {response.json()
-        console.log(response);
-        if (response.ok) navigate('/profile'+ encodeURIComponent(response));        
-      })
+      .then(response => response.json())
       .then(data => {
-      
+        if(data.error) {
+          throw new Error(data.error)
+        }
         console.log('data',data);
+        navigate('/profile/' + encodeURIComponent(data.id));
       })
       .catch(error => {
-        
         console.error(error);
       });
   };
@@ -149,7 +148,7 @@ const AppLogin = () => {
       </Row>
 
 
-      <Row>
+{/*       <Row>
 
 
       <Col xs={24} md={8}>
@@ -170,7 +169,7 @@ const AppLogin = () => {
         
         </Col>
 
-      </Row>
+      </Row> */}
 
     </Layout>
   );
