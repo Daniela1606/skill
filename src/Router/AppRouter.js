@@ -13,10 +13,10 @@ const AppRouter = () => {
                  element={<PublicRoute />}
              />
 
-             <Route
+             {/* <Route
                  path='/dashboard/*'
                  element={<PrivateRoute />}
-             />
+             /> */}
             
          </Routes>
 

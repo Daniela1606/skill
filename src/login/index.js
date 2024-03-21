@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Col, Form, Input, Layout, Row } from 'antd';
 import { imagenL, imagenLi, imagenF, imagenI } from '../constante/imagen';
@@ -42,13 +42,26 @@ const AppLogin = () => {
 
    
         localStorage.setItem('token', data.token);
+        localStorage.setItem('status', data.user_status);
 
-        navigate('/profile/' + encodeURIComponent(data.id));
+        if(data.user_status === 'Pending') {
+          navigate('/verify-user/' + encodeURIComponent(data.id));
+        } else {
+          navigate('/');
+        }
       })
       .catch(error => {
         console.error(error);
       });
   };
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        if(token) {
+            return navigate('/')
+        }
+
+    }, [navigate]);
 
   return (
     <Layout>

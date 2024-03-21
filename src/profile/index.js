@@ -69,27 +69,25 @@ const AppProfile = () => {
     const token = localStorage.getItem('token');
 
     fetch('http://18.169.192.176/api/users/employees/verify-correct-data', {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({ id: userData.user.id })
     })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error('Error: ' + response.status);
-        }
-      })
+      .then(response => response.json())
       .then(data => {
         console.log(data);
+        if(data.error) {
+          throw data.error;
+        }
         setUserConfirmed(true);
         setShowSuccessModal(true);
-        message.success('¡Tu usuario ha sido verificado correctamente!');
+        message.success(data.message);
       })
       .catch(error => {
+        message.error(error.message);
         console.error(error);
       });
   };
@@ -163,6 +161,14 @@ const AppProfile = () => {
     ];
   };
 
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        if(!token) {
+            return navigate('/login')
+        }
+
+    }, [navigate]);
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <div style={{ width: '1000px' }}>
@@ -190,27 +196,24 @@ const AppProfile = () => {
       </div>
       <div>
         <Modal
-          title=""
-          visible={confirmModalVisible}
-          onOk={handleConfirm}
-          onCancel={handleCancel}
-          footer={[
-            <Button style={{background:'rgb(3, 3, 62)',color: 'white', fontSize:'15px' }} key="accept" type="primary" onClick={() => { handleConfirm(); navigate('/onboarding'); }}>
-              Accept
-            </Button>
-          ]}
-        >
-          <p style={{ textAlign: 'center', fontSize: '18px', color: 'rgb(3, 3, 62)', fontWeight: '600' }}>
-            Your user has been successfully verified!
-          </p>
-        </Modal>
+        title="Confirm"
+        visible={confirmModalVisible}
+        onOk={handleConfirm}
+        onCancel={handleCancel}
+        okText="Confirm"
+        cancelText="Cancel"
+      >
+        <p>Are you sure the information is correct?</p>
+      </Modal>
       </div>
 
       <Modal
         title="Onboarding Video"
         visible={showSuccessModal}
         onCancel={() => setShowSuccessModal(false)}
+        destroyOnClose
         footer={null}
+        style={{minWidth: 'fit-content'}}
       >
         <AppOnboarding />
       </Modal>

@@ -159,7 +159,7 @@ const AppRegister = () => {
     })
     .then(response => {response.json()
       console.log(response.status);
-      if (response.status == '400') navigate('/profile');        
+      if (response.status == '400') navigate('/verify-user');        
     })
       .then(data => {
         // Handle the response from the server
@@ -209,7 +209,7 @@ const AppRegister = () => {
       values['Division']
     ) {
       // Redirige a la vista "/dashboard"
-      navigate('/profile');
+      navigate('/verify-user');
     } else {
       // Campos incompletos, no se realiza la redirección
       console.log('Fields are incomplete');
