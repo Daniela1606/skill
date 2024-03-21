@@ -19,7 +19,7 @@ const AppOnboarding = () => {
     console.log({videoURL})
 
     return (
-        <div>
+        <div style={{display:'flex', justifyContent:'center', alingItem:'center'}}>
             {videoURL ? 
             <video width="320" height="240" controls>
                 <source src={videoURL} type="video/mp4" />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Badge, Descriptions, Button, Modal, message } from 'antd';
 import { useParams, useNavigate } from 'react-router-dom';
+import AppOnboarding from '../onboarding/index'; 
 
 const AppProfile = () => {
   const { id } = useParams();
@@ -41,20 +42,25 @@ const AppProfile = () => {
       });
   };
 
-  useEffect(() => {
+   useEffect(() => {
     if (confirmModalVisible) {
       const timer = setTimeout(() => {
         setConfirmModalVisible(false);
-      }, 4000);
+      }, 9000);
 
       return () => {
         clearTimeout(timer);
       };
     }
-  }, [confirmModalVisible]);
+  }, [confirmModalVisible]); 
 
   const handleButton1Click = () => {
     setConfirmModalVisible(true);
+  };
+
+  const handleAccept = () => {
+    setShowSuccessModal(false);
+    navigate('/onboarding'); 
   };
 
   const handleConfirm = () => {
@@ -167,7 +173,7 @@ const AppProfile = () => {
               <Button
                 type="primary"
                 onClick={handleButton1Click}
-                style={{ marginRight: '10px', background: 'rgb(3, 3, 62)', color: 'white' }}
+                style={{ marginRight: '10px', background:'rgb(3, 3, 62)', color: 'white' }}
               >
                 Confirm
               </Button>
@@ -183,19 +189,31 @@ const AppProfile = () => {
         )}
       </div>
       <div>
-    
+        <Modal
+          title=""
+          visible={confirmModalVisible}
+          onOk={handleConfirm}
+          onCancel={handleCancel}
+          footer={[
+            <Button style={{background:'rgb(3, 3, 62)',color: 'white' }} key="accept" type="primary" onClick={() => { handleConfirm(); navigate('/onboarding'); }}>
+              Accept
+            </Button>
+          ]}
+        >
+          <p style={{ textAlign: 'center', fontSize: '18px', color: 'rgb(3, 3, 62)', fontWeight: '600' }}>
+            Your user has been successfully verified!
+          </p>
+        </Modal>
+      </div>
 
       <Modal
-        title=""
-        visible={confirmModalVisible}
-        onOk={handleConfirm}
-        onCancel={handleCancel}
+        title="Onboarding Video"
+        visible={showSuccessModal}
+        onCancel={() => setShowSuccessModal(false)}
         footer={null}
       >
-        <p style={{textAling:'center',fontSize:'18px', color:'rgb(3, 3, 62)', fontWeight:'600'}}>Your user has been successfully verified!</p>
+        <AppOnboarding />
       </Modal>
-    </div>
-
     </div>
   );
 };
