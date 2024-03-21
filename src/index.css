@@ -47,3 +47,11 @@ code {
   color: rgb(3, 3, 62) !important;
   text-decoration: underline !important;
 }
+
+
+
+.ant-modal-content{
+
+  text-align: center !important;
+
+}

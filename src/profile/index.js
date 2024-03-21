@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Badge, Descriptions, Button, Modal } from 'antd';
+import { Badge, Descriptions, Button, Modal, message } from 'antd';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const AppProfile = () => {
   const { id } = useParams();
   const [userData, setUserData] = useState(null);
   const [confirmModalVisible, setConfirmModalVisible] = useState(false);
+  const [userConfirmed, setUserConfirmed] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,13 +16,13 @@ const AppProfile = () => {
   }, []);
 
   const profile = () => {
-    const token = localStorage.getItem('token'); 
+    const token = localStorage.getItem('token');
 
     fetch(`http://18.169.192.176/api/users/employees/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}` 
+        Authorization: `Bearer ${token}`
       }
     })
       .then(response => {
@@ -39,6 +41,18 @@ const AppProfile = () => {
       });
   };
 
+  useEffect(() => {
+    if (confirmModalVisible) {
+      const timer = setTimeout(() => {
+        setConfirmModalVisible(false);
+      }, 4000);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [confirmModalVisible]);
+
   const handleButton1Click = () => {
     setConfirmModalVisible(true);
   };
@@ -46,13 +60,13 @@ const AppProfile = () => {
   const handleConfirm = () => {
     setConfirmModalVisible(false);
 
-    const token = localStorage.getItem('token'); 
+    const token = localStorage.getItem('token');
 
     fetch('http://18.169.192.176/api/users/employees/verify-correct-data', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}` 
+        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({ id: userData.user.id })
     })
@@ -65,7 +79,9 @@ const AppProfile = () => {
       })
       .then(data => {
         console.log(data);
-     
+        setUserConfirmed(true);
+        setShowSuccessModal(true);
+        message.success('¡Tu usuario ha sido verificado correctamente!');
       })
       .catch(error => {
         console.error(error);
@@ -85,24 +101,24 @@ const AppProfile = () => {
       {
         key: '1',
         label: 'First Name',
-        children: userData.user.firstName,
+        children: userData.user.firstName
       },
       {
         key: '2',
         label: 'Last Name',
-        children: userData.user.lastName,
+        children: userData.user.lastName
       },
       {
         key: '3',
         label: 'Title',
-        children: userData.title,
+        children: userData.title
       },
       {
         key: '4',
         label: 'Job Title',
-        children: userData.job_title,
+        children: userData.job_title
       },
-      // Descomenta este bloque si deseas mostrar Preferred name
+     
       // {
       //   key: '5',
       //   label: 'Preferred name',
@@ -111,33 +127,33 @@ const AppProfile = () => {
       {
         key: '6',
         label: 'Email',
-        children: userData.user.email,
+        children: userData.user.email
       },
       {
         key: '7',
         label: 'Department',
-        children: userData.department,
+        children: userData.department
       },
       {
         key: '8',
         label: 'Division',
-        children: userData.division,
+        children: userData.division
       },
       {
         key: '9',
         label: 'Location',
-        children: userData.user.address.location_address,
+        children: userData.user.address.location_address
       },
       {
         key: '10',
         label: 'Country',
-        children: userData.user.address.country,
+        children: userData.user.address.country
       },
       {
         key: '11',
         label: 'City',
-        children: userData.user.address.city,
-      },
+        children: userData.user.address.city
+      }
     ];
   };
 
@@ -148,27 +164,38 @@ const AppProfile = () => {
           <>
             <Descriptions title="User Info" layout="vertical" bordered items={generateItems(userData)} />
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-              <Button type="primary" onClick={handleButton1Click} style={{ marginRight: '10px', background:'rgb(3, 3, 62)',color: 'white' }}>
-                Confirmar
+              <Button
+                type="primary"
+                onClick={handleButton1Click}
+                style={{ marginRight: '10px', background: 'rgb(3, 3, 62)', color: 'white' }}
+              >
+                Confirm
               </Button>
-              <Button type="primary" onClick={handleButton2Click} style={
-{ marginRight: '10px', background:'rgb(3, 3, 62)',color: 'white' }}>
+              <Button
+                type="primary"
+                onClick={handleButton2Click}
+                style={{ marginRight: '10px', background: 'rgb(3, 3, 62)', color: 'white' }}
+              >
                 Invalid Data
               </Button>
             </div>
           </>
         )}
       </div>
+      <div>
+    
+
       <Modal
-        title="Confirmar"
+        title=""
         visible={confirmModalVisible}
         onOk={handleConfirm}
         onCancel={handleCancel}
-        okText="Confirmar"
-        cancelText="Cancelar"
+        footer={null}
       >
-        <p>¿Estás seguro de confirmar los datos?</p>
+        <p style={{textAling:'center',fontSize:'18px', color:'rgb(3, 3, 62)', fontWeight:'600'}}>Your user has been successfully verified!</p>
       </Modal>
+    </div>
+
     </div>
   );
 };
