@@ -56,6 +56,9 @@ const AppRegister = () => {
   const [divisionValue, setDivisionValue] = useState('');
   const [tittleValue, setTittleValue] = useState('');
   const [jobValue, setJobValue] = useState('');
+  const [countryValue, setCountryValue] = useState('');
+  const [cityValue, setCityValue] = useState('');
+
 
 
   const handleFirstNameChange = (event) => {
@@ -113,6 +116,15 @@ const AppRegister = () => {
     setJobValue(event.target.value);
   };
 
+
+  const handleCountryChange = (event) => {
+    setCountryValue(event.target.value);
+  };
+
+  const handleCityChange = (event) => {
+    setCityValue(event.target.value);
+  };
+
   const register = () => {
     console.log(passwordValue)
     const values = {
@@ -126,9 +138,9 @@ const AppRegister = () => {
       //roles: passwordValue,
       address: {
         location_address: addressValue,
-        city: '' ,
+        city: cityValue ,
         postcode: postCodeValue,
-        country: '',
+        country: countryValue,
       },
       title: tittleValue,
       job_title: jobValue,
@@ -382,6 +394,68 @@ const AppRegister = () => {
         onPressEnter={handlePostCodeChange}
       />
     </Form.Item>
+
+
+    <Form.Item
+      label="Country"
+      name="Country"
+      rules={[
+        {
+          required: true,
+          message: 'Please Country!',
+        },
+      ]}
+    >
+      <Input 
+       onChange={handleCountryChange}
+      />
+    </Form.Item>
+
+
+    <Form.Item
+      label="City"
+      name="City"
+      rules={[
+        {
+          required: true,
+          message: 'Please City!',
+        },
+      ]}
+    >
+      <Input 
+       onChange={handleCityChange}
+      />
+    </Form.Item>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <Form.Item
+      label="Title"
+      name="Title"
+      rules={[
+        {
+          required: true,
+          message: 'Please Job Title!',
+        },
+      ]}
+    >
+      <Input 
+       onChange={handleTittleChange}
+      />
+    </Form.Item>
+    
+
 
 
     <Form.Item
