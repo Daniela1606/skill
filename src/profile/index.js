@@ -14,10 +14,13 @@ const AppProfile = () => {
   }, []);
 
   const profile = () => {
+    const token = localStorage.getItem('token'); 
+
     fetch(`http://18.169.192.176/api/users/employees/${id}`, {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` 
       }
     })
       .then(response => {
@@ -42,11 +45,14 @@ const AppProfile = () => {
 
   const handleConfirm = () => {
     setConfirmModalVisible(false);
-    
+
+    const token = localStorage.getItem('token'); 
+
     fetch('http://18.169.192.176/api/users/employees/verify-correct-data', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` 
       },
       body: JSON.stringify({ id: userData.user.id })
     })
@@ -59,7 +65,7 @@ const AppProfile = () => {
       })
       .then(data => {
         console.log(data);
-
+     
       })
       .catch(error => {
         console.error(error);
@@ -96,7 +102,7 @@ const AppProfile = () => {
         label: 'Job Title',
         children: userData.job_title,
       },
-      
+      // Descomenta este bloque si deseas mostrar Preferred name
       // {
       //   key: '5',
       //   label: 'Preferred name',
@@ -145,21 +151,24 @@ const AppProfile = () => {
               <Button type="primary" onClick={handleButton1Click} style={{ marginRight: '10px', background:'rgb(3, 3, 62)',color: 'white' }}>
                 Confirmar
               </Button>
-              <Button type="primary" onClick={handleButton2Click} style={{background:'rgb(3, 3, 62)',color: 'white' }}>
+              <Button type="primary" onClick={handleButton2Click} style={
+{ marginRight: '10px', background:'rgb(3, 3, 62)',color: 'white' }}>
                 Invalid Data
               </Button>
             </div>
-            <Modal
-              title="Confirmar Acción"
-              visible={confirmModalVisible}
-              onOk={handleConfirm}
-              onCancel={handleCancel}
-            >
-              <p>¿Estás seguro de confirmar los datos? Los datos han sido confirmados.</p>
-            </Modal>
           </>
         )}
       </div>
+      <Modal
+        title="Confirmar"
+        visible={confirmModalVisible}
+        onOk={handleConfirm}
+        onCancel={handleCancel}
+        okText="Confirmar"
+        cancelText="Cancelar"
+      >
+        <p>¿Estás seguro de confirmar los datos?</p>
+      </Modal>
     </div>
   );
 };

@@ -1,7 +1,7 @@
-import React, {useState}  from 'react';
+import React, { useState } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Col, Form, Input, Layout, Row } from 'antd';
-import { imagenL, imagenLi, imagenF, imagenI } from '../constante/imagen'; 
+import { imagenL, imagenLi, imagenF, imagenI } from '../constante/imagen';
 import { useNavigate } from 'react-router-dom';
 
 const AppLogin = () => {
@@ -17,16 +17,15 @@ const AppLogin = () => {
     setPasswordValue(event.target.value);
   };
 
-
   const login = () => {
-    console.log(inputValue)
-    console.log(passwordValue)
+    console.log(inputValue);
+    console.log(passwordValue);
     const values = {
       email: inputValue,
       password: passwordValue
     };
-    console.log(values)
-    
+    console.log(values);
+
     fetch('http://18.169.192.176/api/auth/login', {
       method: 'POST',
       body: JSON.stringify(values),
@@ -36,10 +35,14 @@ const AppLogin = () => {
     })
       .then(response => response.json())
       .then(data => {
-        if(data.error) {
-          throw new Error(data.error)
+        if (data.error) {
+          throw new Error(data.error);
         }
-        console.log('data',data);
+        console.log('data', data);
+
+   
+        localStorage.setItem('token', data.token);
+
         navigate('/profile/' + encodeURIComponent(data.id));
       })
       .catch(error => {
@@ -48,30 +51,35 @@ const AppLogin = () => {
   };
 
   return (
-    // style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: "100vh" }}
-    <Layout >
-      <Row >
-        <Col   md={6}></Col>
-        <Col   md={8} 
-        style={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          justifyContent: 'center',
-          alignItems: 'center', 
-           minHeight: "95vh" }}>
-         
-          <p style={{ 
-          fontFamily: "Manrope", 
-          fontSize: "50px", 
-          textAlign: "center",
-          fontWeight:"500" }}>
-          Welcome at Skillsat!</p>
+    <Layout>
+      <Row>
+        <Col md={6}></Col>
+        <Col
+          md={8}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '95vh'
+          }}
+        >
+          <p
+            style={{
+              fontFamily: 'Manrope',
+              fontSize: '50px',
+              textAlign: 'center',
+              fontWeight: '500'
+            }}
+          >
+            Welcome at Skillsat!
+          </p>
 
           <Form
             name="normal_login"
             className="login-form"
             initialValues={{
-              remember: true,
+              remember: true
             }}
           >
             <Form.Item
@@ -79,12 +87,14 @@ const AppLogin = () => {
               rules={[
                 {
                   required: true,
-                  message: 'Please input your Username!',
-                },
+                  message: 'Please input your Username!'
+                }
               ]}
             >
-              <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" 
-              onChange={handleInputChange}
+              <Input
+                prefix={<UserOutlined className="site-form-item-icon" />}
+                placeholder="Email"
+                onChange={handleInputChange}
               />
             </Form.Item>
             <Form.Item
@@ -92,8 +102,8 @@ const AppLogin = () => {
               rules={[
                 {
                   required: true,
-                  message: 'Please input your Password!',
-                },
+                  message: 'Please input your Password!'
+                }
               ]}
             >
               <Input
@@ -114,63 +124,42 @@ const AppLogin = () => {
             </Form.Item>
 
             <Form.Item>
-              <Button 
-              style={{ 
-              width: "20rem", 
-              background: "#03033e", 
-              fontWeight: "600" }} type="primary" htmlType="submit"
-              onClick={login}>                
+              <Button
+                style={{
+                  width: '20rem',
+                  background: '#03033e',
+                  fontWeight: '600'
+                }}
+                type="primary"
+                htmlType="submit"
+                onClick={login}
+              >
                 Log in
               </Button>
             </Form.Item>
 
             <Form.Item>
-              <Button style={{ 
-              width: "20rem", 
-              background: "#1677ff00", 
-              border: "solid 2px #03033e ", 
-              color: "#03033e", 
-              fontWeight: "600" }} type="primary" htmlType="submit">
+              <Button
+                style={{
+                  width: '20rem',
+                  background: '#1677ff00',
+                  border: 'solid 2px #03033e ',
+                  color: '#03033e',
+                  fontWeight: '600'
+                }}
+                type="primary"
+                htmlType="submit"
+              >
                 Log in with SSO
               </Button>
             </Form.Item>
           </Form>
         </Col>
 
-        {/* style={{ textAlign: 'center', maxHeight: '100px'}} */}
-        <Col   md={10}  >
-          <div className='image-back'>
-          
-          {/* <img style={{  width: "500px", paddingTop: '100px', height: "700px"  }} src={imagenL.IMAGENICON} /> */}
-          </div>
+        <Col md={10}>
+          <div className="image-back"></div>
         </Col>
-
       </Row>
-
-
-{/*       <Row>
-
-
-      <Col xs={24} md={8}>
-        
-            <img style={{ width: "2rem" }} src={imagenF.IMAGENICON} />
-       
-        </Col>
-
-        <Col xs={24} md={8}>
-      
-            <img style={{ width: "2rem" }} src={imagenI.IMAGENICON} />
-        
-        </Col>
-        
-        <Col xs={24} md={8} >
-          
-            <img style={{ width: "2rem" }} src={imagenLi.IMAGENICON}/>
-        
-        </Col>
-
-      </Row> */}
-
     </Layout>
   );
 };
