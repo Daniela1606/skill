@@ -1,33 +1,33 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 const AppOnboarding = () => {
+  const [videoURL, setVideoUrl] = useState();
 
-    const [videoURL, setVideoUrl] = useState();
+  const getVideo = () => {
+    fetch('http://18.169.192.176/api/config/onboarding-video/', {
+      method: 'GET',
+    })
+      .then(response => response.json())
+      .then(setVideoUrl);
+  };
 
-    const getVideo = () => {
-        fetch('http://18.169.192.176/api/config/onboarding-video/', {
-        method: 'GET',
-        })
-        .then(response => response.json())
-        .then(setVideoUrl)
-    }
+  useEffect(() => {
+    getVideo();
+  }, []);
 
-    useEffect(()=> {
-        getVideo();
-    }, [])
+  console.log({ videoURL });
 
-    console.log({videoURL})
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <h2 style={{ textAlign: 'center', color:'rgb(3, 3, 62)', fontSize:'30px', textDecoration:'underline' }}>Video Tour</h2>
+      {videoURL ? (
+        <video width="1200" height="700" controls>
+          <source src={videoURL} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      ) : null}
+    </div>
+  );
+};
 
-    return (
-        <div style={{display:'flex', justifyContent:'center', alingItem:'center'}}>
-            {videoURL ? 
-            <video width="320" height="240" controls>
-                <source src={videoURL} type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-            : null }
-        </div>
-    )
-}
-
-export default AppOnboarding
+export default AppOnboarding;
