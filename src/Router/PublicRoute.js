@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "../login/index";
 import Profile from "../profile/index";
 import Register from "../register/index";
+import Onboarding from "../onboarding";
 
 
 
@@ -28,6 +29,12 @@ const PublicRoute = () => {
                     path='/register'
                     element={<Register />}
                 />
+
+                <Route
+                    path="/onboarding"
+                    element={<Onboarding />} 
+                />
+                    
 
 
 
