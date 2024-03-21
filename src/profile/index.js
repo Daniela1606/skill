@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Badge, Descriptions } from 'antd';
+import { Badge, Descriptions, Button } from 'antd';
 import { useParams } from 'react-router-dom';
 
 const AppProfile = () => {
   const { id } = useParams();
-  const [userData, setUserData] = useState(null); 
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     console.log('El componente se ha montado');
@@ -27,19 +27,39 @@ const AppProfile = () => {
       })
       .then(data => {
         console.log(data);
-        setUserData(data); 
+        setUserData(data);
       })
       .catch(error => {
         console.error(error);
       });
   };
 
- 
+  const handleButton1Click = () => {
+   
+    console.log('boton1');
+  };
+
+  const handleButton2Click = () => {
+
+    console.log('boton2');
+  };
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <div style={{ width: '1000px' }}>
         {userData && (
-          <Descriptions title="User Info" layout="vertical" bordered items={generateItems(userData)} />
+          <>
+            <Descriptions title="User Info" layout="vertical" bordered items={generateItems(userData)} />
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+              <Button type="primary" onClick={handleButton1Click} style={{ marginRight: '10px', background:'rgb(3, 3, 62)',color: 'white' }}>
+                Confirm
+              </Button>
+              <Button type="primary" onClick={handleButton2Click} style={{background:'rgb(3, 3, 62)',color: 'white' }}>
+              Invalid Data
+
+              </Button>
+            </div>
+          </>
         )}
       </div>
     </div>
@@ -61,19 +81,18 @@ const generateItems = userData => {
     {
       key: '3',
       label: 'Title',
-      children: userData.user.title,
+      children: userData.title,
     },
     {
       key: '4',
       label: 'Job Title',
-      children: userData.user.jobTitle,
+      children: userData.job_title,
     },
-
-    {
+/*     {
       key: '5',
       label: 'Preferred name',
-      children: userData.user.preferredName,
-    },
+      children: userData.preferredName,
+    }, */
     {
       key: '6',
       label: 'Email',
@@ -81,21 +100,19 @@ const generateItems = userData => {
     },
     {
       key: '7',
-      label: 'Birthday',
-      children: userData.user.departament,
+      label: 'Department',
+      children: userData.department,
     },
     {
       key: '8',
       label: 'Division',
-      span: 3,
-      children: userData.user.division,
+      children: userData.division,
     },
     {
       key: '9',
       label: 'Location',
       children: userData.user.address.location_address,
     },
-
   ];
 };
 
