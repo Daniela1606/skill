@@ -61,3 +61,23 @@ code {
   justify-content: center !important;
   align-items: center !important;
 }
+
+.ant-table-content{
+
+  width: 100rem !important;
+}
+
+th.ant-table-cell{
+
+  background: rgb(3, 3, 62) !important;
+  color:white !important;
+
+}
+
+td.ant-table-cell{
+
+  border: solid 2px rgb(3, 3, 62) !important;
+  border-bottom-left-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+}
+
