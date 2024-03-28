@@ -4,8 +4,8 @@ import Login from "../login/index";
 import Profile from "../profile/index";
 import Register from "../register/index";
 import Onboarding from "../onboarding";
-import Home from "../Home";
-import Status from "../adminStatus/index";
+/* import Home from "../Home";
+ */import Status from "../adminStatus/index";
 
 
 
@@ -16,13 +16,13 @@ const PublicRoute = () => {
             <Routes>
 
 
-                <Route
+{/*                 <Route
                     path='/'
                     element={<Home />}
-                />
+                /> */}
 
                 <Route
-                    path='/login'
+                    path='/'
                     element={<Login />}
                 />
 
