@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Col, Form, Input, Layout, Row } from 'antd';
-import { imagenL, imagenLi, imagenF, imagenI } from '../constante/imagen';
+import { imagenL, imagenLi, imagenF, imagenI, imagenLo, imagenLoo } from '../constante/imagen';
 import { useNavigate } from 'react-router-dom';
+import AppMenu from '../menuLogin/index';
+
 
 const AppLogin = () => {
   const [inputValue, setInputValue] = useState('');
@@ -66,7 +68,11 @@ const AppLogin = () => {
   return (
     <Layout>
       <Row>
-        <Col md={6}></Col>
+
+
+        <Col style={{background:'white'}} md={6}></Col>
+        <img src={imagenLo.IMAGENICON} alt="Logo" style={{ position: 'absolute', top: 50, left: 50 }} />
+
         <Col
           md={8}
           style={{
@@ -74,18 +80,40 @@ const AppLogin = () => {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            minHeight: '95vh'
+            minHeight: '90vh',
+            background:'white'
+            
           }}
         >
+          
           <p
             style={{
               fontFamily: 'Manrope',
               fontSize: '50px',
               textAlign: 'center',
-              fontWeight: '500'
+              fontWeight: '800'
             }}
           >
             Welcome at Skillsat!
+          </p>
+          <p
+                      style={{
+                        fontFamily: 'Manrope',
+                        fontSize: '18px',
+                        /* textAlign: 'center', */
+                        fontWeight: '300',
+                        color: '#757095',
+                        marginLeft:'6rem',
+                        marginRight:'6rem',
+                        lineHeight:'2rem'
+
+                      }}
+          
+          >
+
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
+          do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+
           </p>
 
           <Form
@@ -104,7 +132,7 @@ const AppLogin = () => {
                 }
               ]}
             >
-              <Input
+              <Input className='borde'
                 prefix={<UserOutlined className="site-form-item-icon" />}
                 placeholder="Email"
                 onChange={handleInputChange}
@@ -119,7 +147,7 @@ const AppLogin = () => {
                 }
               ]}
             >
-              <Input
+              <Input className='borde'
                 prefix={<LockOutlined className="site-form-item-icon" />}
                 type="password"
                 placeholder="Password"
@@ -128,19 +156,19 @@ const AppLogin = () => {
             </Form.Item>
             <Form.Item>
               <Form.Item name="remember" valuePropName="checked" noStyle>
-                <Checkbox>Remember me</Checkbox>
+                <Checkbox style={{color:'#757095'}}>Remember me</Checkbox>
               </Form.Item>
 
-              <a className="login-form-forgot" href="">
-                Forgot password
+              <a style={{marginLeft:'45%'}} className="login-form-forgot" href="">
+                Forgot password?
               </a>
             </Form.Item>
 
             <Form.Item>
               <Button
                 style={{
-                  width: '20rem',
-                  background: '#03033e',
+                  width: '28rem',
+                  background: '#041F72',
                   fontWeight: '600'
                 }}
                 type="primary"
@@ -154,10 +182,10 @@ const AppLogin = () => {
             <Form.Item>
               <Button
                 style={{
-                  width: '20rem',
+                  width: '28rem',
                   background: '#1677ff00',
-                  border: 'solid 2px #03033e ',
-                  color: '#03033e',
+                  border: 'solid 2px #041F72 ',
+                  color: '#041F72',
                   fontWeight: '600'
                 }}
                 type="primary"
@@ -171,7 +199,42 @@ const AppLogin = () => {
 
         <Col md={10}>
           <div className="image-back"></div>
+          <Col>
+  <Row>
+    <Col>
+      <AppMenu />
+    </Col>
+    <Col style={{ display: 'flex', justifyContent: 'flex-end', marginLeft: '35%' }}>
+      <div>
+        <img
+          src={imagenI.IMAGENICON}
+          alt="Logo"
+          style={{ width: '25px', height: '25px' }}
+        />
+      </div>
+      <div>
+        <img
+          src={imagenF.IMAGENICON}
+          alt="Logo"
+          style={{ width: '25px', height: '25px' }}
+        />
+      </div>
+      <div>
+        <img
+          src={imagenLi.IMAGENICON}
+          alt="Logo"
+          style={{ width: '25px', height: '25px' }}
+        />
+      </div>
+    </Col>
+  </Row>
+</Col>   
         </Col>
+
+        
+    
+
+        
       </Row>
     </Layout>
   );

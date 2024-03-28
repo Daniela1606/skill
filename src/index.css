@@ -14,7 +14,7 @@ code {
 
 
 .image-back{
-  background: url('../src/Imagenes/login.png');
+  background: url('../src/Imagenes/skillLogin.png');
   /* Full height */
   height: 100%;
 
@@ -79,5 +79,27 @@ td.ant-table-cell{
   border: solid 2px rgb(3, 3, 62) !important;
   border-bottom-left-radius: 20px !important;
   border-bottom-right-radius: 20px !important;
+}
+
+
+#normal_login_username{
+
+  width: 24rem !important;
+
+}
+
+.borde{
+  border: solid 1px #EFEEFC;
+}
+
+.bold-label {
+  font-weight: bold !important;
+}
+
+.ant-menu-title-content{
+
+  font-weight: 700;
+  color:black;
+
 }
 

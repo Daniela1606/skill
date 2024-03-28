@@ -3,6 +3,8 @@ import imagenLogin from "../Imagenes/login.png";
 import imagenFacebook from "../Imagenes/instagram.png";
 import imagenInstagram from "../Imagenes/facebook.png";
 import imagenLinkedin from "../Imagenes/linkedin.png";
+import imagenLogo from "../Imagenes/logo.png";
+import imagenSkillLogin from "../Imagenes/skillLogin.png";
 
 
 export const imagenL ={
@@ -35,6 +37,22 @@ export const imagenLi ={
     IMAGENICON: imagenLinkedin
 
 };
+
+export const imagenLo ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenLogo
+
+};
+
+export const imagenLoo ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenSkillLogin
+
+};
+
+
 
 
 
