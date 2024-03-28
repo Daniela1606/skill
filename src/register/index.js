@@ -230,7 +230,6 @@ const AppRegister = () => {
            minHeight: "95vh" }}>
          
           <p style={{ 
-          fontFamily: "Manrope", 
           fontSize: "50px", 
           textAlign: "center",
           fontWeight:"500" }}>

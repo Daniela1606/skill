@@ -88,7 +88,6 @@ const AppLogin = () => {
           
           <p
             style={{
-              fontFamily: 'Manrope',
               fontSize: '50px',
               textAlign: 'center',
               fontWeight: '800'
@@ -98,7 +97,6 @@ const AppLogin = () => {
           </p>
           <p
                       style={{
-                        fontFamily: 'Manrope',
                         fontSize: '18px',
                         /* textAlign: 'center', */
                         fontWeight: '300',
