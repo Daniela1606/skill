@@ -81,11 +81,13 @@ const AppLogin = () => {
             justifyContent: 'center',
             alignItems: 'center',
             minHeight: '90vh',
-            background:'white'
+            background:'white',
+            width:'50%',
+            
             
           }}
         >
-          
+          <div>
           <p
             style={{
               fontSize: '50px',
@@ -98,11 +100,10 @@ const AppLogin = () => {
           <p
                       style={{
                         fontSize: '18px',
-                        /* textAlign: 'center', */
                         fontWeight: '300',
                         color: '#757095',
-                        marginLeft:'6rem',
-                        marginRight:'6rem',
+                        marginLeft: '15%',
+                        marginRight: '15%',
                         lineHeight:'2rem'
 
                       }}
@@ -113,6 +114,8 @@ const AppLogin = () => {
           do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 
           </p>
+
+          </div>
 
           <Form
             name="normal_login"
@@ -202,7 +205,7 @@ const AppLogin = () => {
     <Col>
       <AppMenu />
     </Col>
-    <Col style={{ display: 'flex', justifyContent: 'flex-end', marginLeft: '35%' }}>
+    <Col style={{ display: 'flex', justifyContent: 'flex-end', marginLeft: '30%' }}>
       <div>
         <img
           src={imagenI.IMAGENICON}
