@@ -67,32 +67,28 @@ const AppLogin = () => {
 
   return (
     <Layout>
-      <Row>
-
-
-        <Col style={{background:'white'}} md={6}></Col>
-        <img src={imagenLo.IMAGENICON} alt="Logo" style={{ position: 'absolute', top: 50, left: 50 }} />
+      <Row style={{
+        justifyContent: 'space-between',
+        backgroundColor: 'white',
+      }}>
 
         <Col
-          md={8}
           style={{
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
+            margin: '1em auto 0',
+            alignItems: 'flex-start',
             minHeight: '90vh',
             background:'white',
-            width:'50%',
-            
-            
           }}
         >
-          <div>
+          <div style={{ width: '100%', maxWidth: '496px', margin: '0 0.5em', }}>
+          <img src={imagenLo.IMAGENICON} alt="Logo" style={{marginBottom: '5rem'}} />
           <p
             style={{
-              fontSize: '50px',
-              textAlign: 'center',
-              fontWeight: '800'
+              fontSize: '48px',
+              fontWeight: '800',
+              marginBottom: '30px',
             }}
           >
             Welcome at Skillsat!
@@ -101,11 +97,10 @@ const AppLogin = () => {
                       style={{
                         fontSize: '18px',
                         fontWeight: '300',
+                        maxWidth: '90%',
                         color: '#757095',
-                        marginLeft: '15%',
-                        marginRight: '15%',
-                        lineHeight:'2rem'
-
+                        lineHeight:'2rem',
+                        marginBottom: '3rem'
                       }}
           
           >
@@ -115,11 +110,13 @@ const AppLogin = () => {
 
           </p>
 
-          </div>
 
           <Form
             name="normal_login"
             className="login-form"
+            style={{
+              width: '100%',
+            }}
             initialValues={{
               remember: true
             }}
@@ -168,7 +165,8 @@ const AppLogin = () => {
             <Form.Item>
               <Button
                 style={{
-                  width: '28rem',
+                  width: '100%',
+                  display: 'block',
                   background: '#041F72',
                   fontWeight: '600'
                 }}
@@ -183,7 +181,8 @@ const AppLogin = () => {
             <Form.Item>
               <Button
                 style={{
-                  width: '28rem',
+                  width: '100%',
+                  display: 'block',
                   background: '#1677ff00',
                   border: 'solid 2px #041F72 ',
                   color: '#041F72',
@@ -196,6 +195,7 @@ const AppLogin = () => {
               </Button>
             </Form.Item>
           </Form>
+          </div>
         </Col>
 
         <Col md={10}>
