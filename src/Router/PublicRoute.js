@@ -6,6 +6,7 @@ import Register from "../register/index";
 import Onboarding from "../onboarding";
 /* import Home from "../Home";
  */import Status from "../adminStatus/index";
+ import AppMenuLogin from "../logueado/index";
 
 
 
@@ -45,6 +46,11 @@ const PublicRoute = () => {
                 <Route
                     path="/status"
                     element={<Status />} 
+                />
+
+                <Route
+                    path="/menu"
+                    element={<AppMenuLogin />} 
                 />
                     
                     

@@ -73,14 +73,13 @@ th.ant-table-cell{
   color:white !important;
 
 }
-
-td.ant-table-cell{
+ td.ant-table-cell{
 
   border: solid 2px rgb(3, 3, 62) !important;
-  border-bottom-left-radius: 20px !important;
-  border-bottom-right-radius: 20px !important;
+/*   border-bottom-left-radius: 20px !important;
+  border-bottom-right-radius: 20px !important; */
 }
-
+ 
 
 #normal_login_username{
 
