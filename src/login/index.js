@@ -166,9 +166,13 @@ const AppLogin = () => {
               <Button
                 style={{
                   width: '100%',
-                  display: 'block',
+                  padding: '20px 0',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                   background: '#041F72',
                   fontWeight: '600',
+                  borderRadius: '10px',
                 }}
                 type="primary"
                 htmlType="submit"
@@ -182,11 +186,15 @@ const AppLogin = () => {
               <Button
                 style={{
                   width: '100%',
-                  display: 'block',
+                  padding: '20px 0',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                   background: '#1677ff00',
                   border: 'solid 2px #041F72 ',
                   color: '#041F72',
-                  fontWeight: '600'
+                  fontWeight: '600',
+                  borderRadius: '10px',
                 }}
                 type="primary"
                 htmlType="submit"
