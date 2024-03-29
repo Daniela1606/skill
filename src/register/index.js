@@ -162,31 +162,10 @@ const AppRegister = () => {
       if (response.status == '400') navigate('/verify-user');        
     })
       .then(data => {
-        // Handle the response from the server
-        // Verifica si todos los campos están llenos
-   /*  if (
-      values['First Name'] &&
-      values['Last Name'] &&
-      values['Phone'] &&
-      values['Email'] &&
-      values['password'] &&
-      values['Birthday'] &&
-      values['Roles'] &&
-      values['Address'] &&
-      values['Postcode'] &&
-      values['Departament'] &&
-      values['Division']
-    ) {
-      // Redirige a la vista "/dashboard"
-      navigate('/profile');
-    } else {
-      // Campos incompletos, no se realiza la redirección
-      console.log('Fields are incomplete',data);
-    } */
+
         console.log(data);
       })
       .catch(error => {
-        // Handle any errors
         console.error(error);
       });
   };
@@ -194,7 +173,6 @@ const AppRegister = () => {
 
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
-    // Verifica si todos los campos están llenos
     if (
       values['First Name'] &&
       values['Last Name'] &&
@@ -218,91 +196,58 @@ const AppRegister = () => {
 
 
   return (
-    <Layout >
-      <Row >
-        <Col   md={6}></Col>
-        <Col   md={8} 
-        style={{ 
-        
-          flexDirection: 'column', 
-          justifyContent: 'center',
-          alignItems: 'center', 
-           minHeight: "95vh" }}>
-         
-          <p style={{ 
-          fontSize: "50px", 
-          textAlign: "center",
-          fontWeight:"500" }}>
-          Register!</p>
+<Layout>
+  <Row style={{backgroud:'white'}}> 
+  
+    <Col style={{background:'white'}} md={8}>
+      
+      {/* Primeros 8 inputs */}
 
-          <Form
-    {...formItemLayout}
-    variant="filled"
-    style={{
-      maxWidth: 600,
-    }}
-  >
-    <Form.Item
-      label="First Name"
-      name="First Name"
-      rules={[
-        {
-          required: true,
-          message: 'Please First Name!',
-        },
-      ]}
-      onChange={handleFirstNameChange}
-    >
-      <Input />
-    </Form.Item>
-
-    <Form.Item
-      label="Last Name"
-      name="Last Name"
-      rules={[
-        {
-          required: true,
-          message: 'Please Last Name!',
-        },
-      ]}
-      onChange={handleLastNameChange}
-      >
-      <Input />
-    </Form.Item>
-
-    <Form.Item
-      label="Phone"
-      name="Phone"
-      rules={[
-        {
-          required: true,
-          message: 'Please Phone Number!',
-        },
-      ]}
-      onChange={handlePhoneChange}
-    >
-      <InputNumber
+      <Form
+        {...formItemLayout}
+        variant="filled"
         style={{
-          width: '100%',
+          maxWidth: 600,
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: "95vh"
         }}
-      />
-    </Form.Item>
-
-    <Form.Item
-      label="Gender"
-      name="Gender"
-      rules={[
-        {
-          required: true,
-          message: 'Please Gender.!',
-        },
-      ]}
-      onChange={handleGenderChange}
       >
-      <Input />
-    </Form.Item>
 
-    <Form.Item
+
+        <Form.Item
+          label="First Name"
+          name="First Name"
+          rules={[
+            {
+              required: true,
+              message: 'Please enter your First Name!',
+            },
+          ]}
+          onChange={handleFirstNameChange}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+            label="Phone"
+            name="Phone"
+            rules={[
+              {
+                required: true,
+                message: 'Please Phone Number!',
+              },
+            ]}
+            onChange={handlePhoneChange}
+          >
+            <InputNumber
+              style={{
+                width: '100%',
+              }}
+            />
+      </Form.Item>
+      <Form.Item
       label="Email"
       name="Email"
       rules={[
@@ -314,239 +259,217 @@ const AppRegister = () => {
       onChange={handleEmailChange}
     >
       <Input />
+      </Form.Item>
+      <Form.Item
+        label="Birthday"
+        name="Birthday"
+        rules={[
+          {
+            required: true,
+            message: 'Please birthday!',
+          },
+        ]}
+        onChange={handleBirthdayChange}
+      >
+        <DatePicker />
     </Form.Item>
-
     <Form.Item
-            label = "Password"
-              name="password"
+            label="Postcode"
+            name="Postcode"
+            rules={[
+              {
+                required: true,
+                message: 'Please Postcode!',
+              },
+            ]}
+          >
+            <InputNumber
+              style={{
+                width: '100%',
+              }}
+              onPressEnter={handlePostCodeChange}
+            />
+        </Form.Item>
+
+        <Form.Item
+            label="City"
+            name="City"
+            rules={[
+              {
+                required: true,
+                message: 'Please City!',
+              },
+            ]}
+          >
+            <Input 
+            onChange={handleCityChange}
+            />
+        </Form.Item>
+
+        <Form.Item
+            label="Departament"
+            name="Departament"
+            rules={[
+              {
+                required: true,
+                message: 'Please Departament!',
+              },
+            ]}
+          >
+            <Input 
+            onChange={handleDepartamentChange}
+            />
+        </Form.Item>
+
+      </Form>
+    </Col>
+
+    <Col style={{background:'white'}} md={8}>
+      {/* Últimos 8 inputs AQUII */}
+
+
+      <Form
+        {...formItemLayout}
+        variant="filled"
+        style={{
+          maxWidth: 600,
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: "95vh"
+        }}
+      >
+        <Form.Item
+          label="Last Name"
+          name="Last Name"
+          rules={[
+            {
+              required: true,
+              message: 'Please enter your Last Name!',
+            },
+          ]}
+          onChange={handleLastNameChange}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+      label="Gender"
+        name="Gender"
+        rules={[
+    {
+      required: true,
+      message: 'Please Gender.!',
+    },
+  ]}
+  onChange={handleGenderChange}
+  >
+  <Input />
+</Form.Item>
+    <Form.Item
+        label = "Password"
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your Password!',
+            },
+          ]}
+        >
+          <Input
+            prefix={<LockOutlined className="site-form-item-icon" />}
+            type="password"
+            placeholder="Password"
+            onChange={handlePasswordChange}
+          />
+        </Form.Item>
+        <Form.Item
+            label="Address"
+            name="Address"
+            rules={[
+              {
+                required: true,
+                message: 'Please Address!',
+              },
+            ]}
+            >
+            <Input 
+            onChange={handleAddressChange}
+            />
+      </Form.Item>
+      <Form.Item
+            label="Country"
+            name="Country"
+            rules={[
+              {
+                required: true,
+                message: 'Please Country!',
+              },
+            ]}
+          >
+            <Input 
+            onChange={handleCountryChange}
+            />
+        </Form.Item>
+        <Form.Item
+            label="Title"
+            name="Title"
+            rules={[
+              {
+                required: true,
+                message: 'Please Job Title!',
+              },
+            ]}
+          >
+            <Input 
+            onChange={handleTittleChange}
+            />
+        </Form.Item>
+        <Form.Item
+              label="Division"
+              name="Division"
               rules={[
                 {
                   required: true,
-                  message: 'Please input your Password!',
+                  message: 'Please Division!',
                 },
               ]}
             >
-              <Input
-                prefix={<LockOutlined className="site-form-item-icon" />}
-                type="password"
-                placeholder="Password"
-                onChange={handlePasswordChange}
+              <Input 
+              onChange={handleDivisionChange}
               />
-            </Form.Item>
-
-    <Form.Item
-      label="Birthday"
-      name="Birthday"
-      rules={[
-        {
-          required: true,
-          message: 'Please birthday!',
-        },
-      ]}
-      onChange={handleBirthdayChange}
-    >
-      <DatePicker />
-    </Form.Item>
-
-{/*     <Form.Item
-      label="Roles"
-      name="Roles"
-      rules={[
-        {
-          required: true,
-          message: 'Please role!',
-        },
-      ]}
-    >
-      <Select />
-    </Form.Item> */}
-
-    <Form.Item
-      label="Address"
-      name="Address"
-      rules={[
-        {
-          required: true,
-          message: 'Please Address!',
-        },
-      ]}
-      >
-      <Input 
-       onChange={handleAddressChange}
-      />
-    </Form.Item>
-
-    <Form.Item
-      label="Postcode"
-      name="Postcode"
-      rules={[
-        {
-          required: true,
-          message: 'Please Postcode!',
-        },
-      ]}
-    >
-      <InputNumber
-        style={{
-          width: '100%',
-        }}
-        onPressEnter={handlePostCodeChange}
-      />
-    </Form.Item>
+        </Form.Item>  
 
 
-    <Form.Item
-      label="Country"
-      name="Country"
-      rules={[
-        {
-          required: true,
-          message: 'Please Country!',
-        },
-      ]}
-    >
-      <Input 
-       onChange={handleCountryChange}
-      />
-    </Form.Item>
+        <Form.Item
+          wrapperCol={{
+            offset: 6,
+            span: 16,
+          }}
+        >
+          <Button
+            style={{
+              width: "20rem",
+              background: "rgb(4, 31, 114)",
+              fontWeight: "600"
+            }}
+            type="primary"
+            htmlType="submit"
+            onClick={register}
+          >
+            Register
+          </Button>
+        </Form.Item> 
+      </Form>
+    </Col>
 
-
-    <Form.Item
-      label="City"
-      name="City"
-      rules={[
-        {
-          required: true,
-          message: 'Please City!',
-        },
-      ]}
-    >
-      <Input 
-       onChange={handleCityChange}
-      />
-    </Form.Item>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <Form.Item
-      label="Title"
-      name="Title"
-      rules={[
-        {
-          required: true,
-          message: 'Please Job Title!',
-        },
-      ]}
-    >
-      <Input 
-       onChange={handleTittleChange}
-      />
-    </Form.Item>
-    
-
-
-
-    <Form.Item
-      label="Title"
-      name="Title"
-      rules={[
-        {
-          required: true,
-          message: 'Please Job Title!',
-        },
-      ]}
-    >
-      <Input 
-       onChange={handleTittleChange}
-      />
-    </Form.Item>
-
-    <Form.Item
-      label="Job Tittle"
-      name="Job Title"
-      rules={[
-        {
-          required: true,
-          message: 'Please Job Title!',
-        },
-      ]}
-    >
-      <Input 
-       onChange={handleJobChange}
-      />
-    </Form.Item>
-
-
-    <Form.Item
-      label="Departament"
-      name="Departament"
-      rules={[
-        {
-          required: true,
-          message: 'Please Departament!',
-        },
-      ]}
-    >
-      <Input 
-       onChange={handleDepartamentChange}
-      />
-    </Form.Item>
-
-    <Form.Item
-      label="Division"
-      name="Division"
-      rules={[
-        {
-          required: true,
-          message: 'Please Division!',
-        },
-      ]}
-    >
-      <Input 
-       onChange={handleDivisionChange}
-      />
-    </Form.Item>
-
-    <Form.Item
-      wrapperCol={{
-        offset: 6,
-        span: 16,
-      }}
-    >
-      <Button style={{ 
-              width: "20rem", 
-              background: "#03033e", 
-              fontWeight: "600" }} type="primary" htmlType="submit"
-              onClick={register}
-              >
-        Register
-      </Button>
-    </Form.Item>
-  </Form>
-        </Col>
-
-        {/* style={{ textAlign: 'center', maxHeight: '100px'}} */}
-        <Col   md={10}  >
-          <div className='image-back'>
-          
-          {/* <img style={{  width: "500px", paddingTop: '100px', height: "700px"  }} src={imagenL.IMAGENICON} /> */}
-          </div>
-        </Col>
-
-      </Row>
-
-    </Layout>
+    <Col md={8}>
+      <div className='image-back'>
+        {/* Imagen */}
+        {/* <img style={{  width: "500px", paddingTop: '100px', height: "700px"  }} src={imagenL.IMAGENICON} /> */}
+      </div>
+    </Col>
+  </Row>
+</Layout>
 
 
 

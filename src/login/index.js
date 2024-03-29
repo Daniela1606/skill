@@ -168,7 +168,7 @@ const AppLogin = () => {
                   width: '100%',
                   display: 'block',
                   background: '#041F72',
-                  fontWeight: '600'
+                  fontWeight: '600',
                 }}
                 type="primary"
                 htmlType="submit"
@@ -210,14 +210,14 @@ const AppLogin = () => {
         <img
           src={imagenI.IMAGENICON}
           alt="Logo"
-          style={{ width: '25px', height: '25px' }}
+          style={{ width: '25px', height: '25px', marginRight:'0.5rem' }}
         />
       </div>
       <div>
         <img
           src={imagenF.IMAGENICON}
           alt="Logo"
-          style={{ width: '25px', height: '25px' }}
+          style={{ width: '25px', height: '25px', marginRight:'0.5rem'  }}
         />
       </div>
       <div>

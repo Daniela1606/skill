@@ -13,7 +13,7 @@ const items = [
   },
   {
     label: 'PRIVACY',
-    key: 'SubMenu',
+/*     key: 'SubMenu',
     children: [
       {
         type: 'group',
@@ -43,7 +43,7 @@ const items = [
           },
         ],
       },
-    ],
+    ], */
   },
   {
     label: 'TERMS',
