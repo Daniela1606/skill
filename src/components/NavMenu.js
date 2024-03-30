@@ -1,7 +1,7 @@
 import { Menu } from "antd"
 import { NavLink } from "react-router-dom";
 
-function getItem(label, key, icon, children, type) {
+export function getItem(label, key, icon, children, type) {
     return {
         key,
         icon,
@@ -11,12 +11,8 @@ function getItem(label, key, icon, children, type) {
     };
 }
 
-const items = [
-    getItem('Users', 'users', <NavLink key="users" to='/dashboard' /> ),
-    getItem('Logout', 'users', <NavLink key="users" to='/dashboard/status' /> )
-]
 
-const NavMenu = ({...rest}) => {
+const NavMenu = ({items,...rest}) => {
     return (
             <Menu 
                 defaultSelectedKeys={['1']}
