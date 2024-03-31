@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import { AuthContext } from '../contexts/AuthContext';
 
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando } from '../constante/imagen';
@@ -31,11 +30,27 @@ const MenuLogin = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  const authContext = useContext(AuthContext); 
-  const { user } = authContext; 
 
-  const userName = user ? user.name : ""; 
+  const [employee, setEmployee] = useState(null);
 
+  useEffect(() => {
+ 
+    const fetchEmployee = async () => {
+      try {
+        const response = await fetch('Api/users/employees/id'); 
+        if (response.ok) {
+          const data = await response.json();
+          setEmployee(data);
+        } else {
+          console.error('Error al llamar al endpoint:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error al llamar al endpoint:', error);
+      }
+    };
+
+    fetchEmployee();
+  }, []);
   return (
     <Layout>
       <Header
@@ -93,7 +108,7 @@ const MenuLogin = () => {
             >
               <div>
               <p style={{ fontSize: '40px', fontWeight: '700', color: 'black' }}>
-                Welcome, {userName}!</p>
+                Welcome, {employee.name}</p>
                 <p>Improve your profile by completing the skills section</p>
               </div>
               <img src={imagenLogoAzul.IMAGENICON} alt="Logo" style={{ marginLeft: 'auto', width: '20%' }} />
