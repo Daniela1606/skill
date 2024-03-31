@@ -68,9 +68,11 @@ const MenuLogin = () => {
  
     const fetchEmployee = async () => {
       try {
-        const response = await fetch('Api/users/employees/${id}'); 
+        const response = await fetch(`http://18.169.192.176/Api/users/employees/${id}`); 
         if (response.ok) {
           const data = await response.json();
+          console.log({data})
+          console.log('get Dataaaaaaaaaaaaaaaaaaaaaaaaaaa')
           setEmployee(data);
         } else {
           console.error('Error al llamar al endpoint:', response.statusText);
@@ -145,7 +147,7 @@ const MenuLogin = () => {
             >
               <div>
               <p style={{ fontSize: '40px', fontWeight: '700', color: 'black' }}>
-              Welcome, {employee ? employee.name : ''}</p>
+              Welcome, {employee ? employee.user.firstName : ''}</p>
                 <p>Improve your profile by completing the skills section</p>
               </div>
               <img src={imagenLogoAzul.IMAGENICON} alt="Logo" style={{ marginLeft: 'auto', width: '20%' }} />
