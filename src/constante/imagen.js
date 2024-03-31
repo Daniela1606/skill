@@ -9,6 +9,7 @@ import imagenLogoSkill from "../Imagenes/logoAzul.png";
 import imagenBuscador from "../Imagenes/imagenBuscador.png";
 import imagenEmpleos from "../Imagenes/chico.png";
 import imagenPrueba from "../Imagenes/frame.png";
+import imagenFooter from "../Imagenes/frame2.png";
 
 export const imagenL ={
 
@@ -83,6 +84,13 @@ export const imagenEmpleo ={
 
     NOT_FOUND : notFound,
     IMAGENICON: imagenEmpleos
+
+};
+
+export const imagenDeFooter ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenFooter
 
 };
 
