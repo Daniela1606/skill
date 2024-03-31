@@ -49,7 +49,7 @@ const PublicRoute = () => {
                 />
 
                 <Route
-                    path="/menu"
+                    path="/menu/:id"
                     element={<AppMenuLogin />} 
                 />
                     
