@@ -1,57 +1,13 @@
-/* import { Layout } from "antd"
-import Sider from "antd/es/layout/Sider"
-import { Content, Header } from "antd/es/layout/layout"
-import NavMenu, { getItem } from "../components/NavMenu";
-import { NavLink } from "react-router-dom";
-import { imagenL, imagenLi, imagenF, imagenI, imagenLo, imagenLoo } from '../constante/imagen';
-import Appsearch from "../search";
-
-
-const items = [
-    getItem('Search', 'users', <NavLink key="users" to='/search' /> ),
-    getItem('Help', 'users', <NavLink key="users" to='/help' /> ),
-    getItem('Contact', 'users', <NavLink key="users" to='/contact' /> ),
-    getItem('Settings', 'users', <NavLink key="users" to='/settings' /> )
-]
-
-const MenuLogin = ()=> {
-
-    return (
-
-        <Layout style={{maxHeight: '100vh'}}>
-            <Sider>
-                <div>
-            <img src={imagenLo.IMAGENICON} alt="Logo" />
-            </div>
-
-               <NavMenu items={items} style={{height: '100%'}} />
-            </Sider>
-            <Layout style={{overflowY: 'scroll'}}>
-                <Content style={{marginTop: '2em'}}>
-                Welcome, Kevin!
-                <p>Improve your profile by completing the skills section</p>
-                <Appsearch/>
-                </Content>
-            </Layout>
-        </Layout>
-    )
-}
-
-
-export default MenuLogin */
-
-import React from 'react';
+import React, { useContext } from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import { imagenL, imagenLi, imagenF, imagenI, imagenLo, imagenLoo } from '../constante/imagen';
-import Appsearch from "../search";
+import { AuthContext } from '../contexts/AuthContext';
 
+import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando } from '../constante/imagen';
+import Appsearch from "../search";
 
 const { Header, Content, Sider } = Layout;
-const items1 = ['1', '2', '3'].map((key) => ({
-  key,
-  label: `nav ${key}`,
-}));
+
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
   const key = String(index + 1);
   return {
@@ -67,28 +23,36 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
     }),
   };
 });
+
+
+
 const MenuLogin = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const authContext = useContext(AuthContext); 
+  const { user } = authContext; 
+
+  const userName = user ? user.name : ""; 
+
   return (
     <Layout>
       <Header
         style={{
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'space-between',
         }}
-
       >
-
-<img src={imagenLo.IMAGENICON} alt="Logo" />
-
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <img src={imagenLo.IMAGENICON} alt="Logo" />
+        </div>
         <div className="demo-logo" />
         <Menu
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['2']}
-          items={items1}
           style={{
             flex: 1,
             minWidth: 0,
@@ -113,35 +77,70 @@ const MenuLogin = () => {
             items={items2}
           />
         </Sider>
-        <Layout
-          style={{
-            padding: '0 24px 24px',
-          }}
-        >
-{/*           <Breadcrumb
-            style={{
-              margin: '16px 0',
-            }}
-          >
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb> */}
-          <Content
-            style={{
-              padding: 24,
-              margin: 0,
-              minHeight: 280,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}
-          >
-                <p style={{fontSize:'40px', fontWeigth:'700', colo:'black'}}>Welcome, Kevin!</p>
+        <Layout style={{ flex: 1 }}>
+          <Layout style={{ flex: 1 }}>
+
+            <Content
+              style={{
+                padding: 24,
+                margin: 0,
+                minHeight: 280,
+                background: colorBgContainer,
+                borderRadius: borderRadiusLG,
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <div>
+              <p style={{ fontSize: '40px', fontWeight: '700', color: 'black' }}>
+                Welcome, {userName}!</p>
                 <p>Improve your profile by completing the skills section</p>
-                <Appsearch/>          </Content>
+              </div>
+              <img src={imagenLogoAzul.IMAGENICON} alt="Logo" style={{ marginLeft: 'auto', width: '20%' }} />
+            </Content>
+
+
+            <Content
+              style={{
+                padding: 24,
+                margin: 0,
+                minHeight: 280,
+                background: colorBgContainer,
+                borderRadius: borderRadiusLG,
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <div>
+                <p style={{ fontSize: '20px', fontWeight: '700', color: 'black' }}>
+                  Find your skill
+                </p>
+                <Appsearch />
+              </div>
+              <img src={imagenBuscar.IMAGENICON} alt="Logo" style={{ marginLeft: 'auto', width: '20%' }} />
+            </Content>
+
+            <Content
+              style={{
+                padding: 24,
+                margin: 0,
+                minHeight: 280,
+                background: colorBgContainer,
+                borderRadius: borderRadiusLG,
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <div>
+                <img src={imagenProbando.IMAGENICON} alt="Logo" style={{ marginLeft: '-5rem', width: '100%' }} />
+              </div>
+              <img src={imagenEmpleo.IMAGENICON} alt="Logo" style={{ marginLeft: 'auto', width: '15%' }} />
+            </Content>
+          </Layout>
         </Layout>
       </Layout>
     </Layout>
   );
 };
+
 export default MenuLogin;

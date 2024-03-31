@@ -5,7 +5,10 @@ import imagenInstagram from "../Imagenes/facebook.png";
 import imagenLinkedin from "../Imagenes/linkedin.png";
 import imagenLogo from "../Imagenes/logo.png";
 import imagenSkillLogin from "../Imagenes/skillLogin.png";
-
+import imagenLogoSkill from "../Imagenes/logoAzul.png";
+import imagenBuscador from "../Imagenes/imagenBuscador.png";
+import imagenEmpleos from "../Imagenes/chico.png";
+import imagenPrueba from "../Imagenes/frame.png";
 
 export const imagenL ={
 
@@ -13,6 +16,8 @@ export const imagenL ={
     IMAGENICON: imagenLogin
 
 };
+
+
 
 
 export const imagenI ={
@@ -52,7 +57,33 @@ export const imagenLoo ={
 
 };
 
+export const imagenLogoAzul ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenLogoSkill
+
+};
+
+export const imagenBuscar ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenBuscador
+
+};
+
+export const imagenProbando ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenPrueba
+
+};
 
 
+export const imagenEmpleo ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenEmpleos
+
+};
 
 

@@ -17,7 +17,7 @@ const Appsearch = () => (
       placeholder="input search text"
       onSearch={onSearch}
       style={{
-        width: 200,
+        width: '50rem',
       }}
     />
 
