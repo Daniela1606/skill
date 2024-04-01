@@ -203,9 +203,19 @@ const MenuLogin = () => {
                 alignItems: 'center',
               }}
             >
-              <div>
+
+<div style={{ background: 'linear-gradient(to bottom, #AFDFBB, #58C2C0)', width: '50%', borderRadius: '20px', padding: '10px' }}>
+  <p>Need a hand?</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+  <button style={{ background: 'white', border: 'solid 1px white', width: '20%', borderRadius: '20px', padding: '5px' }}>Submit</button>
+
+    <p style={{color:'white'}}>Next Question → </p>
+  </div>
+</div>
+{/*               <div>
               <img src={imagenDeFooter.IMAGENICON} alt="Logo" style={{ marginLeft: '-5rem', width: '100%' }} />
-              </div>
+              </div> */}
 
             </Content>
 
