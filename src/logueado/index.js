@@ -6,6 +6,7 @@ import { Layout, Menu, Modal, message, theme } from 'antd';
 import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando, imagenDeFooter } from '../constante/imagen';
 import Appsearch from "../search";
 import VerifyForm from '../components/VerifyForm';
+import ReportInvalidDataForm from '../components/ReportInvalidDataForm';
 
 const { Header, Content, Sider } = Layout;
 
@@ -63,6 +64,9 @@ const MenuLogin = () => {
 
   const [status] = useState(localStorage.getItem('status'))
   const [token] = useState(localStorage.getItem('token'))
+  const [reportIsActive, setReportIsActive] = useState(false);
+
+  console.log({status})
 
 
 
@@ -105,8 +109,28 @@ const MenuLogin = () => {
             })
     };
 
+    const reportInvalidData = async (data) => {
+      console.log({token})
+        return fetch('http://18.169.192.176/api/users/employees/report-incorrect-data', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => {
+          console.log(response);
+          return response.json()
+        })
+        .catch( error => {
+          throw error
+        })
+    };
+
     const onCreate = () => {
       setVerifyOpen(false)
+      setReportIsActive(false)
     }
 
 
@@ -254,20 +278,47 @@ const MenuLogin = () => {
 
           {contextHolder}
           <Modal
+                closeIcon={false}
                 width={840}
                 open={verifyOpen}
                 title="Validate user data"
-                okText="Confirm"
-                cancelText="Report Error"
+                okText={ !reportIsActive ? "Confirm" : 'Send Report'}
+                cancelText={ !reportIsActive ? "Report Error" : 'Back'}
+                
                 okButtonProps={{
                   autoFocus: true,
                 }}
-                onCancel={() => setVerifyOpen(false)}
+                onCancel={(event) => {
+                    const target = event.target.localName
+                    if (target === 'span' || target === 'button') {
+                      setReportIsActive(!reportIsActive)
+                    }
+                  } 
+                }
                 destroyOnClose
                 onOk={async () => {
+                      let result
                       try {
-                        await confirmValidData()
-                        messageApi.open({type: 'success', content: 'User data confirmed successfully'})
+                        if (!reportIsActive) {
+                          result = await confirmValidData()
+
+                          console.log({result})
+                          if(result.error) {
+                            throw result.error.message
+                          }
+                          messageApi.open({type: 'success', content: 'User data confirmed successfully'})
+                        } else {
+                          const formValues = validateFormInstance.getFieldsValue()
+                          console.log({formValues})
+                          result = await reportInvalidData(formValues)
+
+                          console.log({result})
+                          if(result.error) {
+                            throw result.error.message
+                          }
+                          messageApi.open({type: 'success', content: 'Report sent successfully'})
+                        }
+                        
                         validateFormInstance?.resetFields();
                         onCreate();
                       } catch (error) {
@@ -275,12 +326,20 @@ const MenuLogin = () => {
                       }
                     }}
               >
-                <VerifyForm
-                  initialValues={{...employee, ...employee?.user, ...employee?.user.address, birthday: employee?.user.birthdate.split('T')[0]}}
-                  onFormInstanceReady={(instance) => {
-                    setValidateFormInstance(instance);
-                  }}
-                />
+                {
+                  !reportIsActive ? 
+                  <VerifyForm
+                    initialValues={{...employee, ...employee?.user, ...employee?.user.address, birthday: employee?.user.birthdate.split('T')[0]}}
+                    onFormInstanceReady={(instance) => {
+                      setValidateFormInstance(instance);
+                    }}
+                  /> : 
+                  <ReportInvalidDataForm
+                    onFormInstanceReady={(instance) => {
+                      setValidateFormInstance(instance);
+                    }}
+                  />
+                }
               </Modal>
           </Layout>
         </Layout>
