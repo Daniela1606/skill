@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
 import { Layout, Menu, Modal, message, theme } from 'antd';
 import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando, imagenDeFooter } from '../constante/imagen';
@@ -65,6 +65,7 @@ const MenuLogin = () => {
   const [status] = useState(localStorage.getItem('status'))
   const [token] = useState(localStorage.getItem('token'))
   const [reportIsActive, setReportIsActive] = useState(false);
+  const navigate = useNavigate()
 
   console.log({status})
 
@@ -129,6 +130,11 @@ const MenuLogin = () => {
     };
 
     const onCreate = () => {
+      if(reportIsActive) {
+        setTimeout(() => {
+          navigate('/')
+        }, 2000)
+      }
       setVerifyOpen(false)
       setReportIsActive(false)
     }
