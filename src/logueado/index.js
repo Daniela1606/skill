@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, Layout, Menu, Modal, message, theme } from 'antd';
 import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando, imagenDeFooter } from '../constante/imagen';
 import Appsearch from "../search";
+import AppRegister from '../register';
+import VerifyForm from '../components/VerifyForm';
 
 const { Header, Content, Sider } = Layout;
 
@@ -60,9 +62,14 @@ const MenuLogin = () => {
   } = theme.useToken();
   const { id } = useParams();
 
+  const [status] = useState(localStorage.getItem('status'))
+
 
 
   const [employee, setEmployee] = useState(null);
+  const [verifyOpen, setVerifyOpen] = useState(null);
+  const {messageApi, contextHolder } = message.useMessage()
+  const [validateFormInstance, setValidateFormInstance] = useState(null);
 
   useEffect(() => {
  
@@ -84,6 +91,14 @@ const MenuLogin = () => {
 
     fetchEmployee();
   }, []);
+
+
+  useEffect(() => {
+    if (status === 'Pending') {
+      setVerifyOpen(true);
+    }
+  }, [status])
+
   return (
     <Layout>
       <Header
@@ -220,7 +235,46 @@ const MenuLogin = () => {
             </Content>
 
 
-
+          {contextHolder}
+          <Modal
+                width={840}
+                open={verifyOpen}
+                title="Create a new user"
+                okText="Create"
+                cancelText="Cancel"
+                okButtonProps={{
+                  autoFocus: true,
+                }}
+                onCancel={() => setVerifyOpen(false)}
+                destroyOnClose
+                onOk={async () => {
+                  let values
+                  try {
+                    values = await validateFormInstance?.validateFields();
+                  } catch (error) {
+                    console.log('Failed:', error);
+                    messageApi.open({type: 'error', content: 'Invalid field. Please try again.'})
+                  }
+                    if(values) {
+                      try {
+                        // await register(values)
+                        messageApi.open({type: 'error', content: 'User created successfully'})
+                        validateFormInstance?.resetFields();
+                        // onCreate(values);
+                      } catch (error) {
+                        messageApi.open({type: 'error', content: error.toString()})
+                      }
+                        
+                      }
+                    }}
+              >
+                <VerifyForm
+                  initialValues={employee}
+                  onFormInstanceReady={(instance) => {
+                    setValidateFormInstance(instance);
+                  }}
+                />
+              </Modal>
           </Layout>
         </Layout>
       </Layout>
