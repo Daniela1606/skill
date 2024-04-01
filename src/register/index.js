@@ -159,7 +159,7 @@ const AppRegister = () => {
     })
     .then(response => {response.json()
       console.log(response.status);
-      if (response.status == '400') navigate('/verify-user');        
+      if (response.status == '400') navigate('/menu');        
     })
       .then(data => {
 

@@ -47,7 +47,7 @@ const AppLogin = () => {
         localStorage.setItem('status', data.user_status);
 
         if(data.user_status === 'Pending') {
-          navigate('/verify-user/' + encodeURIComponent(data.id));
+          navigate('/menu/' + encodeURIComponent(data.id));
         } else {
           navigate('/');
         }

@@ -12,6 +12,7 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
   const key = String(index + 1);
   let menuLabel = '';
 
+
   switch (index) {
     case 0:
       menuLabel = 'Search';
@@ -22,10 +23,20 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
     case 2:
       menuLabel = 'Contact';
       break;
-      case 3:
-        menuLabel = 'Settings';
-        break;
- 
+    case 3:
+      menuLabel = 'Settings';
+      break;
+    case 4:
+      menuLabel = 'Option 4';
+      break;
+    case 5:
+      menuLabel = 'Option 5';
+      break;
+    case 6:
+      menuLabel = '';
+      break;
+    default:
+      menuLabel = 'Default Option';
   }
 
   return {
@@ -34,14 +45,13 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
     label: menuLabel,
     children: new Array(4).fill(null).map((_, j) => {
       const subKey = index * 4 + j + 1;
-/*       return {
+      return {
         key: subKey,
         label: `Option ${subKey}`,
-      }; */
+      };
     }),
   };
 });
-
 
 
 const MenuLogin = () => {
