@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { Breadcrumb, Layout, Menu, Modal, message, theme } from 'antd';
+import { Layout, Menu, Modal, message, theme } from 'antd';
 import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando, imagenDeFooter } from '../constante/imagen';
 import Appsearch from "../search";
-import AppRegister from '../register';
 import VerifyForm from '../components/VerifyForm';
 
 const { Header, Content, Sider } = Layout;
@@ -63,12 +62,13 @@ const MenuLogin = () => {
   const { id } = useParams();
 
   const [status] = useState(localStorage.getItem('status'))
+  const [token] = useState(localStorage.getItem('token'))
 
 
 
   const [employee, setEmployee] = useState(null);
   const [verifyOpen, setVerifyOpen] = useState(null);
-  const {messageApi, contextHolder } = message.useMessage()
+  const [messageApi, contextHolder ] = message.useMessage()
   const [validateFormInstance, setValidateFormInstance] = useState(null);
 
   useEffect(() => {
@@ -78,8 +78,6 @@ const MenuLogin = () => {
         const response = await fetch(`http://18.169.192.176/Api/users/employees/${id}`); 
         if (response.ok) {
           const data = await response.json();
-          console.log({data})
-          console.log('get Dataaaaaaaaaaaaaaaaaaaaaaaaaaa')
           setEmployee(data);
         } else {
           console.error('Error al llamar al endpoint:', response.statusText);
@@ -91,6 +89,25 @@ const MenuLogin = () => {
 
     fetchEmployee();
   }, []);
+  
+    const confirmValidData = async () => {
+        return fetch('http://18.169.192.176/api/users/employees/verify-correct-data', {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({ id: employee.user.id })
+        })
+            .then(response => {
+              console.log(response.status);
+              return response.json()
+            })
+    };
+
+    const onCreate = () => {
+      setVerifyOpen(false)
+    }
 
 
   useEffect(() => {
@@ -239,37 +256,27 @@ const MenuLogin = () => {
           <Modal
                 width={840}
                 open={verifyOpen}
-                title="Create a new user"
-                okText="Create"
-                cancelText="Cancel"
+                title="Validate user data"
+                okText="Confirm"
+                cancelText="Report Error"
                 okButtonProps={{
                   autoFocus: true,
                 }}
                 onCancel={() => setVerifyOpen(false)}
                 destroyOnClose
                 onOk={async () => {
-                  let values
-                  try {
-                    values = await validateFormInstance?.validateFields();
-                  } catch (error) {
-                    console.log('Failed:', error);
-                    messageApi.open({type: 'error', content: 'Invalid field. Please try again.'})
-                  }
-                    if(values) {
                       try {
-                        // await register(values)
-                        messageApi.open({type: 'error', content: 'User created successfully'})
+                        await confirmValidData()
+                        messageApi.open({type: 'success', content: 'User data confirmed successfully'})
                         validateFormInstance?.resetFields();
-                        // onCreate(values);
+                        onCreate();
                       } catch (error) {
                         messageApi.open({type: 'error', content: error.toString()})
-                      }
-                        
                       }
                     }}
               >
                 <VerifyForm
-                  initialValues={employee}
+                  initialValues={{...employee, ...employee?.user, ...employee?.user.address, birthday: employee?.user.birthdate.split('T')[0]}}
                   onFormInstanceReady={(instance) => {
                     setValidateFormInstance(instance);
                   }}

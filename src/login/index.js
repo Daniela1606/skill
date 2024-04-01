@@ -46,11 +46,11 @@ const AppLogin = () => {
         localStorage.setItem('token', data.token);
         localStorage.setItem('status', data.user_status);
 
-        if(data.user_status === 'Pending') {
+        // if(data.user_status === 'Pending') {
           navigate('/menu/' + encodeURIComponent(data.id));
-        } else {
-          navigate('/');
-        }
+        // } else {
+        //   navigate('/');
+        // }
       })
       .catch(error => {
         console.error(error);
