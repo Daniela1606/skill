@@ -10,6 +10,7 @@ import imagenBuscador from "../Imagenes/imagenBuscador.png";
 import imagenEmpleos from "../Imagenes/chico.png";
 import imagenPrueba from "../Imagenes/frame.png";
 import imagenFooter from "../Imagenes/frame2.png";
+import imagenAvatar from "../Imagenes/Avatar.png";
 
 export const imagenL ={
 
@@ -91,6 +92,13 @@ export const imagenDeFooter ={
 
     NOT_FOUND : notFound,
     IMAGENICON: imagenFooter
+
+};
+
+export const imagenDeAvatar ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenAvatar
 
 };
 

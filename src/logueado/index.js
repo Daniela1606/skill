@@ -3,7 +3,7 @@ import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
 import { Layout, Menu, Modal, message, theme } from 'antd';
-import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando, imagenDeFooter } from '../constante/imagen';
+import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando, imagenDeFooter,imagenDeAvatar } from '../constante/imagen';
 import Appsearch from "../search";
 import VerifyForm from '../components/VerifyForm';
 import ReportInvalidDataForm from '../components/ReportInvalidDataForm';
@@ -14,8 +14,7 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
   const key = String(index + 1);
   let menuLabel = '';
 
-
-  switch (index) {
+switch (index) {
     case 0:
       menuLabel = 'Search';
       break;
@@ -39,7 +38,9 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
       break;
     default:
       menuLabel = 'Default Option';
-  }
+}
+
+
 
   return {
     key: `sub${key}`,
@@ -47,13 +48,16 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
     label: menuLabel,
     children: new Array(4).fill(null).map((_, j) => {
       const subKey = index * 4 + j + 1;
-      return {
+/*       return {
         key: subKey,
         label: `Option ${subKey}`,
-      };
+      }; */
     }),
+    
   };
+  
 });
+
 
 
 const MenuLogin = () => {
@@ -168,17 +172,18 @@ const MenuLogin = () => {
             minWidth: 0,
           }}
         />
+       
       </Header>
       <Layout>
         <Sider
           width={400}
           style={{
-            background: colorBgContainer,
-            border:'solid 1px #EFEEFC',
-            borderRadius:'10px',
+/*             border:'solid 1px #EFEEFC',
+ */            borderRadius:'10px',
             margin:'20px 20px 20px 20px'
           }}
         >
+ 
           <Menu
             mode="inline"
             defaultSelectedKeys={['1']}
@@ -189,13 +194,35 @@ const MenuLogin = () => {
             }}
             items={items2}
           />
+
+
+
+          <div 
+          style={{  
+          display: 'flex',
+          alignItems: 'center',
+          padding:'24px',
+          background: '#effcfc',
+          }}>
+          <div>
+          <img src={imagenDeAvatar.IMAGENICON} alt="Logo" />
+           </div>
+
+          
+           
+           <p>{employee ? employee.user.firstName : ''}</p>
+           
+           </div>
+          
+
         </Sider>
         <Layout style={{ flex: 1 }}>
           <Layout style={{ flex: 1 }}>
 
             <Content
               style={{
-                padding: 24,
+                paddingLeft:'24px',
+                paddingRight:'0px',
                 margin: '0px 10px 0px 10px',
                 maxHeight: 200,
                 background: colorBgContainer,
@@ -266,8 +293,15 @@ const MenuLogin = () => {
               }}
             >
 
-<div style={{ background: 'linear-gradient(to bottom, #AFDFBB, #58C2C0)', width: '50%', borderRadius: '20px', padding: '10px' }}>
-  <p>Need a hand?</p>
+<div style={{ 
+  background: 'linear-gradient(to bottom, #AFDFBB, #58C2C0)', 
+  width: '50%',
+  borderRadius: '20px', 
+  padding: '20px',
+ /*  marginBottom:'4rem' */
+
+  }}>
+  <p style={{fontWeight:'700', fontSize:'18px'}}>Need a hand?</p>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
   <button style={{ background: 'white', border: 'solid 1px white', width: '20%', borderRadius: '20px', padding: '5px' }}>Submit</button>
