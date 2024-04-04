@@ -143,12 +143,11 @@ const MenuLogin = () => {
       setReportIsActive(false)
     }
 
-
-  useEffect(() => {
-    if (status === 'Pending') {
+   useEffect(() => {
+     if (status === 'Pending') {
       setVerifyOpen(true);
-    }
-  }, [status])
+    } 
+  }, [status])   
 
   return (
     <Layout>

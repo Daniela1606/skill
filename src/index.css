@@ -168,3 +168,10 @@ th.ant-table-cell{
   );
 
 } 
+
+.ant-col.ant-form-item-label.css-dev-only-do-not-override-1c54t2r{
+
+  margin-left: 0.5rem;
+  color:black;
+  font-weight: 500;
+}
