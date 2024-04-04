@@ -7,6 +7,7 @@ import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando, i
 import Appsearch from "../search";
 import VerifyForm from '../components/VerifyForm';
 import ReportInvalidDataForm from '../components/ReportInvalidDataForm';
+import './styles.css'
 
 const { Header, Content, Sider } = Layout;
 
@@ -151,8 +152,9 @@ const MenuLogin = () => {
   }, [status])
 
   return (
-    <Layout>
+    <Layout id='main-layout'>
       <Header
+        id='header'
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -174,7 +176,7 @@ const MenuLogin = () => {
         />
        
       </Header>
-      <Layout>
+      <Layout id='body-layout'>
         <Sider
           width={400}
           style={{
