@@ -1,14 +1,8 @@
 import { Button } from "antd";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-const AppOnboarding = () => {
+const AppOnboarding = ({onConfirmClick}) => {
   const [videoURL, setVideoUrl] = useState();
-  const navigate = useNavigate();
-
-  const handleButtonClick = () => {
-    navigate('/');
-  };
 
   const getVideo = () => {
     fetch('http://18.169.192.176/api/config/onboarding-video/', {
@@ -35,7 +29,7 @@ const AppOnboarding = () => {
       ) : null}
               <Button
                 type="primary"
-                onClick={handleButtonClick}
+                onClick={onConfirmClick}
                 style={{ marginTop: '10px', background: 'rgb(3, 3, 62)', color: 'white' }}
               >
                 Start Journey
