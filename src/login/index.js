@@ -173,6 +173,8 @@ const AppLogin = () => {
             </Form.Item>
 
             <Form.Item>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+
               <Button
                 style={{
                   width: '100%',
@@ -191,7 +193,6 @@ const AppLogin = () => {
                 Log in
               </Button>
             </Form.Item>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
 
             <Form.Item>
               <Button
