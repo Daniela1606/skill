@@ -44,12 +44,12 @@ const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
           label="First Name"
           initialValue={'hola'}
           name="firstName"
-          rules={[
+/*           rules={[
             {
-            //   required: true,
+             required: true,
               message: 'Please enter your First Name!',
             },
-          ]}
+          ]} */
         >
           <Input />
         </Form.Item>
@@ -57,48 +57,48 @@ const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
         <Form.Item
           label="Last Name"
           name="lastName"
-          rules={[
+/*           rules={[
             {
               required: true,
               message: 'Please enter your Last Name!',
             },
-          ]}
+          ]} */
         >
           <Input />
         </Form.Item>
         <Form.Item
           label="Preferred Name"
           name="preferredName"
-          rules={[
+/*           rules={[
             {
               required: false,
               message: 'Please enter your preferred Name!',
             },
-          ]}
+          ]} */
         >
           <Input />
         </Form.Item>
         <Form.Item
             label="Job Title"
             name="job_title"
-            rules={[
+/*             rules={[
               {
                 required: true,
                 message: 'Please Job Title!',
               },
-            ]}
+            ]} */
           >
             <Input />
         </Form.Item>
         <Form.Item
             label="Department"
             name="department"
-            rules={[
+/*             rules={[
               {
                 required: true,
                 message: 'Please Department!',
               },
-            ]}
+            ]} */
           >
             <Input 
             />
@@ -107,12 +107,12 @@ const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
         <Form.Item
               label="Division"
               name="division"
-              rules={[
+/*               rules={[
                 {
                   required: true,
                   message: 'Please Division!',
                 },
-              ]}
+              ]} */
             >
               <Input 
               />
@@ -120,24 +120,24 @@ const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
       <Form.Item
       label="Email"
       name="email"
-      rules={[
+/*       rules={[
         {
           required: true,
           message: 'Please Email!',
         },
-      ]}
+      ]} */
     >
       <Input />
       </Form.Item>
       <Form.Item
             label="Phone"
             name="phonenumber"
-            rules={[
+/*             rules={[
               {
                 required: true,
                 message: 'Please Phone Number!',
               },
-            ]}
+            ]} */
           >
             <InputNumber
               style={{
@@ -149,12 +149,12 @@ const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
     <Form.Item
       label="Gender"
       name="gender"
-      rules={[
+/*       rules={[
         {
           required: true,
           message: 'Please input Gender!',
         },
-      ]}
+      ]} */
     >
       <Select
         options={[
@@ -166,24 +166,24 @@ const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
 <Form.Item
         label="Birthday"
         name="birthday"
-        rules={[
+/*         rules={[
           {
             required: true,
             message: 'Please birthday!',
           },
-        ]}
+        ]} */
       >
       <Input />
     </Form.Item>
     <Form.Item
             label="Country"
             name="country"
-            rules={[
+/*             rules={[
               {
                 required: true,
                 message: 'Please Country!',
               },
-            ]}
+            ]} */
           >
             <Input 
             />
@@ -191,12 +191,12 @@ const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
         <Form.Item
             label="City"
             name="city"
-            rules={[
+/*             rules={[
               {
                 required: true,
                 message: 'Please City!',
               },
-            ]}
+            ]} */
           >
             <Input 
             />
@@ -204,12 +204,12 @@ const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
         <Form.Item
             label="Address"
             name="location_address"
-            rules={[
+/*             rules={[
               {
                 required: true,
                 message: 'Please Address!',
               },
-            ]}
+            ]} */
             >
             <Input 
             />
@@ -218,12 +218,12 @@ const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
     <Form.Item
             label="Postcode"
             name="postcode"
-            rules={[
+/*             rules={[
               {
                 required: true,
                 message: 'Please Postcode!',
               },
-            ]}
+            ]} */
           >
             <InputNumber
               style={{
