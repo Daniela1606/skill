@@ -18,16 +18,31 @@ const AppLogin = () => {
   const handlePasswordChange = (event) => {
     setPasswordValue(event.target.value);
   };
+  const [error, setError] = useState(null);
+
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
 
   const login = () => {
-    console.log(inputValue);
-    console.log(passwordValue);
+    setError(null);
+  
+    if (!inputValue || !passwordValue) {
+      setError('Please enter your email and password.');
+      return;
+    }
+  
+    if (!isValidEmail(inputValue)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+  
     const values = {
       email: inputValue,
       password: passwordValue
     };
-    console.log(values);
-
+  
     fetch('http://18.169.192.176/api/auth/login', {
       method: 'POST',
       body: JSON.stringify(values),
@@ -40,19 +55,14 @@ const AppLogin = () => {
         if (data.error) {
           throw new Error(data.error);
         }
-        console.log('data', data);
-
-   
+  
         localStorage.setItem('token', data.token);
         localStorage.setItem('status', data.user_status);
-
-        // if(data.user_status === 'Pending') {
-          navigate('/menu/' + encodeURIComponent(data.id));
-        // } else {
-        //   navigate('/');
-        // }
+  
+        navigate('/menu/' + encodeURIComponent(data.id));
       })
       .catch(error => {
+        setError('Please enter a valid  password.');
         console.error(error);
       });
   };
@@ -181,6 +191,7 @@ const AppLogin = () => {
                 Log in
               </Button>
             </Form.Item>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
 
             <Form.Item>
               <Button
