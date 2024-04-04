@@ -150,9 +150,9 @@ const MenuLogin = () => {
     }
 
    useEffect(() => {
-     if (status === 'Pending') {
+      if (status === 'Pending') { 
       setVerifyOpen(true);
-    } 
+    }  
   }, [status])   
 
   return (
@@ -323,7 +323,7 @@ const MenuLogin = () => {
 
 
           {contextHolder}
-          <Modal
+          <Modal 
                 closeIcon={false}
                 width={840}
                 open={verifyOpen}

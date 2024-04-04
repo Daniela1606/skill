@@ -175,3 +175,8 @@ th.ant-table-cell{
   color:black;
   font-weight: 500;
 }
+
+.ant-modal-title{
+  margin-bottom: 5% !important;
+  font-size: 20px !important;
+}
