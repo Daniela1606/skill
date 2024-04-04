@@ -7,6 +7,8 @@ import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando, i
 import Appsearch from "../search";
 import VerifyForm from '../components/VerifyForm';
 import ReportInvalidDataForm from '../components/ReportInvalidDataForm';
+import './styles.css'
+import AppOnboarding from '../onboarding';
 
 const { Header, Content, Sider } = Layout;
 
@@ -73,7 +75,7 @@ const MenuLogin = () => {
 
   console.log({status})
 
-
+  const [showOnboardingVideo, setShowOnboardingVideo] = useState(false)
 
   const [employee, setEmployee] = useState(null);
   const [verifyOpen, setVerifyOpen] = useState(null);
@@ -138,6 +140,10 @@ const MenuLogin = () => {
         setTimeout(() => {
           navigate('/')
         }, 2000)
+      } else {
+        setTimeout(() => {
+        setShowOnboardingVideo(true)
+        }, 1000)
       }
       setVerifyOpen(false)
       setReportIsActive(false)
@@ -150,8 +156,9 @@ const MenuLogin = () => {
   }, [status])   
 
   return (
-    <Layout>
+    <Layout id='main-layout'>
       <Header
+        id='header'
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -173,7 +180,7 @@ const MenuLogin = () => {
         />
        
       </Header>
-      <Layout>
+      <Layout id='body-layout'>
         <Sider
           width={400}
           style={{
@@ -379,6 +386,16 @@ const MenuLogin = () => {
                     }}
                   />
                 }
+              </Modal>
+              <Modal
+                title="Onboarding Video"
+                open={showOnboardingVideo}
+                onCancel={() => setShowOnboardingVideo(false)}
+                destroyOnClose
+                footer={null}
+                style={{minWidth: 'fit-content'}}
+              >
+                <AppOnboarding onConfirmClick={() => (setShowOnboardingVideo(false))} />
               </Modal>
           </Layout>
         </Layout>
