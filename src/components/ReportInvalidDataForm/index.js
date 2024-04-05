@@ -28,7 +28,7 @@ const ReportInvalidDataForm = ({ initialValues, onFormInstanceReady }) => {
         className='form'
     >
         <Form.Item
-            label='Please tell us what information is incorrect'
+            label='Let us know what is incorrect'
             name='message'
         >
             <TextArea

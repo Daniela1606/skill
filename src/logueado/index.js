@@ -150,10 +150,24 @@ const MenuLogin = () => {
     }
 
    useEffect(() => {
-      if (status === 'Pending') { 
+      if (status === 'Pending') {  
       setVerifyOpen(true);
-    }  
+     }  
   }, [status])   
+
+
+
+
+  const Popup = ({ onClose }) => {
+    return (
+      <div className="popup">
+        <h1>Hola</h1>
+        <button onClick={onClose}>Cerrar sesión</button>
+      </div>
+    );
+  };
+
+
 
   return (
     <Layout id='main-layout'>
@@ -242,7 +256,7 @@ const MenuLogin = () => {
             >
               <div>
               <p style={{ fontSize: '40px', fontWeight: '700', color: 'black' }}>
-              Welcome, {employee ? employee.user.firstName : ''}</p>
+              Welcome, {employee ? employee.user.preferredName : ''}</p>
                 <p>Improve your profile by completing the skills section</p>
               </div>
               <img src={imagenLogoAzul.IMAGENICON} alt="Logo" style={{ marginLeft: 'auto', width: '20%' }} />
@@ -327,9 +341,10 @@ const MenuLogin = () => {
                 closeIcon={false}
                 width={840}
                 open={verifyOpen}
-                title="Validate user data"
-                okText={ !reportIsActive ? "Confirm" : 'Send Report'}
-                cancelText={ !reportIsActive ? "Report Error" : 'Back'}
+                title="Lets check your details are correct"
+                okText={ !reportIsActive ? "Everything is correct" : 'Send Report'}
+
+                cancelText={ !reportIsActive ? "Something is not correct" : 'Back'}
                 
                 okButtonProps={{
                   autoFocus: true,
@@ -342,35 +357,13 @@ const MenuLogin = () => {
                   } 
                 }
                 destroyOnClose
-                onOk={async () => {
-                      let result
-                      try {
-                        if (!reportIsActive) {
-                          result = await confirmValidData()
+                onOk={ ()=> Modal.success({
+/*                   title: '',
 
-                          console.log({result})
-                          if(result.error) {
-                            throw result.error.message
-                          }
-                          messageApi.open({type: 'success', content: 'User data confirmed successfully'})
-                        } else {
-                          const formValues = validateFormInstance.getFieldsValue()
-                          console.log({formValues})
-                          result = await reportInvalidData(formValues)
+ */                   okText: 'Log out', 
 
-                          console.log({result})
-                          if(result.error) {
-                            throw result.error.message
-                          }
-                          messageApi.open({type: 'success', content: 'Report sent successfully'})
-                        }
-                        
-                        validateFormInstance?.resetFields();
-                        onCreate();
-                      } catch (error) {
-                        messageApi.open({type: 'error', content: error.toString()})
-                      }
-                    }}
+       content: 'We have  your issue with your Admin team and will get in contact as soon as it is resolved. Until this is resolved you will not be able to build your profile',
+                })}
               >
                 {
                   !reportIsActive ? 
