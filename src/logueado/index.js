@@ -136,17 +136,25 @@ const MenuLogin = () => {
     };
 
     const onCreate = () => {
+      setVerifyOpen(false)
+      setReportIsActive(false)
+
       if(reportIsActive) {
-        setTimeout(() => {
-          navigate('/')
-        }, 2000)
+        return Modal.success({
+          okText: 'Log out', 
+          onOk: ()=> {
+            localStorage.clear()
+            sessionStorage.clear()
+            navigate('/')
+
+          },
+          content: 'We have  your issue with your Admin team and will get in contact as soon as it is resolved. Until this is resolved you will not be able to build your profile',
+        })
       } else {
         setTimeout(() => {
         setShowOnboardingVideo(true)
         }, 1000)
       }
-      setVerifyOpen(false)
-      setReportIsActive(false)
     }
 
    useEffect(() => {
@@ -349,13 +357,35 @@ const MenuLogin = () => {
                   } 
                 }
                 destroyOnClose
-                onOk={ ()=> Modal.success({
-/*                   title: '',
+                onOk={async () => {
+                      let result
+                      try {
+                        if (!reportIsActive) {
+                          result = await confirmValidData()
 
- */                   okText: 'Log out', 
+                          console.log({result})
+                          if(result.error) {
+                            throw result.error.message
+                          }
+                          messageApi.open({type: 'success', content: 'User data confirmed successfully'})
+                        } else {
+                          const formValues = validateFormInstance.getFieldsValue()
+                          console.log({formValues})
+                          result = await reportInvalidData(formValues)
 
-       content: 'We have  your issue with your Admin team and will get in contact as soon as it is resolved. Until this is resolved you will not be able to build your profile',
-                })}
+                          console.log({result})
+                          if(result.error) {
+                            throw result.error.message
+                          }
+                          messageApi.open({type: 'success', content: 'Report sent successfully'})
+                        }
+                        
+                        validateFormInstance?.resetFields();
+                        onCreate();
+                      } catch (error) {
+                        messageApi.open({type: 'error', content: error.toString()})
+                      }
+                    }}
               >
                 {
                   !reportIsActive ? 
