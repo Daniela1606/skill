@@ -150,22 +150,14 @@ const MenuLogin = () => {
     }
 
    useEffect(() => {
-      if (status === 'Pending') {  
+     /* if (status === 'Pending') {  */
       setVerifyOpen(true);
-     }  
+    /* }  */
   }, [status])   
 
 
 
 
-  const Popup = ({ onClose }) => {
-    return (
-      <div className="popup">
-        <h1>Hola</h1>
-        <button onClick={onClose}>Cerrar sesión</button>
-      </div>
-    );
-  };
 
 
 
