@@ -101,7 +101,7 @@ const AppLogin = () => {
               marginBottom: '30px',
             }}
           >
-            Welcome at Skillsat!
+            Welcome to Skillsat!
           </p>
           <p
                       style={{
@@ -225,7 +225,7 @@ const AppLogin = () => {
     <Col>
       <AppMenu />
     </Col>
-    <Col style={{ display: 'flex', justifyContent: 'flex-end', marginLeft: '30%' }}>
+    <Col style={{ display: 'flex', justifyContent: 'flex-end', marginLeft: '30%', marginTop:'1rem' }}>
       <div>
         <img
           src={imagenI.IMAGENICON}
