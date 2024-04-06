@@ -158,14 +158,17 @@ const MenuLogin = () => {
     }
 
    useEffect(() => {
-     /* if (status === 'Pending') {  */
+      if (status === 'Pending') {  
       setVerifyOpen(true);
-    /* }  */
+     }  
   }, [status])   
 
 
 
 
+  const handleLogout = () => {
+    navigate('/');
+  };
 
 
 
@@ -338,70 +341,72 @@ const MenuLogin = () => {
 
           {contextHolder}
           <Modal 
-                closeIcon={false}
-                width={840}
-                open={verifyOpen}
-                title="Lets check your details are correct"
-                okText={ !reportIsActive ? "Everything is correct" : 'Send Report'}
+  closeIcon={false}
+  width={840}
+  open={verifyOpen}
+  title="Let's check your details are correct"
+  okText={!reportIsActive ? "Everything is correct" : 'Send Report'}
+  cancelText={!reportIsActive ? "Something is not correct" : 'Back'}
+  okButtonProps={{
+    autoFocus: true,
+  }}
+  onCancel={(event) => {
+    const target = event.target.localName;
+    if (target === 'span' || target === 'button') {
+      setReportIsActive(!reportIsActive);
+    }
+  }}
+  destroyOnClose
+  onOk={async () => {
+    let result;
+    try {
+      if (!reportIsActive) {
+        // "Everything is correct"
 
-                cancelText={ !reportIsActive ? "Something is not correct" : 'Back'}
-                
-                okButtonProps={{
-                  autoFocus: true,
-                }}
-                onCancel={(event) => {
-                    const target = event.target.localName
-                    if (target === 'span' || target === 'button') {
-                      setReportIsActive(!reportIsActive)
-                    }
-                  } 
-                }
-                destroyOnClose
-                onOk={async () => {
-                      let result
-                      try {
-                        if (!reportIsActive) {
-                          result = await confirmValidData()
+      } else {
+        Modal.success({
+          okText: 'Log out',
+          content: 'We have received your issue with your Admin team and will get in contact as soon as it is resolved. Until this is resolved, you will not be able to build your profile.',
+          onOk: handleLogout, 
+          
 
-                          console.log({result})
-                          if(result.error) {
-                            throw result.error.message
-                          }
-                          messageApi.open({type: 'success', content: 'User data confirmed successfully'})
-                        } else {
-                          const formValues = validateFormInstance.getFieldsValue()
-                          console.log({formValues})
-                          result = await reportInvalidData(formValues)
+        });
+      
+        const formValues = validateFormInstance.getFieldsValue();
+        console.log({ formValues });
+        result = await reportInvalidData(formValues);
 
-                          console.log({result})
-                          if(result.error) {
-                            throw result.error.message
-                          }
-                          messageApi.open({type: 'success', content: 'Report sent successfully'})
-                        }
-                        
-                        validateFormInstance?.resetFields();
-                        onCreate();
-                      } catch (error) {
-                        messageApi.open({type: 'error', content: error.toString()})
-                      }
-                    }}
-              >
-                {
-                  !reportIsActive ? 
-                  <VerifyForm
-                    initialValues={{...employee, ...employee?.user, ...employee?.user.address, birthday: employee?.user.birthdate.split('T')[0]}}
-                    onFormInstanceReady={(instance) => {
-                      setValidateFormInstance(instance);
-                    }}
-                  /> : 
-                  <ReportInvalidDataForm
-                    onFormInstanceReady={(instance) => {
-                      setValidateFormInstance(instance);
-                    }}
-                  />
-                }
-              </Modal>
+        console.log({ result });
+        if (result.error) {
+          throw result.error.message;
+        }
+/*         messageApi.open({ type: 'success', content: 'prueba2' }); 
+ */
+
+      }
+
+      validateFormInstance?.resetFields();
+      onCreate();
+    } catch (error) {
+/*       messageApi.open({ type: 'error', content: error.toString() }); 
+ */    }
+  }}
+>
+  {
+    !reportIsActive ? 
+    <VerifyForm
+      initialValues={{...employee, ...employee?.user, ...employee?.user.address, birthday: employee?.user.birthdate.split('T')[0]}}
+      onFormInstanceReady={(instance) => {
+        setValidateFormInstance(instance);
+      }}
+    /> : 
+    <ReportInvalidDataForm
+      onFormInstanceReady={(instance) => {
+        setValidateFormInstance(instance);
+      }}
+    />
+  }
+</Modal>
               <Modal
                 title="Onboarding Video"
                 open={showOnboardingVideo}
