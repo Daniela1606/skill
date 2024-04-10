@@ -158,7 +158,7 @@ const MenuLogin = () => {
     }
 
    useEffect(() => {
-      if (status === 'Pending') {  
+     if (status === 'Pending') {   
       setVerifyOpen(true);
      }  
   }, [status])   
