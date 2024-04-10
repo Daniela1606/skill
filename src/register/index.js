@@ -416,7 +416,7 @@ const AppRegister = () => {
             rules={[
               {
                 required: true,
-                message: 'Please Job Title!',
+                message: 'Please Title!',
               },
             ]}
           >

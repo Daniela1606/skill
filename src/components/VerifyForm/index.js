@@ -12,6 +12,9 @@ import './styles.css'
 const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
     const [form] = useForm()
 
+    const { Option } = Select;
+
+
     useEffect(() => {
         onFormInstanceReady(form)
     }, [])
@@ -76,8 +79,36 @@ const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
             },
           ]} */
         >
+
+
           <Input />
         </Form.Item>
+
+        <Form.Item
+        label="Title"
+        name="title"
+        rules={[
+          {
+            required: true,
+            message: 'Please select a title!',
+          },
+        ]}
+      >
+        <Select>
+          <Option value="Mr">Mr</Option>
+          <Option value="Mrs">Mrs</Option>
+          <Option value="Miss">Miss</Option>
+          <Option value="Dr">Dr</Option>
+        </Select>
+      </Form.Item>
+
+
+
+
+
+
+
+
         <Form.Item
             label="Job Title"
             name="job_title"
@@ -129,32 +160,32 @@ const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
     >
       <Input />
       </Form.Item>
-      <Form.Item
+{/*       <Form.Item
             label="Phone"
             name="phonenumber"
-/*             rules={[
+           rules={[
               {
                 required: true,
                 message: 'Please Phone Number!',
               },
-            ]} */
+            ]} 
           >
             <InputNumber
               style={{
                 width: '100%',
               }}
             />
-      </Form.Item>
+      </Form.Item> */}
       
-    <Form.Item
+{/*     <Form.Item
       label="Gender"
       name="gender"
-/*       rules={[
+     rules={[
         {
           required: true,
           message: 'Please input Gender!',
         },
-      ]} */
+      ]} 
     >
       <Select
         options={[
@@ -162,19 +193,19 @@ const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
           {label: 'Female', value: 'F'}
         ]}
       />
-    </Form.Item>
-<Form.Item
+    </Form.Item> */}
+{/* <Form.Item
         label="Birthday"
         name="birthday"
-/*         rules={[
+      rules={[
           {
             required: true,
             message: 'Please birthday!',
           },
-        ]} */
+        ]} 
       >
       <Input />
-    </Form.Item>
+    </Form.Item> */}
     <Form.Item
             label="Country"
             name="country"
@@ -188,21 +219,21 @@ const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
             <Input 
             />
         </Form.Item>
-        <Form.Item
+{/*         <Form.Item
             label="City"
             name="city"
-/*             rules={[
+         rules={[
               {
                 required: true,
                 message: 'Please City!',
               },
-            ]} */
+            ]} 
           >
             <Input 
             />
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item
-            label="Address"
+            label="Location"
             name="location_address"
 /*             rules={[
               {
@@ -215,22 +246,22 @@ const VerifyForm = ({ initialValues, onFormInstanceReady }) => {
             />
       </Form.Item>
 
-    <Form.Item
+{/*     <Form.Item
             label="Postcode"
             name="postcode"
-/*             rules={[
+         rules={[
               {
                 required: true,
                 message: 'Please Postcode!',
               },
-            ]} */
+            ]} 
           >
             <InputNumber
               style={{
                 width: '100%',
               }}
             />
-        </Form.Item>
+        </Form.Item> */}
       </Form>
 
 
