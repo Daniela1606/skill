@@ -102,7 +102,7 @@ const MenuLogin = () => {
   }, []);
   
     const confirmValidData = async () => {
-        return fetch('http://18.169.192.176/api/users/employees/verify-correct-data', {
+        return await fetch('http://18.169.192.176/api/users/employees/verify-correct-data', {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
@@ -362,15 +362,10 @@ const MenuLogin = () => {
     try {
       if (!reportIsActive) {
         // "Everything is correct"
+        await confirmValidData()
+        messageApi.open({type: 'success', content: 'User data confirmed successfully'})
 
       } else {
-        Modal.success({
-          okText: 'Log out',
-          content: 'We have received your issue with your Admin team and will get in contact as soon as it is resolved. Until this is resolved, you will not be able to build your profile.',
-          onOk: handleLogout, 
-          
-
-        });
       
         const formValues = validateFormInstance.getFieldsValue();
         console.log({ formValues });
@@ -380,9 +375,16 @@ const MenuLogin = () => {
         if (result.error) {
           throw result.error.message;
         }
+
+        Modal.success({
+          okText: 'Log out',
+          content: 'We have received your issue with your Admin team and will get in contact as soon as it is resolved. Until this is resolved, you will not be able to build your profile.',
+          onOk: handleLogout, 
+          
+
+        });
 /*         messageApi.open({ type: 'success', content: 'prueba2' }); 
  */
-
       }
 
       validateFormInstance?.resetFields();
