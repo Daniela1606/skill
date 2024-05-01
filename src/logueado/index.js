@@ -9,6 +9,8 @@ import VerifyForm from '../components/VerifyForm';
 import ReportInvalidDataForm from '../components/ReportInvalidDataForm';
 import './styles.css'
 import AppOnboarding from '../onboarding';
+import AppCard from "../cardSkill/index";
+import AppCardAdd from "../cardSkillAdd/index";
 
 const { Header, Content, Sider } = Layout;
 
@@ -226,6 +228,7 @@ const MenuLogin = () => {
           alignItems: 'center',
           padding:'24px',
           background: '#effcfc',
+          marginTop:'-30%'
           }}>
           <div>
           <img src={imagenDeAvatar.IMAGENICON} alt="Logo" />
@@ -282,33 +285,42 @@ const MenuLogin = () => {
                 </p>
                 <Appsearch />
               </div>
-              <img src={imagenBuscar.IMAGENICON} alt="Logo" style={{ marginLeft: 'auto', width: '20%' }} />
+              <img src={imagenBuscar.IMAGENICON} alt="Logo" style={{ marginLeft: 'auto', width: '20%', marginTop:'4rem' }} />
             </Content>
+
+            <Content
+  style={{
+    padding: 24,
+    margin: 0,
+    maxHeight: 500,
+    background: colorBgContainer,
+    borderRadius: borderRadiusLG,
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+    justifyContent: 'space-between'
+  }}
+>
+  <div style={{ width: '65%' }}>
+    <p style={{ fontSize: '20px', fontWeight: '700', color: 'black' }}>Suggestions</p>
+    <AppCard />
+  </div>
+  <div style={{ width: '35%', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' , marginTop:'5rem'}}>
+    <img src={imagenEmpleo.IMAGENICON} alt="Logo" style={{ width: '50%', marginBottom: '10px' }} />
+    <div style={{ width: '50%', marginLeft: 'auto' }}>
+    <p style={{ fontSize: '20px', fontWeight: '700', color: 'black' }}>Skills Added</p>
+
+
+      <AppCardAdd />
+    </div>
+  </div>
+</Content>
 
             <Content
               style={{
                 padding: 24,
                 margin: 0,
                 maxHeight:400,
-                background: colorBgContainer,
-                borderRadius: borderRadiusLG,
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              <div>
-                <img src={imagenProbando.IMAGENICON} alt="Logo" style={{ marginLeft: '-5rem', width: '100%' }} />
-              </div>
-              <img src={imagenEmpleo.IMAGENICON} alt="Logo" style={{ marginLeft: 'auto', width: '15%' }} />
-
-            </Content>
-
-
-            <Content
-              style={{
-                padding: 24,
-                margin: 0,
-                maxHeight:60,
                 background: colorBgContainer,
                 borderRadius: borderRadiusLG,
                 display: 'flex',

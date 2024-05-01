@@ -11,6 +11,7 @@ import imagenEmpleos from "../Imagenes/chico.png";
 import imagenPrueba from "../Imagenes/frame.png";
 import imagenFooter from "../Imagenes/frame2.png";
 import imagenAvatar from "../Imagenes/Avatar.png";
+import imagenIcon from "../Imagenes/icon.png";
 
 export const imagenL ={
 
@@ -101,5 +102,14 @@ export const imagenDeAvatar ={
     IMAGENICON: imagenAvatar
 
 };
+
+
+export const imagenDeIcon ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenIcon
+
+};
+
 
 

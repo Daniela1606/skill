@@ -195,4 +195,13 @@ width: 25% !important;
   font-size: 16px !important;
 }
 
+.ant-card-body{
 
+  display: none !important;
+}
+
+
+.ant-row.css-dev-only-do-not-override-1c54t2r{
+
+  margin-top:2rem !important;
+}
