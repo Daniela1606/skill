@@ -397,7 +397,7 @@ const MenuLogin = () => {
   {
     !reportIsActive ? 
     <VerifyForm
-      initialValues={{...employee, ...employee?.user, ...employee?.user.address, birthday: employee?.user.birthdate.split('T')[0]}}
+      initialValues={{...employee, ...employee?.user, ...employee?.user.address, birthday: employee?.user.birthdate?.split('T')[0]}}
       onFormInstanceReady={(instance) => {
         setValidateFormInstance(instance);
       }}
