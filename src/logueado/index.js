@@ -11,6 +11,7 @@ import './styles.css'
 import AppOnboarding from '../onboarding';
 import AppCard from "../cardSkill/index";
 import AppCardAdd from "../cardSkillAdd/index";
+import AppAvatar from '../imagenAvatar';
 
 const { Header, Content, Sider } = Layout;
 
@@ -292,7 +293,7 @@ const MenuLogin = () => {
   style={{
     padding: 24,
     margin: 0,
-    maxHeight: 500,
+    maxHeight: 300,
     background: colorBgContainer,
     borderRadius: borderRadiusLG,
     display: 'flex',
@@ -306,8 +307,10 @@ const MenuLogin = () => {
     <AppCard />
   </div>
   <div style={{ width: '35%', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' , marginTop:'5rem'}}>
-    <img src={imagenEmpleo.IMAGENICON} alt="Logo" style={{ width: '50%', marginBottom: '10px' }} />
-    <div style={{ width: '50%', marginLeft: 'auto' }}>
+{/*     <img src={imagenEmpleo.IMAGENICON} alt="Logo" style={{ width: '50%', marginBottom: '10px', marginTop:'40%' }} />
+
+ */}  <AppAvatar/>
+   <div style={{ width: '50%', marginLeft: 'auto' }}>
     <p style={{ fontSize: '20px', fontWeight: '700', color: 'black' }}>Skills Added</p>
 
 
@@ -319,7 +322,7 @@ const MenuLogin = () => {
             <Content
               style={{
                 padding: 24,
-                margin: 0,
+                marginTop:'7%',
                 maxHeight:400,
                 background: colorBgContainer,
                 borderRadius: borderRadiusLG,

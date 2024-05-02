@@ -205,3 +205,56 @@ width: 25% !important;
 
   margin-top:2rem !important;
 }
+
+
+.ant-card-actions{
+
+  border-top: solid 2px white !important;
+}
+
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px; /* Tamaño del círculo */
+  height: 180px; /* Tamaño del círculo */
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #ccc; /* Color gris */
+  margin-top: 9rem;
+
+}
+
+
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-placeholder {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  border-radius: 50%;
+  border: solid 7px #4b4472;
+}
+
+.avatar-icon {
+  font-size: 48px;
+  color:rgb(0, 0, 124);
+}
+
+.avatar-text {
+  margin-top: 8px;
+  font-weight: 500;
+  font-size: 17px;
+  font-weight: 700;
+  color:rgb(0, 0, 124);
+}

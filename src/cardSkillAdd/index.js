@@ -33,7 +33,7 @@ const CardArrayAdd = () => {
               style={{ width: '90%' }}
               cover={
                 <div style={{ textAlign: 'center' }}>
-                  <img style={{ width: '45%' }} src={card.image} alt="Logo" />
+                  <img style={{ width: '45%', marginTop:'0.5rem'}} src={card.image} alt="Logo" />
                   <div style={{ color: 'black', fontWeight: '700' }}>{card.title}</div>
                 </div>
               }
@@ -54,7 +54,7 @@ const CardArrayAdd = () => {
               style={{ width: '90%' }}
               cover={
                 <div style={{ textAlign: 'center' }}>
-                  <img style={{ width: '45%' }} src={card.image} alt="Logo" />
+                  <img style={{ width: '45%', marginTop:'0.5rem'}} src={card.image} alt="Logo" />
                   <div style={{ color: 'black', fontWeight: '700' }}>{card.title}</div>
                 </div>
               }

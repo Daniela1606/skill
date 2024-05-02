@@ -33,13 +33,19 @@ const CardArray = () => {
               style={{ width: '60%' }}
               cover={
                 <div style={{ textAlign: 'center' }}>
-                  <img style={{ width: '35%' }} src={card.image} alt="Logo" />
+                  <img style={{ width: '35%', marginTop:'0.5rem' }} src={card.image} alt="Logo" />
                   <div style={{ color: 'black', fontWeight: '700' }}>{card.title}</div>
                 </div>
               }
               actions={[
-                <Button key="add" type="primary" icon={<PlusOutlined />} style={{ float: 'right', marginRight: '2px', background: '#00007c' }}>
-                </Button>
+            <Button
+              key="add"
+              type="primary"
+              icon={<PlusOutlined />}
+              style={{ float: 'right', marginRight: '2px', background: '#00007c' }}
+              size="small"
+            >
+            </Button>
               ]}
             >
               <Meta />
@@ -54,13 +60,19 @@ const CardArray = () => {
               style={{ width: '60%' }}
               cover={
                 <div style={{ textAlign: 'center' }}>
-                  <img style={{ width: '35%' }} src={card.image} alt="Logo" />
+                  <img style={{ width: '35%', marginTop:'0.5rem' }} src={card.image} alt="Logo" />
                   <div style={{ color: 'black', fontWeight: '700' }}>{card.title}</div>
                 </div>
               }
               actions={[
-                <Button key="add" type="primary" icon={<PlusOutlined />} style={{ float: 'right', marginRight: '2px', background: '#00007c' }}>
-                </Button>
+                <Button
+                key="add"
+                type="primary"
+                icon={<PlusOutlined />}
+                style={{ float: 'right', marginRight: '2px', background: '#00007c' }}
+                size="small"
+              >
+              </Button>
               ]}
             >
               <Meta />
