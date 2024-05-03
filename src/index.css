@@ -231,18 +231,6 @@ width: 25% !important;
   border-color: #1890ff;
 }
 
-/* .avatar-upload .avatar-container {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 10px solid;
-  border-image: linear-gradient(to right, red, blue) 1;
-}
- */
 .avatar-container {
   width: 120px;
   height: 120px;
@@ -251,8 +239,6 @@ width: 25% !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 10px solid;
-  border-image: linear-gradient(to right, red, blue) 1;
 }
 
 
@@ -271,8 +257,6 @@ width: 25% !important;
   align-items: center;
   justify-content: center;
   background-color: #f0f0f0;
-  border: 2px solid;
-  border-image: linear-gradient(to right, #1890ff, #f0f0f0) 1;
 }
 
 .avatar-upload .avatar-text {
