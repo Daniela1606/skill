@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
-import { Layout, Menu, Modal, message, theme } from 'antd';
-import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando, imagenDeFooter,imagenDeAvatar } from '../constante/imagen';
+import { Layout, Menu, Modal, message, theme, Button,  } from 'antd';
+import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando, imagenDeFooter,imagenDeAvatar,imagenDeMagic } from '../constante/imagen';
 import Appsearch from "../search";
 import VerifyForm from '../components/VerifyForm';
 import ReportInvalidDataForm from '../components/ReportInvalidDataForm';
@@ -12,6 +12,7 @@ import AppOnboarding from '../onboarding';
 import AppCard from "../cardSkill/index";
 import AppCardAdd from "../cardSkillAdd/index";
 import AppAvatar from '../imagenAvatar';
+import AppPopup from '../Popup/index';
 
 const { Header, Content, Sider } = Layout;
 
@@ -75,7 +76,7 @@ const MenuLogin = () => {
   const [token] = useState(localStorage.getItem('token'))
   const [reportIsActive, setReportIsActive] = useState(false);
   const navigate = useNavigate()
-
+  const [modalVisible, setModalVisible] = useState(false);
   console.log({status})
 
   const [showOnboardingVideo, setShowOnboardingVideo] = useState(false)
@@ -84,6 +85,11 @@ const MenuLogin = () => {
   const [verifyOpen, setVerifyOpen] = useState(null);
   const [messageApi, contextHolder ] = message.useMessage()
   const [validateFormInstance, setValidateFormInstance] = useState(null);
+
+
+  const handleRateSkillsClick = () => {
+    setModalVisible(true);
+  };
 
   useEffect(() => {
  
@@ -306,14 +312,25 @@ const MenuLogin = () => {
     <p style={{ fontSize: '20px', fontWeight: '700', color: 'black' }}>Suggestions</p>
     <AppCard />
   </div>
-  <div style={{ width: '35%', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' , marginTop:'5rem'}}>
-{/*     <img src={imagenEmpleo.IMAGENICON} alt="Logo" style={{ width: '50%', marginBottom: '10px', marginTop:'40%' }} />
-
- */}  <AppAvatar/>
-   <div style={{ width: '50%', marginLeft: 'auto' }}>
-    <p style={{ fontSize: '20px', fontWeight: '700', color: 'black' }}>Skills Added</p>
-
-
+  <div style={{ width: '35%', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginTop: '5rem' }}>
+    {/* <img src={imagenEmpleo.IMAGENICON} alt="Logo" style={{ width: '50%', marginBottom: '10px', marginTop:'40%' }} /> */}
+    <AppAvatar />
+    <div style={{ width: '50%', marginLeft: 'auto' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+        <p style={{ fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '10px' }}>Skills Added</p>
+        <div style={{ marginLeft: 'auto' }}>
+          {modalVisible ? (
+            <Modal visible={modalVisible} onCancel={() => setModalVisible(false)}>
+              <AppPopup />
+            </Modal>
+          ) : (
+            <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
+              <img src={imagenDeMagic.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '5px' }} />
+              <span>Rate Skills</span>
+            </button>
+          )}
+        </div>
+      </div>
       <AppCardAdd />
     </div>
   </div>

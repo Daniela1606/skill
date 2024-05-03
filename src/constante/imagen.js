@@ -12,6 +12,7 @@ import imagenPrueba from "../Imagenes/frame.png";
 import imagenFooter from "../Imagenes/frame2.png";
 import imagenAvatar from "../Imagenes/Avatar.png";
 import imagenIcon from "../Imagenes/icon.png";
+import imagenMagic from "../Imagenes/magic.png";
 
 export const imagenL ={
 
@@ -108,6 +109,14 @@ export const imagenDeIcon ={
 
     NOT_FOUND : notFound,
     IMAGENICON: imagenIcon
+
+};
+
+
+export const imagenDeMagic ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenMagic
 
 };
 

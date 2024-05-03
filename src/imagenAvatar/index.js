@@ -15,18 +15,17 @@ const AppAvatar = () => {
 
   return (
     <>
-      <Upload name="avatar" showUploadList={false} onChange={handleAvatarChange}>
-        <div className="avatar-container">
-          {imageUrl ? (
-            <img className="avatar-image" src={imageUrl} alt="Avatar" />
-          ) : (
-            <div className="avatar-placeholder">
-              <UserOutlined className="avatar-icon" />
-              <span className="avatar-text">upload image</span>
-            </div>
-          )}
-        </div>
-      </Upload>
+<Upload name="avatar" showUploadList={false} onChange={handleAvatarChange} className="avatar-upload">
+  <div className="avatar-container">
+    {imageUrl ? (
+      <img className="avatar-image" src={imageUrl} alt="Avatar" />
+    ) : (
+      <div className="avatar-placeholder">
+        <span className="avatar-text">Subir imagen</span>
+      </div>
+    )}
+  </div>
+</Upload>
     </>
   );
 };
