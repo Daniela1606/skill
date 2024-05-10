@@ -30,7 +30,7 @@ const CardArrayAdd = () => {
         {upperCards.map((card, index) => (
           <Col key={index} span={8}>
             <Card
-              style={{ width: '90%' }}
+              style={{ padding: '0.5rem 1rem,', width: '95%', border: 'none', boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px' }}
               cover={
                 <div style={{ textAlign: 'center' }}>
                   <img style={{ width: '45%', marginTop:'0.5rem'}} src={card.image} alt="Logo" />
@@ -51,7 +51,7 @@ const CardArrayAdd = () => {
         {lowerCards.map((card, index) => (
           <Col key={index} span={8}>
             <Card
-              style={{ width: '90%' }}
+              style={{ padding: '0.5rem 1rem,', width: '90%', border: 'none', boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px' }}
               cover={
                 <div style={{ textAlign: 'center' }}>
                   <img style={{ width: '45%', marginTop:'0.5rem'}} src={card.image} alt="Logo" />

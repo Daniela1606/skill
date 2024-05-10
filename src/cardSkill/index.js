@@ -30,10 +30,10 @@ const CardArray = () => {
         {upperCards.map((card, index) => (
           <Col key={index} span={4}>
             <Card
-              style={{ width: '60%' }}
+              style={{ padding: '0.5rem 1rem,', width: '95%', border: 'none', boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px' }}
               cover={
                 <div style={{ textAlign: 'center' }}>
-                  <img style={{ width: '35%', marginTop:'0.5rem' }} src={card.image} alt="Logo" />
+                  <img style={{ width: '35px', marginTop:'0.5rem' }} src={card.image} alt="Logo" />
                   <div style={{ color: 'black', fontWeight: '700' }}>{card.title}</div>
                 </div>
               }
@@ -57,10 +57,11 @@ const CardArray = () => {
         {lowerCards.map((card, index) => (
           <Col key={index} span={4}>
             <Card
-              style={{ width: '60%' }}
+              // style={{ width: '60%', padding: '0.5rem 1rem,' }}
+              style={{ padding: '0.5rem 1rem,', width: '95%', border: 'none', boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px' }}
               cover={
                 <div style={{ textAlign: 'center' }}>
-                  <img style={{ width: '35%', marginTop:'0.5rem' }} src={card.image} alt="Logo" />
+                  <img style={{ width: '35px', marginTop:'0.5rem' }} src={card.image} alt="Logo" />
                   <div style={{ color: 'black', fontWeight: '700' }}>{card.title}</div>
                 </div>
               }
