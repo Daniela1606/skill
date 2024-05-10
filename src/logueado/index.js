@@ -267,13 +267,11 @@ const MenuLogin = () => {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'space-between'
+              flexGrow: '1',
+
             }}
           >
-            <div
-              style={{
-              }}
-            >
+            <div>
               <p style={{ fontSize: '20px', marginBottom: '1em', fontWeight: '700', color: 'black' }}>
                 Find your skill
               </p>
@@ -281,25 +279,38 @@ const MenuLogin = () => {
             </div>
             <div
               style={{
+                marginTop: '3em',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                height: '100%',
                 maxWidth: '900px',
               }}
             >
-              <p style={{ fontSize: '20px', fontWeight: '700', color: 'black' }}>Suggestions</p>
-              <AppCard />
-            </div>
-            <div style={{
-              background: 'linear-gradient(to bottom, #AFDFBB, #58C2C0)',
-              borderRadius: '20px',
-              padding: '20px',
-              maxWidth: '900px'
+              <div
+                style={{
+                }}
+              >
+                <p style={{ fontSize: '20px', fontWeight: '700', color: 'black' }}>Suggestions</p>
+                <div style={{
+                  marginTop: '2em'
+                }}>
+                  <AppCard />
+                </div>
+              </div>
+              <div style={{
+                background: 'linear-gradient(to bottom, #AFDFBB, #58C2C0)',
+                borderRadius: '20px',
+                padding: '20px',
 
-            }}>
-              <p style={{ fontWeight: '700', fontSize: '18px' }}>Need a hand?</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <button style={{ background: 'white', border: 'solid 1px white', width: '20%', borderRadius: '20px', padding: '5px' }}>Submit</button>
+              }}>
+                <p style={{ fontWeight: '700', fontSize: '18px' }}>Need a hand?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <button style={{ background: 'white', border: 'solid 1px white', width: '20%', borderRadius: '20px', padding: '5px' }}>Submit</button>
 
-                <p style={{ color: 'white' }}>Next Question → </p>
+                  <p style={{ color: 'white' }}>Next Question → </p>
+                </div>
               </div>
             </div>
           </Content>
