@@ -5,7 +5,7 @@ import imagenInstagram from "../Imagenes/facebook.png";
 import imagenLinkedin from "../Imagenes/linkedin.png";
 import imagenLogo from "../Imagenes/logo.png";
 import imagenSkillLogin from "../Imagenes/skillLogin.png";
-import imagenLogoSkill from "../Imagenes/logoAzul.png";
+import imagenLogoSkill from "../Imagenes/logoAzul.svg";
 import imagenBuscador from "../Imagenes/imagenBuscador.png";
 import imagenEmpleos from "../Imagenes/chico.png";
 import imagenPrueba from "../Imagenes/frame.png";
