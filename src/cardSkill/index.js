@@ -1,24 +1,24 @@
 import React from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Card, Row, Col } from 'antd';
-import { imagenDeIcon } from '../constante/imagen';
+import { imagenDeIcon, imagenDeGit, imagenDeAtom, imagenDeJs, imagenDePhy, imagenDeC, imagenDeMy,imagenAws, imagenSsl, imagenApache } from '../constante/imagen';
 
 const { Meta } = Card;
 
 const CardArray = () => {
   const cardData = [
-    { title: 'Skill ', image: imagenDeIcon.IMAGENICON },
-    { title: 'Skill ', image: imagenDeIcon.IMAGENICON },
-    { title: 'Skill ', image: imagenDeIcon.IMAGENICON },
-    { title: 'Skill ', image: imagenDeIcon.IMAGENICON },
-    { title: 'Skill ', image: imagenDeIcon.IMAGENICON },
-    { title: 'Skill ', image: imagenDeIcon.IMAGENICON },
-    { title: 'Skill ', image: imagenDeIcon.IMAGENICON },
-    { title: 'Skill ', image: imagenDeIcon.IMAGENICON },
-    { title: 'Skill ', image: imagenDeIcon.IMAGENICON },
-    { title: 'Skill ', image: imagenDeIcon.IMAGENICON },
-    { title: 'Skill ', image: imagenDeIcon.IMAGENICON },
-    { title: 'Skill ', image: imagenDeIcon.IMAGENICON },
+    { title: 'GitHub ', image: imagenDeGit.IMAGENICON },
+    { title: '', image: imagenDeAtom.IMAGENICON },
+    { title: 'JavaScript ', image: imagenDeJs.IMAGENICON },
+    { title: 'Phyton ', image: imagenDePhy.IMAGENICON },
+    { title: 'C ', image: imagenDeC.IMAGENICON },
+    { title: 'My SQL ', image: imagenDeMy.IMAGENICON },
+    { title: 'AWS ', image: imagenAws.IMAGENICON },
+    { title: 'Azure ', image: imagenDeMy.IMAGENICON },
+    { title: 'Apache ', image: imagenApache.IMAGENICON },
+    { title: 'SSL', image: imagenSsl.IMAGENICON },
+    { title: 'Wordpress ', image: imagenDeIcon.IMAGENICON },
+    { title: 'Research ', image: imagenDeIcon.IMAGENICON },
   ];
 
   const upperCards = cardData.slice(0, 6); 

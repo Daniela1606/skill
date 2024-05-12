@@ -13,11 +13,50 @@ import imagenFooter from "../Imagenes/frame2.png";
 import imagenAvatar from "../Imagenes/Avatar.png";
 import imagenIcon from "../Imagenes/icon.png";
 import imagenMagic from "../Imagenes/magic.png";
+import imagenGit from "../Imagenes/git.png";
+import imagenAtom from "../Imagenes/atom.png";
+import imagenC from "../Imagenes/c.png";
+import imagenJs from "../Imagenes/js.png";
+import imagenMy from "../Imagenes/my.png";
+import imagenPy from "../Imagenes/py.png";
+import imagenAw from "../Imagenes/aws.png";
+import imagenSl from "../Imagenes/ssl.png";
+import imagenAp from "../Imagenes/apache.png";
+
+
+
+
+
+
 
 export const imagenL ={
 
     NOT_FOUND : notFound,
     IMAGENICON: imagenLogin
+
+};
+
+
+
+export const imagenAws ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenAw
+
+};
+
+export const imagenSsl ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenSl
+
+};
+
+
+export const imagenApache ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenAp
 
 };
 
@@ -113,12 +152,49 @@ export const imagenDeIcon ={
 };
 
 
+export const imagenDeGit ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenGit
+
+};
+
+
+export const imagenDeAtom ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenAtom
+
+};
+export const imagenDeJs={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenJs
+
+};
+export const imagenDePhy ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenPy
+
+};
+export const imagenDeC ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenC
+
+};
+export const imagenDeMy ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenMy
+
+};
 export const imagenDeMagic ={
 
     NOT_FOUND : notFound,
     IMAGENICON: imagenMagic
 
 };
-
 
 

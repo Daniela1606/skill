@@ -3,8 +3,9 @@ import { Modal, Slider, Typography, Progress, Row, Col, Button, Input } from 'an
 import { imagenDeIcon } from '../constante/imagen';
 
 const AppPopup = () => {
-  const [stepsCount, setStepsCount] = useState(5);
-  const [stepsGap, setStepsGap] = useState(7);
+  const [stepsCount1, setStepsCount1] = useState(5);
+  const [stepsCount2, setStepsCount2] = useState(5);
+  const [stepsCount3, setStepsCount3] = useState(5);
   const [modalVisible, setModalVisible] = useState(true);
 
   const handleModalClose = () => {
@@ -24,10 +25,10 @@ const AppPopup = () => {
   return (
     <Modal visible={modalVisible} onCancel={handleModalClose} footer={null}>
 
-    <Typography.Title level={4} style={{ marginBottom: '16px', textAlign:'left', fontSize:'25px' }}>
+      <Typography.Title level={4} style={{ marginBottom: '16px', textAlign: 'left', fontSize: '25px' }}>
         My skills
       </Typography.Title>
-      <p style={{textAlign:'left',marginTop:'-1rem'}}>Lorem Ipsum</p>
+      <p style={{ textAlign: 'left', marginTop: '-1rem' }}>Lorem Ipsum</p>
 
       <Input.Search style={{ marginBottom: '16px' }} placeholder="Search Skills, Vendors, Hobbies" />
 
@@ -40,7 +41,7 @@ const AppPopup = () => {
         </Col>
         <Col span={12}>
           <div>
-            <Slider min={0} max={100} value={stepsCount} onChange={setStepsCount} tipFormatter={formatSliderValue} />
+            <Slider min={0} max={100} value={stepsCount1} onChange={setStepsCount1} tipFormatter={formatSliderValue} />
           </div>
         </Col>
         <Col span={12}>
@@ -51,11 +52,9 @@ const AppPopup = () => {
         </Col>
         <Col span={12}>
           <div>
-            <Slider min={0} max={100} value={stepsCount} onChange={setStepsCount} tipFormatter={formatSliderValue} />
+            <Slider min={0} max={100} value={stepsCount2} onChange={setStepsCount2} tipFormatter={formatSliderValue} />
           </div>
         </Col>
-
-
         <Col span={12}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <img src={imagenDeIcon.IMAGENICON} alt="Logo" style={{ width: '50px', marginRight: '8px' }} />
@@ -64,26 +63,12 @@ const AppPopup = () => {
         </Col>
         <Col span={12}>
           <div>
-            <Slider min={0} max={100} value={stepsCount} onChange={setStepsCount} tipFormatter={formatSliderValue} />
+            <Slider min={0} max={100} value={stepsCount3} onChange={setStepsCount3} tipFormatter={formatSliderValue} />
           </div>
         </Col>
-
-
-        <Col span={12}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={imagenDeIcon.IMAGENICON} alt="Logo" style={{ width: '50px', marginRight: '8px' }} />
-            <Typography.Text style={{ marginBottom: '8px' }}>Skill</Typography.Text>
-          </div>
-        </Col>
-        <Col span={12}>
-          <div>
-            <Slider min={0} max={100} value={stepsCount} onChange={setStepsCount} tipFormatter={formatSliderValue} />
-          </div>
-        </Col>
-
       </Row>
-      <Progress
 
+      <Progress
         trailColor="rgba(0, 0, 0, 0.06)"
         strokeWidth={20}
         strokeColor={{
@@ -96,13 +81,11 @@ const AppPopup = () => {
         }}
         format={() => ''}
         style={{ marginTop: 16 }}
-        
       />
 
-
-<div style={{ display: 'flex', justifyContent: 'center', marginTop: 16 }}>
-        <Button type="primary" style={{ marginRight: 8, width:'50%', color:'#041F72', fontWeight:'700', background:'white',border:'solid 1px #041F72', fontSize:'15px' }}>Cancel</Button>
-        <Button style={{width:'50%',background:'#041F72', color:'white',  fontWeight:'700', border:'solid 1px #041F72', fontSize:'15px'}}>Save</Button>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 16 }}>
+        <Button type="primary" style={{ marginRight: 8, width: '50%', color: '#041F72', fontWeight: '700', background: 'white', border: 'solid 1px #041F72', fontSize: '15px' }}>Cancel</Button>
+        <Button style={{ width: '50%', background:'#041F72', color: 'white', fontWeight: '700', border: 'solid 1px #041F72', fontSize: '15px' }}>Save</Button>
       </div>
     </Modal>
   );

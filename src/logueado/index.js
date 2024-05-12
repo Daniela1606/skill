@@ -18,6 +18,7 @@ const { Header, Content, Sider } = Layout;
 
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
   const key = String(index + 1);
+
   let menuLabel = '';
 
   switch (index) {
@@ -31,7 +32,7 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
       menuLabel = 'Contact';
       break;
     case 3:
-      menuLabel = 'Settings';
+      menuLabel = 'General\nSettings';
       break;
     case 4:
       menuLabel = 'Option 4';
@@ -45,8 +46,10 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
     default:
       menuLabel = 'Default Option';
   }
+  
 
-
+  
+  
 
   return {
     key: `sub${key}`,
@@ -307,7 +310,7 @@ const MenuLogin = () => {
                 <p style={{ fontWeight: '700', fontSize: '18px' }}>Need a hand?</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <button style={{ background: 'white', border: 'solid 1px white', width: '20%', borderRadius: '20px', padding: '5px' }}>Submit</button>
+                  <button style={{ background: 'white', border: 'solid 1px white', width: '20%', borderRadius: '20px', padding: '20px' }}>Submit</button>
 
                   <p style={{ color: 'white' }}>Next Question → </p>
                 </div>
