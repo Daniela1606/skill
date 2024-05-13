@@ -307,12 +307,12 @@ const MenuLogin = () => {
                 padding: '20px',
 
               }}>
-                <p style={{ fontWeight: '700', fontSize: '18px' }}>Need a hand?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+                <p style={{ fontWeight: '700', fontSize: '19px' }}>Need a hand refining your skills? Submit an answer to the below question</p>
+                <p style={{fontSize:'16px', fontWeight: '500'}}>What previews roles have you had before your current position ?</p>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <button style={{ background: 'white', border: 'solid 1px white', width: '20%', borderRadius: '20px', padding: '20px' }}>Submit</button>
+                  <button style={{ background: 'white', border: 'solid 1px white', width: '20%', borderRadius: '20px', padding: '20px',  fontWeight: '700' }}>Submit</button>
 
-                  <p style={{ color: 'white' }}>Next Question → </p>
+                  <p style={{ color: '#686B6E', fontSize: '18px' }}>Next Question → </p>
                 </div>
               </div>
             </div>
