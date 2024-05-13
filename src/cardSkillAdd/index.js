@@ -21,7 +21,7 @@ const CardArrayAdd = () => {
     { title: 'Skill ', image: imagenDeIcon.IMAGENICON },
   ];
 
-  const upperCards = cardData.slice(0, 3); 
+  const upperCards = cardData.slice(0, 3);
   const lowerCards = cardData.slice(3, 6);
 
   return (
@@ -30,16 +30,17 @@ const CardArrayAdd = () => {
         {upperCards.map((card, index) => (
           <Col key={index} span={8}>
             <Card
-              style={{ padding: '0.5rem 1rem,', width: '95%', border: 'none', boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px' }}
+              style={{ padding: '0.5rem 1rem', width: '95%', border: 'none', boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px' }}
               cover={
                 <div style={{ textAlign: 'center' }}>
-                  <img style={{ width: '45%', marginTop:'0.5rem'}} src={card.image} alt="Logo" />
+                  <img style={{ width: '45%', marginTop: '0.5rem' }} src={card.image} alt="Logo" />
                   <div style={{ color: 'black', fontWeight: '700' }}>{card.title}</div>
                 </div>
               }
               actions={[
-/*                 <Button key="add" type="primary" icon={<PlusOutlined />} style={{ float: 'right', marginRight: '2px', background: '#00007c' }}>
-                </Button> */
+                <Button key="add" type="primary"  style={{ width: '100%' }}>
+                  2
+                </Button>
               ]}
             >
               <Meta />
@@ -51,16 +52,17 @@ const CardArrayAdd = () => {
         {lowerCards.map((card, index) => (
           <Col key={index} span={8}>
             <Card
-              style={{ padding: '0.5rem 1rem,', width: '90%', border: 'none', boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px' }}
+              style={{ padding: '0.5rem 1rem', width: '90%', border: 'none', boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px' }}
               cover={
                 <div style={{ textAlign: 'center' }}>
-                  <img style={{ width: '45%', marginTop:'0.5rem'}} src={card.image} alt="Logo" />
+                  <img style={{ width: '45%', marginTop: '0.5rem' }} src={card.image} alt="Logo" />
                   <div style={{ color: 'black', fontWeight: '700' }}>{card.title}</div>
                 </div>
               }
               actions={[
-/*                 <Button key="add" type="primary" icon={<PlusOutlined />} style={{ float: 'right', marginRight: '2px', background: '#00007c' }}>
-                </Button> */
+                <Button key="add" type="primary"  style={{ width: '100%' }}>
+                  2
+                </Button>
               ]}
             >
               <Meta />
