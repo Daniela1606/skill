@@ -22,6 +22,10 @@ import imagenPy from "../Imagenes/py.png";
 import imagenAw from "../Imagenes/aws.png";
 import imagenSl from "../Imagenes/ssl.png";
 import imagenAp from "../Imagenes/apache.png";
+import imagenResearch from "../Imagenes/research.png";
+import imagenWordpress from "../Imagenes/wordpress.png";
+
+
 
 
 
@@ -59,6 +63,22 @@ export const imagenApache ={
     IMAGENICON: imagenAp
 
 };
+
+export const imagenDeResearch ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenResearch
+
+};
+
+export const imagenDeWordpress ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenWordpress
+
+};
+
+
 
 
 
