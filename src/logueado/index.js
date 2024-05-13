@@ -13,6 +13,7 @@ import AppCard from "../cardSkill/index";
 import AppCardAdd from "../cardSkillAdd/index";
 import AppAvatar from '../imagenAvatar';
 import AppPopup from '../Popup/index';
+import AppsearchTarget from '../searchTarget';
 
 const { Header, Content, Sider } = Layout;
 
@@ -305,12 +306,16 @@ const MenuLogin = () => {
                 background: 'linear-gradient(to bottom, #AFDFBB, #58C2C0)',
                 borderRadius: '20px',
                 padding: '20px',
+                marginTop:'2rem',
 
               }}>
                 <p style={{ fontWeight: '700', fontSize: '19px' }}>Need a hand refining your skills? Submit an answer to the below question</p>
                 <p style={{fontSize:'16px', fontWeight: '500'}}>What previews roles have you had before your current position ?</p>
+                <AppsearchTarget/>
+
+              
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <button style={{ background: 'white', border: 'solid 1px white', width: '20%', borderRadius: '20px', padding: '20px',  fontWeight: '700' }}>Submit</button>
+                  <button style={{ background: 'white', border: 'solid 1px white', width: '20%', borderRadius: '20px', padding: '10px',  fontWeight: '700' }}>Submit</button>
 
                   <p style={{ color: '#686B6E', fontSize: '18px' }}>Next Question → </p>
                 </div>

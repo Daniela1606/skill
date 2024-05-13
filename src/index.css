@@ -169,6 +169,43 @@ th.ant-table-cell{
 
 } 
 
+
+.pruebita
+{
+
+  background: linear-gradient(to bottom, rgb(88, 194, 192), rgb(175, 223, 187)
+
+
+  ) !important;
+
+  padding: 12px !important;
+  border: solid 1px rgb(88, 194, 192) !important;
+  border-radius: 10px !important;
+
+} 
+
+.ant-input-wrapper.ant-input-group.css-dev-only-do-not-override-sk1n6
+{
+
+  background: linear-gradient(to bottom, rgb(88, 194, 192), rgb(175, 223, 187)
+
+
+  );
+
+
+
+} 
+
+
+
+
+.ant-btn.css-dev-only-do-not-override-sk1n6.ant-btn-default.ant-btn-icon-only.ant-input-search-button
+{
+
+  display: none;
+
+} 
+
 .ant-col.ant-form-item-label.css-dev-only-do-not-override-1c54t2r{
 
   margin-left: 0.5rem;
