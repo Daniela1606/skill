@@ -329,4 +329,8 @@ width: 25% !important;
   color: black !important;
 }
 
+:where(.css-dev-only-do-not-override-sk1n6).ant-card .ant-card-actions>li
+{
+margin:0px !important;
+}
 
