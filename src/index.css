@@ -173,28 +173,35 @@ th.ant-table-cell{
 .pruebita
 {
 
-  background: linear-gradient(to bottom, rgb(88, 194, 192), rgb(175, 223, 187)
-
-
-  ) !important;
+  background: #98d4ca !important;
 
   padding: 12px !important;
-  border: solid 1px rgb(88, 194, 192) !important;
+  border: solid 1px #98d4ca !important;
   border-radius: 10px !important;
+  margin-top: 1rem !important;
 
 } 
 
-.ant-input-wrapper.ant-input-group.css-dev-only-do-not-override-sk1n6
+.ant-progress-text
 {
 
-  background: linear-gradient(to bottom, rgb(88, 194, 192), rgb(175, 223, 187)
+display: none !important;
+  
+  } 
 
+.ant-input.css-dev-only-do-not-override-sk1n6.ant-input-outlined
+{
 
-  );
-
+padding: 0.8rem;
+border: solid 1px #DBD8FC;
+border-radius: 10px;
 
 
 } 
+
+
+
+
 
 
 
@@ -315,3 +322,11 @@ width: 25% !important;
 
   margin-top: 2rem !important;
 }
+
+
+.ant-tooltip-inner {
+  background-color: white !important; 
+  color: black !important;
+}
+
+

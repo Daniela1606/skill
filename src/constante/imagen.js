@@ -24,6 +24,8 @@ import imagenSl from "../Imagenes/ssl.png";
 import imagenAp from "../Imagenes/apache.png";
 import imagenResearch from "../Imagenes/research.png";
 import imagenWordpress from "../Imagenes/wordpress.png";
+import imagenAtom2 from "../Imagenes/ATOM2.png";
+
 
 
 
@@ -68,6 +70,13 @@ export const imagenDeResearch ={
 
     NOT_FOUND : notFound,
     IMAGENICON: imagenResearch
+
+};
+
+export const imagenDeAtom2 ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenAtom2
 
 };
 

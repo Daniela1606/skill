@@ -14,10 +14,11 @@ const onSearch = (value, _e, info) => console.log(info?.source, value);
 const Appsearch = () => (
   <Space direction="vertical">
     <Search
-      placeholder="input search text"
+      placeholder="Search Skills, Vendors, Hobbies"
       onSearch={onSearch}
       style={{
-        width: '40rem',
+        width: '60rem',
+
       }}
     />
 

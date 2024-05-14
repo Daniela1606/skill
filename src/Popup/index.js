@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
 import { Modal, Slider, Typography, Progress, Row, Col, Button, Input } from 'antd';
-import { imagenDeIcon } from '../constante/imagen';
+import { imagenDeIcon, imagenDeGit, imagenDeAtom2, imagenDeJs, imagenDePhy } from '../constante/imagen';
 
 const AppPopup = () => {
   const [stepsCount1, setStepsCount1] = useState(5);
   const [stepsCount2, setStepsCount2] = useState(5);
   const [stepsCount3, setStepsCount3] = useState(5);
+  const [stepsCount4, setStepsCount4] = useState(5);
+
   const [modalVisible, setModalVisible] = useState(true);
 
   const handleModalClose = () => {
     setModalVisible(false);
   };
 
-  const formatSliderValue = (value) => {
-    if (value === 0) {
-      return 'Learner';
-    } else if (value === 100) {
-      return 'Expert';
-    } else {
-      return `Progress: ${value}%`;
-    }
+
+
+  const getProgressText = (value) => {
+    if (value >= 0 && value < 33) {
+      return 'Proficient working knowledge';
+    } else if (value >= 33 && value < 66) {
+      return 'Practitioner/Experienced';
+    } else if (value >= 66 && value < 100) {
+      return 'Highly Experienced';
+    } 
   };
 
   return (
@@ -33,53 +37,84 @@ const AppPopup = () => {
       <Input.Search style={{ marginBottom: '16px' }} placeholder="Search Skills, Vendors, Hobbies" />
 
       <Row gutter={16}>
-        <Col span={12}>
+        <Col span={7}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={imagenDeIcon.IMAGENICON} alt="Logo" style={{ width: '50px', marginRight: '8px' }} />
-            <Typography.Text style={{ marginBottom: '8px' }}>Skill</Typography.Text>
+            <img src={imagenDeGit.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '8px' }} />
+            <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop:'0.5rem' }}>GitHub</Typography.Text>
           </div>
         </Col>
-        <Col span={12}>
-          <div>
-            <Slider min={0} max={100} value={stepsCount1} onChange={setStepsCount1} tipFormatter={formatSliderValue} />
+        <Col span={17}>
+          <div style={{display: 'flex', alignItems: 'center'}}>
+            <span style={{fontSize:'12px', whiteSpace:'nowrap'}} >Entry Level</span>
+            <div style={{width: '100%'}}>
+              <Slider min={0} max={100} value={stepsCount1} onChange={setStepsCount1} tipFormatter={getProgressText} />
+            </div>
+            <span style={{fontSize:'12px'}}>Expert</span>          
           </div>
         </Col>
-        <Col span={12}>
+        <Col span={7}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={imagenDeIcon.IMAGENICON} alt="Logo" style={{ width: '50px', marginRight: '8px' }} />
-            <Typography.Text style={{ marginBottom: '8px' }}>Skill</Typography.Text>
+            <img src={imagenDeAtom2.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '8px' }} />
+            <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop:'0.5rem' }}>Atom</Typography.Text>
           </div>
         </Col>
-        <Col span={12}>
-          <div>
-            <Slider min={0} max={100} value={stepsCount2} onChange={setStepsCount2} tipFormatter={formatSliderValue} />
+        <Col span={17}>
+          <div style={{display: 'flex', alignItems: 'center'}}>
+        <span style={{fontSize:'12px', whiteSpace:'nowrap'}} >Entry Level</span>
+          <div style={{width: '100%'}}>
+            <Slider min={0} max={100} value={stepsCount2} onChange={setStepsCount2} tipFormatter={getProgressText} />
+          </div>
+          <span style={{fontSize:'12px'}}>Expert</span>          
           </div>
         </Col>
-        <Col span={12}>
+        <Col span={7}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={imagenDeIcon.IMAGENICON} alt="Logo" style={{ width: '50px', marginRight: '8px' }} />
-            <Typography.Text style={{ marginBottom: '8px' }}>Skill</Typography.Text>
+            <img src={imagenDeJs.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '8px' }} />
+            <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop:'0.5rem' }}>Java Script</Typography.Text>
           </div>
         </Col>
-        <Col span={12}>
-          <div>
-            <Slider min={0} max={100} value={stepsCount3} onChange={setStepsCount3} tipFormatter={formatSliderValue} />
+
+
+        <Col span={17}>
+          <div style={{display: 'flex', alignItems: 'center'}}>
+        <span style={{fontSize:'12px', whiteSpace:'nowrap'}} >Entry Level</span>
+          <div style={{width: '100%'}}>
+            <Slider min={0} max={100} value={stepsCount3} onChange={setStepsCount3} tipFormatter={getProgressText} />
+          </div>
+          <span style={{fontSize:'12px'}}>Expert</span>          
+          </div>
+        </Col>
+
+        <Col span={7}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <img src={imagenDePhy.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '8px' }} />
+            <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop:'0.5rem' }}>Phyton</Typography.Text>
+          </div>
+        </Col>
+
+
+        <Col span={17}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+        <span style={{fontSize:'12px', whiteSpace:'nowrap'}} >Entry Level</span>
+          <div style={{width: '100%'}}>
+            <Slider min={0} max={100} value={stepsCount4} onChange={setStepsCount4} tipFormatter={getProgressText} />
+          </div>
+          <span style={{fontSize:'12px'}}>Expert</span>          
           </div>
         </Col>
       </Row>
-
       <Progress
-        trailColor="rgba(0, 0, 0, 0.06)"
+        trailColor="#fffff"
         strokeWidth={20}
         strokeColor={{
-          '0%': '#108ee9',
-          '100%': '#87d068',
+          '0%': '#fffff',
+          '100%': '#fffff',
         }}
         strokeLabel={{
           '0%': 'Learner',
           '100%': 'Expert',
         }}
-        format={() => ''}
+        format={getProgressText}
         style={{ marginTop: 16 }}
       />
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import { SearchOutlined, InfoCircleOutlined, MailOutlined, SettingOutlined} from '@ant-design/icons';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
 import { Layout, Menu, Modal, message, theme, Button, Space, } from 'antd';
@@ -17,56 +17,41 @@ import AppsearchTarget from '../searchTarget';
 
 const { Header, Content, Sider } = Layout;
 
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-  const key = String(index + 1);
+const items = [
+  {
+    key: '0',
+    label: 'General',
+    type: 'group',
+    children: [],
+  },
+  {
+    key: '1',
+    icon: <SearchOutlined />,
+    label: 'Search',
+  },
+  {
+    key: '2',
+    label: 'General',
+    type: 'group',
+    children: [],
+  },
+  {
+    key: '3',
+    icon: <InfoCircleOutlined />,
+    label: 'Help',
+  },
+  {
+    key: '4',
+    icon: <MailOutlined />,
+    label: 'Contact',
+  },
+  {
+    key: '5',
+    icon: <SettingOutlined />,
+    label: 'Settings',
+  },
+];
 
-  let menuLabel = '';
-
-  switch (index) {
-    case 0:
-      menuLabel = 'Search';
-      break;
-    case 1:
-      menuLabel = 'Help';
-      break;
-    case 2:
-      menuLabel = 'Contact';
-      break;
-    case 3:
-      menuLabel = 'General\nSettings';
-      break;
-    case 4:
-      menuLabel = 'Option 4';
-      break;
-    case 5:
-      menuLabel = 'Option 5';
-      break;
-    case 6:
-      menuLabel = '';
-      break;
-    default:
-      menuLabel = 'Default Option';
-  }
-  
-
-  
-  
-
-  return {
-    key: `sub${key}`,
-    icon: React.createElement(icon),
-    label: menuLabel,
-    children: new Array(4).fill(null).map((_, j) => {
-      const subKey = index * 4 + j + 1;
-      /*       return {
-              key: subKey,
-              label: `Option ${subKey}`,
-            }; */
-    }),
-
-  };
-
-});
 
 
 
@@ -215,7 +200,7 @@ const MenuLogin = () => {
               height: '100%',
               borderRight: 0,
             }}
-            items={items2}
+            items={items}
           />
           <div
             style={{
@@ -315,7 +300,7 @@ const MenuLogin = () => {
 
               
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <button style={{ background: 'white', border: 'solid 1px white', width: '20%', borderRadius: '20px', padding: '10px',  fontWeight: '700' }}>Submit</button>
+                  <button style={{ background: 'white', border: 'solid 1px white', width: '20%', borderRadius: '20px', padding: '10px',  fontWeight: '700', marginTop:'2rem' }}>Submit</button>
 
                   <p style={{ color: '#686B6E', fontSize: '18px' }}>Next Question → </p>
                 </div>
