@@ -319,16 +319,11 @@ const MenuLogin = () => {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                 <p style={{ fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '10px' }}>Skills Added</p>
                 <div style={{ marginLeft: 'auto' }}>
-                  {modalVisible ? (
-                    <Modal visible={modalVisible} onCancel={() => setModalVisible(false)}>
-                      <AppPopup />
-                    </Modal>
-                  ) : (
+                  <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} />
                     <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
                       <img src={imagenDeMagic.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '5px' }} />
                       <span>Rate Skills</span>
                     </button>
-                  )}
                 </div>
               </div>
               <AppCardAdd />

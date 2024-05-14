@@ -2,19 +2,11 @@ import React, { useState } from 'react';
 import { Modal, Slider, Typography, Progress, Row, Col, Button, Input } from 'antd';
 import { imagenDeIcon, imagenDeGit, imagenDeAtom2, imagenDeJs, imagenDePhy } from '../constante/imagen';
 
-const AppPopup = () => {
+const AppPopup = ({open, handleCancel}) => {
   const [stepsCount1, setStepsCount1] = useState(5);
   const [stepsCount2, setStepsCount2] = useState(5);
   const [stepsCount3, setStepsCount3] = useState(5);
   const [stepsCount4, setStepsCount4] = useState(5);
-
-  const [modalVisible, setModalVisible] = useState(true);
-
-  const handleModalClose = () => {
-    setModalVisible(false);
-  };
-
-
 
   const getProgressText = (value) => {
     if (value >= 0 && value < 33) {
@@ -27,7 +19,7 @@ const AppPopup = () => {
   };
 
   return (
-    <Modal visible={modalVisible} onCancel={handleModalClose} footer={null}>
+    <Modal open={open} onCancel={handleCancel} footer={null}>
 
       <Typography.Title level={4} style={{ marginBottom: '16px', textAlign: 'left', fontSize: '25px' }}>
         My skills
