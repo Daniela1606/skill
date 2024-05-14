@@ -177,7 +177,7 @@ const MenuLogin = () => {
     }}
     >
       <Sider width={300}>
-        <div style={{ margin: '1em', border: '1px solid #ddd', borderRadius: '5%', overflow: 'hidden' }}>
+        <div style={{ margin: '1em', border: '1px solid #ddd', borderRadius: '15px', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: '97.3%', background: 'transparent' }}>
           <Header
             id='header'
             style={{
@@ -197,8 +197,9 @@ const MenuLogin = () => {
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
             style={{
-              height: '100%',
               borderRight: 0,
+              background: 'transparent',
+              flexGrow: 1,
             }}
             items={items}
           />
@@ -206,10 +207,14 @@ const MenuLogin = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              padding: '24px',
-              background: '#effcfc',
+              padding: '0 8px',
+              borderRadius: '10px',
+              marginBottom: '1em',
+              boxSizing: 'border-box',
               justifySelf: 'center',
-              alignSelf: 'center'
+              alignSelf: 'center',
+              background: '#58C2C01A',
+              width: '90%'
             }}>
             <div>
               <img src={imagenDeAvatar.IMAGENICON} alt="Logo" />
@@ -225,7 +230,7 @@ const MenuLogin = () => {
 
 
       </Sider>
-      <Layout id='body-layout' style={{ padding: '1em' }}>
+      <Layout id='body-layout' style={{ padding: '1em', overflowY: 'scroll' }}>
         <Header
           style={{
             paddingLeft: '24px',
@@ -314,21 +319,16 @@ const MenuLogin = () => {
             }}
           >
             <img src={imagenBuscar.IMAGENICON} style={{ maxWidth: '100%', borderRadius: '1em' }} width={300} alt="Logo" />
-            <AppAvatar />
+              <AppAvatar />
             <div >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                 <p style={{ fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '10px' }}>Skills Added</p>
                 <div style={{ marginLeft: 'auto' }}>
-                  {modalVisible ? (
-                    <Modal visible={modalVisible} onCancel={() => setModalVisible(false)}>
-                      <AppPopup />
-                    </Modal>
-                  ) : (
+                  <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} />
                     <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
                       <img src={imagenDeMagic.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '5px' }} />
                       <span>Rate Skills</span>
                     </button>
-                  )}
                 </div>
               </div>
               <AppCardAdd />
