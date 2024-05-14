@@ -177,7 +177,7 @@ const MenuLogin = () => {
     }}
     >
       <Sider width={300}>
-        <div style={{ margin: '1em', border: '1px solid #ddd', borderRadius: '5%', overflow: 'hidden' }}>
+        <div style={{ margin: '1em', border: '1px solid #ddd', borderRadius: '15px', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: '97.3%' }}>
           <Header
             id='header'
             style={{
@@ -199,6 +199,7 @@ const MenuLogin = () => {
             style={{
               height: '100%',
               borderRight: 0,
+              flexGrow: 1,
             }}
             items={items}
           />
@@ -209,7 +210,8 @@ const MenuLogin = () => {
               padding: '24px',
               background: '#effcfc',
               justifySelf: 'center',
-              alignSelf: 'center'
+              alignSelf: 'center',
+              width: '100%'
             }}>
             <div>
               <img src={imagenDeAvatar.IMAGENICON} alt="Logo" />
@@ -225,7 +227,7 @@ const MenuLogin = () => {
 
 
       </Sider>
-      <Layout id='body-layout' style={{ padding: '1em' }}>
+      <Layout id='body-layout' style={{ padding: '1em', overflowY: 'scroll' }}>
         <Header
           style={{
             paddingLeft: '24px',
