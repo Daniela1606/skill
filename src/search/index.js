@@ -12,14 +12,10 @@ const suffix = (
 );
 const onSearch = (value, _e, info) => console.log(info?.source, value);
 const Appsearch = () => (
-  <Space direction="vertical">
+  <Space direction="vertical" style={{width: '100%'}}>
     <Search
       placeholder="Search Skills, Vendors, Hobbies"
       onSearch={onSearch}
-      style={{
-        width: '60rem',
-
-      }}
     />
 
 

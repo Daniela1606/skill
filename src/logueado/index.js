@@ -177,7 +177,7 @@ const MenuLogin = () => {
     }}
     >
       <Sider width={300}>
-        <div style={{ margin: '1em', border: '1px solid #ddd', borderRadius: '15px', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: '97.3%' }}>
+        <div style={{ margin: '1em', border: '1px solid #ddd', borderRadius: '15px', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: '97.3%', background: 'transparent' }}>
           <Header
             id='header'
             style={{
@@ -197,8 +197,8 @@ const MenuLogin = () => {
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
             style={{
-              height: '100%',
               borderRight: 0,
+              background: 'transparent',
               flexGrow: 1,
             }}
             items={items}
@@ -207,11 +207,14 @@ const MenuLogin = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              padding: '24px',
-              background: '#effcfc',
+              padding: '0 8px',
+              borderRadius: '10px',
+              marginBottom: '1em',
+              boxSizing: 'border-box',
               justifySelf: 'center',
               alignSelf: 'center',
-              width: '100%'
+              background: '#58C2C01A',
+              width: '90%'
             }}>
             <div>
               <img src={imagenDeAvatar.IMAGENICON} alt="Logo" />
@@ -316,7 +319,7 @@ const MenuLogin = () => {
             }}
           >
             <img src={imagenBuscar.IMAGENICON} style={{ maxWidth: '100%', borderRadius: '1em' }} width={300} alt="Logo" />
-            <AppAvatar />
+              <AppAvatar />
             <div >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                 <p style={{ fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '10px' }}>Skills Added</p>
