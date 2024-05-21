@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Slider, Typography, Progress, Row, Col, Button, Input } from 'antd';
 import { imagenDeIcon, imagenDeGit, imagenDeAtom2, imagenDeJs, imagenDePhy } from '../constante/imagen';
 
-const AppPopup = ({open, handleCancel}) => {
+const AppPopup = ({open, handleCancel, skills}) => {
   const [stepsCount1, setStepsCount1] = useState(5);
   const [stepsCount2, setStepsCount2] = useState(5);
   const [stepsCount3, setStepsCount3] = useState(5);
@@ -28,8 +28,28 @@ const AppPopup = ({open, handleCancel}) => {
 
       <Input.Search style={{ marginBottom: '16px' }} placeholder="Search Skills, Vendors, Hobbies" />
 
-      <Row gutter={16}>
-        <Col span={7}>
+      {/* <Row gutter={16}> */}
+        { 
+          skills.map((skill, index) => (
+            <Row gutter={16} key={index}>
+            <Col span={8}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <img src={skill.image} alt="Logo" style={{ width: '25px', marginRight: '8px' }} />
+            <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop:'0.5rem' }}>{skill.title}</Typography.Text>
+            </div>
+            </Col>
+        <Col span={16}>
+          <div style={{display: 'flex', alignItems: 'center'}}>
+            <span style={{fontSize:'12px', whiteSpace:'nowrap'}} >Entry Level</span>
+            <div style={{width: '100%'}}>
+              <Slider min={0} max={100} value={stepsCount1} onChange={setStepsCount1} tipFormatter={getProgressText} />
+            </div>
+            <span style={{fontSize:'12px'}}>Expert</span>          
+          </div>
+        </Col>
+            </Row>
+          ))}
+        {/* <Col span={7}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <img src={imagenDeGit.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '8px' }} />
             <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop:'0.5rem' }}>GitHub</Typography.Text>
@@ -93,8 +113,8 @@ const AppPopup = ({open, handleCancel}) => {
           </div>
           <span style={{fontSize:'12px'}}>Expert</span>          
           </div>
-        </Col>
-      </Row>
+        </Col> */}
+      {/* </Row> */}
       <Progress
         trailColor="#fffff"
         strokeWidth={20}

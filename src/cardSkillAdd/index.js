@@ -8,17 +8,13 @@ import CardArray from '../cardSkill';
 
 const { Meta } = Card;
 
-const CardArrayAdd = () => {
+const CardArrayAdd = ({cards}) => {
   const [selectedCard, setSelectedCard] = useState(null);
-  const [cards, setCards] = useState([]);
 
   const handleCardSelect = (card) => {
     setSelectedCard(card);
   };
 
-  const handleCardAdded = (card) => {
-    setCards([...cards, card]);
-  };
 
   return (
     <div
@@ -56,7 +52,6 @@ const CardArrayAdd = () => {
           </Col>
         ))}
       </Row>
-      <CardArray searchData={cards} onCardAdded={handleCardAdded} />
     </div>
   );
 };

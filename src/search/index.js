@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AudioOutlined } from '@ant-design/icons';
 import { Input, Space } from 'antd';
 import CardArray from '../cardSkill';
@@ -38,12 +38,18 @@ const Appsearch = ({ onSearch }) => {
           { title: 'JavaScript ', image: imagenDeJs.IMAGENICON },
           { title: 'Phyton ', image: imagenDePhy.IMAGENICON },
           ]; 
-        setSearchData( data.skills? data?.skills?.map(item => ({ title: item.name, image: item.image })) : []);
+        const cards = data.skills? data?.skills?.map(item => ({id: item.id, title: item.name, image: item.image })) : [];
+        onSearch(cards);
+        setSearchData(cards);
       })
       .catch(error => {
         console.error(error);
       });
   };
+
+  useEffect(() => {
+    handleSearch('')
+  }, []);
 
   return (
     <Space direction="vertical" style={{width: '100%'}}>
@@ -51,8 +57,6 @@ const Appsearch = ({ onSearch }) => {
         placeholder="Search Skills, Vendors, Hobbies"
         onSearch={handleSearch}
       />
-      {/* Renderizar el componente deseado y pasar searchData como prop */}
-      {searchData && <CardArray searchData={searchData} />}
     </Space>
   );
 };

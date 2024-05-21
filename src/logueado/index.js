@@ -75,6 +75,19 @@ const MenuLogin = () => {
   const [messageApi, contextHolder] = message.useMessage()
   const [validateFormInstance, setValidateFormInstance] = useState(null);
 
+  const [skills, setSkills] = useState([]);
+  const [selectedSkills , setSelectedSkills] = useState([]);
+
+  function handleSearch(value) {
+    setSkills(value);
+  }
+
+  function handleAddSkill(value) {
+    if (!selectedSkills.includes(value)) {
+      setSelectedSkills([...selectedSkills, value]);
+    }
+  }
+
 
   const handleRateSkillsClick = () => {
     setModalVisible(true);
@@ -269,7 +282,7 @@ const MenuLogin = () => {
               <p style={{ fontSize: '20px', marginBottom: '1em', fontWeight: '700', color: 'black' }}>
                 Find your skill
               </p>
-              <Appsearch />
+              <Appsearch onSearch={handleSearch} />
             </div>
             <div
               style={{
@@ -289,7 +302,7 @@ const MenuLogin = () => {
                 <div style={{
                   marginTop: '2em'
                 }}>
-                  <AppCard />
+                  <AppCard searchData={skills} onCardAdded={handleAddSkill} />
                 </div>
               </div>
               <div style={{
@@ -324,14 +337,14 @@ const MenuLogin = () => {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                 <p style={{ fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '10px' }}>Skills Added</p>
                 <div style={{ marginLeft: 'auto' }}>
-                  <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} />
+                  <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} skills={selectedSkills} />
                     <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
                       <img src={imagenDeMagic.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '5px' }} />
                       <span>Rate Skills</span>
                     </button>
                 </div>
               </div>
-              <AppCardAdd />
+              <AppCardAdd cards={selectedSkills}/>
             </div>
           </Sider>
         </Layout>
