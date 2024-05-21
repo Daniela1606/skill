@@ -8,7 +8,7 @@ import CardArray from '../cardSkill';
 
 const { Meta } = Card;
 
-const CardArrayAdd = ({cards}) => {
+const CardArrayAdd = ({cards, hideButtons}) => {
   const [selectedCard, setSelectedCard] = useState(null);
 
   const handleCardSelect = (card) => {
@@ -19,9 +19,7 @@ const CardArrayAdd = ({cards}) => {
   return (
     <div
       style={{
-        position: 'absolute',
         left: '-7rem',
-        width: '400px',
       }}
     >
       <Row gutter={[16, 16]}>
@@ -48,7 +46,7 @@ const CardArrayAdd = ({cards}) => {
                   </div>
                 </div>
               }
-              actions={[
+              actions= { !hideButtons && [
                 <Button
                   key="add"
                   type="primary"

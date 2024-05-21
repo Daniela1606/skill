@@ -347,7 +347,7 @@ const MenuLogin = () => {
                     </button>
                 </div>
               </div>
-              <AppCardAdd cards={selectedSkills}/>
+              <AppCardAdd cards={selectedSkills} hideButtons={true}/>
             </div>
           </Sider>
         </Layout>
