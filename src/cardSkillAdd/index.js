@@ -30,6 +30,8 @@ const CardArrayAdd = ({cards}) => {
             <Card
               style={{
                 padding: '0.5rem 1rem',
+                fontSize: '0.7rem',
+                textAlign: 'center',
                 width: '95%',
                 border: '2px solid blue',
                 boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px',

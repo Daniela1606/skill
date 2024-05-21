@@ -12,7 +12,7 @@ function CircularProgressBar({children, progress}) {
     return (
         <div style={{
             aspectRatio: '1 / 1',
-            width: '75%',
+            width: '63%',
             overflow: 'hidden',
             padding: '2em',
             margin: 'auto'

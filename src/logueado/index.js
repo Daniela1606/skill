@@ -189,7 +189,7 @@ const MenuLogin = () => {
       background: 'linear-gradient(200deg, rgba(73,164,248,0.24) 4%, rgba(15,209,186,0.07) 14%, rgba(255,255,255,1) 27%, rgba(255,255,255,1) 58%, rgba(15,209,186,0.07) 75%, rgba(73,164,248,0.24) 92%)',
     }}
     >
-      <Sider width={300}>
+      <Sider width={350}>
         <div style={{ margin: '1em', border: '1px solid #ddd', borderRadius: '15px', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: '97.3%', background: 'transparent' }}>
           <Header
             id='header'
@@ -275,10 +275,11 @@ const MenuLogin = () => {
               display: 'flex',
               flexDirection: 'column',
               flexGrow: '1',
-
             }}
           >
-            <div>
+            <div style={{
+              maxWidth: '900px',
+            }}>
               <p style={{ fontSize: '20px', marginBottom: '1em', fontWeight: '700', color: 'black' }}>
                 Find your skill
               </p>
@@ -302,7 +303,7 @@ const MenuLogin = () => {
                 <div style={{
                   marginTop: '2em'
                 }}>
-                  <AppCard searchData={skills} onCardAdded={handleAddSkill} />
+                  <AppCard searchData={skills.filter(skill => (!selectedSkills.includes(skill)))} onCardAdded={handleAddSkill} />
                 </div>
               </div>
               <div style={{
@@ -326,12 +327,14 @@ const MenuLogin = () => {
             </div>
           </Content>
           <Sider
-            width={300}
+            width={350}
             style={{
               paddingLeft: '1em',
             }}
           >
-            <img src={imagenBuscar.IMAGENICON} style={{ maxWidth: '100%', borderRadius: '1em' }} width={300} alt="Logo" />
+            <div style={{width: 'fit-content',margin: '0 auto'}}> 
+              <img src={imagenBuscar.IMAGENICON} style={{ maxWidth: '100%', borderRadius: '1em' }} width={315} alt="Logo" />
+            </div>
               <AppAvatar />
             <div >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
