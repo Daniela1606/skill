@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Card, Row, Col } from 'antd';
 import { imagenDeIcon, imagenDeGit, imagenDeAtom, imagenDeJs, imagenDePhy, imagenDeC, imagenDeMy, imagenAws, imagenSsl, imagenApache, imagenDeResearch, imagenDeWordpress } from '../constante/imagen';
@@ -28,6 +28,11 @@ const CardArray = ({ searchData, onCardAdded }) => {
   const handleAddCard = (card) => {
     onCardAdded(card);
   };
+
+  console.log('filteredCards', filteredCards);
+  useEffect(() => {
+    setFilteredCards(searchData || cardData);
+  }, [searchData]);
 
   return (
     <div>

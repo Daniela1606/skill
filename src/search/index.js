@@ -32,13 +32,13 @@ const Appsearch = ({ onSearch }) => {
     })    
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        console.log({data});
         const cardData = [
           { title: 'GitHub ', image: imagenDeGit.IMAGENICON },
           { title: 'JavaScript ', image: imagenDeJs.IMAGENICON },
           { title: 'Phyton ', image: imagenDePhy.IMAGENICON },
           ]; 
-        setSearchData(cardData);
+        setSearchData( data.skills? data?.skills?.map(item => ({ title: item.name, image: item.image })) : []);
       })
       .catch(error => {
         console.error(error);
@@ -46,7 +46,7 @@ const Appsearch = ({ onSearch }) => {
   };
 
   return (
-    <Space direction="vertical" style={{width: '50%'}}>
+    <Space direction="vertical" style={{width: '100%'}}>
       <Search 
         placeholder="Search Skills, Vendors, Hobbies"
         onSearch={handleSearch}
