@@ -40,9 +40,8 @@ const CardArray = ({ searchData, onCardAdded }) => {
         {filteredCards.map((card, index) => (
           <Col key={index} span={4}>
             <Card
-              // style={{ width: '95%', border: 'none', boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px' }}
               style={{
-                padding: '0.5rem 1rem',
+                padding: '0.5rem 0.5rem',
                 textAlign: 'center',
                 height: '100%',
                 width: '100%',
@@ -59,14 +58,14 @@ const CardArray = ({ searchData, onCardAdded }) => {
                 </div>
               }
               actions={[
-                <Button
-                  key="add"
-                  type="primary"
-                  icon={<PlusOutlined />}
-                  style={{ float: 'right', marginRight: '2px', marginTop: '5px', background: '#00007c' }}
-                  size="small"
-                  onClick={() => handleAddCard(card)}
-                ></Button>,
+              <Button
+                key="add"
+                type="primary"
+                icon={<PlusOutlined />}
+                style={{ float: 'right', marginRight: '2px', marginTop: '5px', marginBottom: '0', background: '#00007c' }}
+                size="small"
+                onClick={() => handleAddCard(card)}
+              ></Button>,
               ]}
             >
               <Meta />
