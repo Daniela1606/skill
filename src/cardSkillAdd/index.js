@@ -30,8 +30,8 @@ const CardArrayAdd = ({cards}) => {
             <Card
               style={{
                 padding: '0.5rem 1rem',
-                width: '95%',
-                border: '2px solid blue',
+                width: '100%',
+               
                 boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px',
               }}
               cover={
@@ -46,6 +46,15 @@ const CardArrayAdd = ({cards}) => {
                   </div>
                 </div>
               }
+              actions={[
+                <Button
+                  key="add"
+                  type="primary"
+                  icon={<PlusOutlined />}
+                  style={{ float: 'right', marginRight: '2px', background: '#00007c' }}
+                  size="small"
+                ></Button>
+              ]}
             >
               <Meta />
             </Card>
