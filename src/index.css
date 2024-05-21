@@ -334,3 +334,26 @@ width: 25% !important;
 margin:0px !important;
 }
 
+
+.ant-row.css-dev-only-do-not-override-1rqg8tf{
+
+  margin-top: 1rem;
+}
+
+.ant-input.css-dev-only-do-not-override-1rqg8tf.ant-input-outlined{
+
+  padding: 1rem;
+}
+
+
+.ant-btn.css-dev-only-do-not-override-1rqg8tf.ant-btn-default.ant-btn-icon-only.ant-input-search-button{
+
+  display: none;
+}
+
+
+
+:where(.css-dev-only-do-not-override-1rqg8tf).ant-card .ant-card-actions>li{
+
+  margin: 0px !important;
+}
