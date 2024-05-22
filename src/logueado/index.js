@@ -83,9 +83,13 @@ const MenuLogin = () => {
   }
 
   function handleAddSkill(value) {
-    if (!selectedSkills.includes(value)) {
-      setSelectedSkills([...selectedSkills, value]);
+    if (!selectedSkills.some((selected) => selected.id === value.id)) {
+      setSelectedSkills([...selectedSkills, { ...value, rate: 0 }]);
     }
+  }
+
+  function handleRateSkill(idx, value) {
+    setSelectedSkills(selectedSkills.map((skill, index) => index === idx ? { ...skill, rate: value} : skill));
   }
 
 
@@ -303,7 +307,7 @@ const MenuLogin = () => {
                 <div style={{
                   marginTop: '2em'
                 }}>
-                  <AppCard searchData={skills.filter(skill => (!selectedSkills.includes(skill)))} onCardAdded={handleAddSkill} />
+                  <AppCard searchData={skills.filter(skill => (!selectedSkills.some((selected) => selected.id === skill.id)))} onCardAdded={handleAddSkill} />
                 </div>
               </div>
               <div style={{
@@ -340,7 +344,7 @@ const MenuLogin = () => {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                 <p style={{ fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '10px' }}>Skills Added</p>
                 <div style={{ marginLeft: 'auto' }}>
-                  <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} skills={selectedSkills} />
+                  <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} skills={selectedSkills} handleSliderChange={handleRateSkill} />
                     <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
                       <img src={imagenDeMagic.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '5px' }} />
                       <span>Rate Skills</span>

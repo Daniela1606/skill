@@ -2,20 +2,17 @@ import React, { useState } from 'react';
 import { Modal, Slider, Typography, Progress, Row, Col, Button, Input } from 'antd';
 import { imagenDeIcon, imagenDeGit, imagenDeAtom2, imagenDeJs, imagenDePhy } from '../constante/imagen';
 
-const AppPopup = ({open, handleCancel, skills}) => {
-  const [stepsCount1, setStepsCount1] = useState(5);
-  const [stepsCount2, setStepsCount2] = useState(5);
-  const [stepsCount3, setStepsCount3] = useState(5);
-  const [stepsCount4, setStepsCount4] = useState(5);
+const AppPopup = ({ open, handleCancel, skills, handleSliderChange }) => {
 
+  const stepsTexts = [
+    'Entry Level',
+    'Proficient working knowledge',
+    'Practitioner/Experienced',
+    'Highly Experienced',
+    'Expert'
+  ];
   const getProgressText = (value) => {
-    if (value >= 0 && value < 33) {
-      return 'Proficient working knowledge';
-    } else if (value >= 33 && value < 66) {
-      return 'Practitioner/Experienced';
-    } else if (value >= 66 && value < 100) {
-      return 'Highly Experienced';
-    } 
+    return stepsTexts[value - 1];
   };
 
   return (
@@ -28,93 +25,26 @@ const AppPopup = ({open, handleCancel, skills}) => {
 
       <Input.Search style={{ marginBottom: '16px' }} placeholder="Search Skills, Vendors, Hobbies" />
 
-      {/* <Row gutter={16}> */}
-        { 
-          skills.map((skill, index) => (
-            <Row gutter={16} key={index}>
+      {
+        skills.map((skill, index) => (
+          <Row gutter={16} key={index}>
             <Col span={8}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={skill.image} alt="Logo" style={{ width: '25px', marginRight: '8px' }} />
-            <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop:'0.5rem' }}>{skill.title}</Typography.Text>
-            </div>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <img src={skill.image} alt="Logo" style={{ width: '25px', marginRight: '8px' }} />
+                <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop: '0.5rem' }}>{skill.title}</Typography.Text>
+              </div>
             </Col>
-        <Col span={16}>
-          <div style={{display: 'flex', alignItems: 'center'}}>
-            <span style={{fontSize:'12px', whiteSpace:'nowrap'}} >Entry Level</span>
-            <div style={{width: '100%'}}>
-              <Slider min={0} max={100} value={stepsCount1} onChange={setStepsCount1} tipFormatter={getProgressText} />
-            </div>
-            <span style={{fontSize:'12px'}}>Expert</span>          
-          </div>
-        </Col>
-            </Row>
-          ))}
-        {/* <Col span={7}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={imagenDeGit.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '8px' }} />
-            <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop:'0.5rem' }}>GitHub</Typography.Text>
-          </div>
-        </Col>
-        <Col span={17}>
-          <div style={{display: 'flex', alignItems: 'center'}}>
-            <span style={{fontSize:'12px', whiteSpace:'nowrap'}} >Entry Level</span>
-            <div style={{width: '100%'}}>
-              <Slider min={0} max={100} value={stepsCount1} onChange={setStepsCount1} tipFormatter={getProgressText} />
-            </div>
-            <span style={{fontSize:'12px'}}>Expert</span>          
-          </div>
-        </Col>
-        <Col span={7}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={imagenDeAtom2.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '8px' }} />
-            <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop:'0.5rem' }}>Atom</Typography.Text>
-          </div>
-        </Col>
-        <Col span={17}>
-          <div style={{display: 'flex', alignItems: 'center'}}>
-        <span style={{fontSize:'12px', whiteSpace:'nowrap'}} >Entry Level</span>
-          <div style={{width: '100%'}}>
-            <Slider min={0} max={100} value={stepsCount2} onChange={setStepsCount2} tipFormatter={getProgressText} />
-          </div>
-          <span style={{fontSize:'12px'}}>Expert</span>          
-          </div>
-        </Col>
-        <Col span={7}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={imagenDeJs.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '8px' }} />
-            <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop:'0.5rem' }}>Java Script</Typography.Text>
-          </div>
-        </Col>
-
-
-        <Col span={17}>
-          <div style={{display: 'flex', alignItems: 'center'}}>
-        <span style={{fontSize:'12px', whiteSpace:'nowrap'}} >Entry Level</span>
-          <div style={{width: '100%'}}>
-            <Slider min={0} max={100} value={stepsCount3} onChange={setStepsCount3} tipFormatter={getProgressText} />
-          </div>
-          <span style={{fontSize:'12px'}}>Expert</span>          
-          </div>
-        </Col>
-
-        <Col span={7}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={imagenDePhy.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '8px' }} />
-            <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop:'0.5rem' }}>Phyton</Typography.Text>
-          </div>
-        </Col>
-
-
-        <Col span={17}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-        <span style={{fontSize:'12px', whiteSpace:'nowrap'}} >Entry Level</span>
-          <div style={{width: '100%'}}>
-            <Slider min={0} max={100} value={stepsCount4} onChange={setStepsCount4} tipFormatter={getProgressText} />
-          </div>
-          <span style={{fontSize:'12px'}}>Expert</span>          
-          </div>
-        </Col> */}
-      {/* </Row> */}
+            <Col span={16}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <span style={{ fontSize: '12px', whiteSpace: 'nowrap' }} >Entry Level</span>
+                <div style={{ width: '100%' }}>
+                  <Slider min={1} max={5} value={skill.rate} onChange={(value) => {handleSliderChange(index, value)}} tipFormatter={getProgressText} /> 
+                </div>
+                <span style={{ fontSize: '12px' }}>Expert</span>
+              </div>
+            </Col>
+          </Row>
+        ))}
       <Progress
         trailColor="#fffff"
         strokeWidth={20}
@@ -132,7 +62,7 @@ const AppPopup = ({open, handleCancel, skills}) => {
 
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: 16 }}>
         <Button type="primary" style={{ marginRight: 8, width: '50%', color: '#041F72', fontWeight: '700', background: 'white', border: 'solid 1px #041F72', fontSize: '15px' }}>Cancel</Button>
-        <Button style={{ width: '50%', background:'#041F72', color: 'white', fontWeight: '700', border: 'solid 1px #041F72', fontSize: '15px' }}>Save</Button>
+        <Button style={{ width: '50%', background: '#041F72', color: 'white', fontWeight: '700', border: 'solid 1px #041F72', fontSize: '15px' }}>Save</Button>
       </div>
     </Modal>
   );
