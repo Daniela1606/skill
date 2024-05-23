@@ -1,3 +1,5 @@
+
+
 import React, { useState } from 'react';
 import { Modal, Slider, Typography, Progress, Row, Col, Button, Input } from 'antd';
 import { imagenDeIcon, imagenDeGit, imagenDeAtom2, imagenDeJs, imagenDePhy } from '../constante/imagen';
@@ -11,6 +13,7 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange }) => {
     'Highly Experienced',
     'Expert'
   ];
+
   const getProgressText = (value) => {
     return stepsTexts[value - 1];
   };
@@ -40,7 +43,7 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange }) => {
                 <div style={{ width: '100%' }}>
                   <Slider min={1} max={5} value={skill.rate} onChange={(value) => {handleSliderChange(index, value)}} tipFormatter={getProgressText} /> 
                 </div>
-                <span style={{ fontSize: '12px' }}>Expert</span>
+                <span style={{ fontSize: '12px', display: 'flex', alignItems: 'center' }}>Expert <span style={{ marginLeft: '1rem', cursor: 'pointer', fontSize:'px' }}>x</span></span>
               </div>
             </Col>
           </Row>
