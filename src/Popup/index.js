@@ -1,10 +1,20 @@
-
-
 import React, { useState } from 'react';
 import { Modal, Slider, Typography, Progress, Row, Col, Button, Input } from 'antd';
 import { imagenDeIcon, imagenDeGit, imagenDeAtom2, imagenDeJs, imagenDePhy } from '../constante/imagen';
 
-const AppPopup = ({ open, handleCancel, skills, handleSliderChange }) => {
+const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillDelete }) => {
+
+  const [skillsState, setSkillsState] = useState(skills);
+
+
+
+
+  const handleDeleteSkill = (skillId) => {
+  setSkillsState(prevSkills => prevSkills.filter(skill => skill.id !== skillId));
+  if (typeof handleSkillDelete === 'function') {
+    handleSkillDelete(skillId);
+  }
+};
 
   const stepsTexts = [
     'Entry Level',
@@ -17,6 +27,8 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange }) => {
   const getProgressText = (value) => {
     return stepsTexts[value - 1];
   };
+
+
 
   return (
     <Modal open={open} onCancel={handleCancel} footer={null}>
@@ -43,7 +55,7 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange }) => {
                 <div style={{ width: '100%' }}>
                   <Slider min={1} max={5} value={skill.rate} onChange={(value) => {handleSliderChange(index, value)}} tipFormatter={getProgressText} /> 
                 </div>
-                <span style={{ fontSize: '12px', display: 'flex', alignItems: 'center' }}>Expert <span style={{ marginLeft: '1rem', cursor: 'pointer', fontSize:'px' }}>x</span></span>
+                <span style={{ fontSize: '12px', display: 'flex', alignItems: 'center' }}>Expert <span style={{ marginLeft: '1rem', cursor: 'pointer', fontSize:'18px' }} onClick={() => handleDeleteSkill(skill.id)}>x</span></span>
               </div>
             </Col>
           </Row>
@@ -64,7 +76,7 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange }) => {
       />
 
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: 16 }}>
-        <Button type="primary" style={{ marginRight: 8, width: '50%', color: '#041F72', fontWeight: '700', background: 'white', border: 'solid 1px #041F72', fontSize: '15px' }}>Cancel</Button>
+        <Button type="primary" style={{ marginRight: 8, width: '50%', color: '#041F72', fontWeight: '700', background: 'white', border: 'solid 1px #041F72', fontSize: '15px' }} onClick={handleCancel}>Cancel</Button>
         <Button style={{ width: '50%', background: '#041F72', color: 'white', fontWeight: '700', border: 'solid 1px #041F72', fontSize: '15px' }}>Save</Button>
       </div>
     </Modal>
