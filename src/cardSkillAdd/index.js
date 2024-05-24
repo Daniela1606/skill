@@ -36,11 +36,10 @@ const CardArrayAdd = ({cards, hideButtons}) => {
               }}
               cover={
                 <div style={{ textAlign: 'center' }}>
-                  <img
-                    style={{ width: '45%', marginTop: '0.5rem' }}
-                    src={card.image}
-                    alt="Logo"
-                  />
+                  {card.image ?
+                   <img style={{ width: '45%', marginTop: '0.5rem' }} src={card.image} alt="Logo" /> 
+                  : <img style={{ width: '45%', marginTop: '0.5rem' }} src='https://skillsat-dev.s3.eu-west-2.amazonaws.com/images/icon-1.png' alt="Logo" /> 
+                  }
                   <div style={{ color: 'black', fontWeight: '700' }}>
                     {card.title}
                   </div>

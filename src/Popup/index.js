@@ -36,13 +36,16 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillD
           <Row gutter={16} key={index}>
             <Col span={8}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <img src={skill.image} alt="Logo" style={{ width: '25px', marginRight: '8px' }} />
+                  {skill.image ?
+                   <img style={{ width: '25px', marginTop: '8px' }} src={skill.image} alt="Logo" /> 
+                  : <img style={{ width: '25px', marginTop: '8px' }} src='https://skillsat-dev.s3.eu-west-2.amazonaws.com/images/icon-1.png' alt="Logo" /> 
+                  }
                 <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop: '0.5rem' }}>{skill.title}</Typography.Text>
               </div>
             </Col>
-            <Col span={16}>
+            <Col span={16} style={{ margin: 'auto'}}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <span style={{ fontSize: '12px', whiteSpace: 'nowrap' }} >Entry Level</span>
+                <span style={{ fontSize: '12px', whiteSpace: 'nowrap', marginRight: '5px' }} >Entry Level</span>
                 <div style={{ width: '100%' }}>
                   <Slider min={1} max={5} value={skill.rate} onChange={(value) => {handleSliderChange(index, value)}} tipFormatter={getProgressText} /> 
                 </div>
