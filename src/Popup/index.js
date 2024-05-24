@@ -7,15 +7,6 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillD
   const [skillsState, setSkillsState] = useState(skills);
 
 
-
-
-  const handleDeleteSkill = (skillId) => {
-  setSkillsState(prevSkills => prevSkills.filter(skill => skill.id !== skillId));
-  if (typeof handleSkillDelete === 'function') {
-    handleSkillDelete(skillId);
-  }
-};
-
   const stepsTexts = [
     'Entry Level',
     'Proficient working knowledge',
@@ -55,7 +46,7 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillD
                 <div style={{ width: '100%' }}>
                   <Slider min={1} max={5} value={skill.rate} onChange={(value) => {handleSliderChange(index, value)}} tipFormatter={getProgressText} /> 
                 </div>
-                <span style={{ fontSize: '12px', display: 'flex', alignItems: 'center' }}>Expert <span style={{ marginLeft: '1rem', cursor: 'pointer', fontSize:'18px' }} onClick={() => handleDeleteSkill(skill.id)}>⨯</span></span>
+                <span style={{ fontSize: '12px', display: 'flex', alignItems: 'center' }}>Expert <span style={{ marginLeft: '1rem', cursor: 'pointer', fontSize:'18px' }} onClick={() => handleSkillDelete(skill.id)}>⨯</span></span>
               </div>
             </Col>
           </Row>
