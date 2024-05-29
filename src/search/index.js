@@ -23,7 +23,7 @@ const Appsearch = ({ onSearch }) => {
     console.log(value);
     const token = localStorage.getItem('token');
 
-    fetch(`http://18.169.192.176/api/skills/?itemsPerPage=10&currentPage=1&search=${value}`, {
+    fetch(`http://13.42.59.26/api/skills/?itemsPerPage=10&currentPage=1&search=${value}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

@@ -5,7 +5,7 @@ const AppOnboarding = ({onConfirmClick}) => {
   const [videoURL, setVideoUrl] = useState();
 
   const getVideo = () => {
-    fetch('http://18.169.192.176/api/config/onboarding-video/', {
+    fetch('http://13.42.59.26/api/config/onboarding-video/', {
       method: 'GET',
     })
       .then(response => response.json())

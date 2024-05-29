@@ -19,7 +19,7 @@ const AppProfile = () => {
   const profile = () => {
     const token = localStorage.getItem('token');
 
-    fetch(`http://18.169.192.176/api/users/employees/${id}`, {
+    fetch(`http://13.42.59.26/api/users/employees/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const AppProfile = () => {
 
     const token = localStorage.getItem('token');
 
-    fetch('http://18.169.192.176/api/users/employees/verify-correct-data', {
+    fetch('http://13.42.59.26/api/users/employees/verify-correct-data', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

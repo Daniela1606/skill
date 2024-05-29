@@ -43,7 +43,7 @@ const AppLogin = () => {
       password: passwordValue
     };
   
-    fetch('http://18.169.192.176/api/auth/login', {
+    fetch('http://13.42.59.26/api/auth/login', {
       method: 'POST',
       body: JSON.stringify(values),
       headers: {

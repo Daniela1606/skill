@@ -105,7 +105,7 @@ const MenuLogin = () => {
 
     const fetchEmployee = async () => {
       try {
-        const response = await fetch(`http://18.169.192.176/Api/users/employees/${id}`);
+        const response = await fetch(`http://13.42.59.26/Api/users/employees/${id}`);
         if (response.ok) {
           const data = await response.json();
           setEmployee(data);
@@ -121,7 +121,7 @@ const MenuLogin = () => {
   }, []);
 
   const confirmValidData = async () => {
-    return await fetch('http://18.169.192.176/api/users/employees/verify-correct-data', {
+    return await fetch('http://13.42.59.26/api/users/employees/verify-correct-data', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ const MenuLogin = () => {
 
   const reportInvalidData = async (data) => {
     console.log({ token })
-    return fetch('http://18.169.192.176/api/users/employees/report-incorrect-data', {
+    return fetch('http://13.42.59.26/api/users/employees/report-incorrect-data', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -313,7 +313,19 @@ const MenuLogin = () => {
                 }}>
                   <AppCard searchData={skills.filter(skill => (!selectedSkills.some((selected) => selected.id === skill.id)))} onCardAdded={handleAddSkill} />
                 </div>
+                
               </div>
+
+
+              <div>
+                <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} skills={selectedSkills} handleSliderChange={handleRateSkill} handleSkillDelete={handleSkillDelete} />
+                    <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border:'solid 1px rgb(0, 0, 124)' ,borderRadius:'20px', background: 'rgb(0, 0, 124)', cursor: 'pointer', color:'white',
+                  fontSize:'15px', fontWeight:'600', padding:'0.5rem' }}>
+                      <span>I'm finished adding</span>
+                    </button>
+                </div>
+
+
               <div style={{
                 background: 'linear-gradient(to bottom, #AFDFBB, #58C2C0)',
                 borderRadius: '20px',
@@ -331,6 +343,7 @@ const MenuLogin = () => {
 
                   <p style={{ color: '#686B6E', fontSize: '18px' }}>Next Question → </p>
                 </div>
+                
               </div>
             </div>
           </Content>
@@ -348,7 +361,7 @@ const MenuLogin = () => {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                 <p style={{ fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '10px' }}>Skills Added</p>
                 <div style={{ marginLeft: 'auto' }}>
-                  <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} skills={selectedSkills} handleSliderChange={handleRateSkill} handleSkillDelete={handleSkillDelete} />
+                <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} skills={selectedSkills} handleSliderChange={handleRateSkill} handleSkillDelete={handleSkillDelete} />
                     <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
                       <img src={imagenDeMagic.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '5px' }} />
                       <span>Rate Skills</span>
