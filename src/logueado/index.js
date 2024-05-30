@@ -77,8 +77,17 @@ const MenuLogin = () => {
 
   const [skills, setSkills] = useState([]);
   const [selectedSkills , setSelectedSkills] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+
+  //cajita verde
+  const handleInputChange = (newValue) => {
+    setInputValue(newValue);
+  };
 
 
+
+  
+//cajita verde
 
   const [questions, setQuestions] = useState([
     {
@@ -241,6 +250,32 @@ const MenuLogin = () => {
 
 
 
+
+
+  //cajita verde
+
+  const handleQuestionSubmit = async (event, inputValue) => {
+    event.preventDefault();
+    
+    try {
+      const response = await fetch(`http://13.42.59.26/api/skills/suggestions?itemsPerPage=10&currentPage=1&search=${inputValue}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error('Error al enviar la solicitud:', error);
+    }
+  };
+  
+ 
+
+
+
   return (
     <Layout id='main-layout' style={{
       height: '100vh',
@@ -375,7 +410,11 @@ const MenuLogin = () => {
                     </button>
                 </div>
 
-                <div
+
+
+{/* cajita verde
+ */}
+       <div
       style={{
         background: 'linear-gradient(to bottom, #AFDFBB, #58C2C0)',
         borderRadius: '20px',
@@ -389,7 +428,7 @@ const MenuLogin = () => {
       <p style={{ fontSize: '16px', fontWeight: '500' }}>
         {questions[currentQuestionIndex].question}
       </p>
-      <AppsearchTarget />
+      <AppsearchTarget onInputChange={handleInputChange} />
 
       <div
         style={{
@@ -408,13 +447,14 @@ const MenuLogin = () => {
             fontWeight: '700',
             marginTop: '2rem',
           }}
+          onClick={() => handleQuestionSubmit(inputValue)}
         >
           Submit
         </button>
 
         <button
           style={{ color: '#686B6E', fontSize: '18px', background:"#ff000000" , border:'solid 1px #ff000000'}}
-          onClick={handleNextQuestion}
+          onClick={(e) => handleQuestionSubmit(e, inputValue)}
         >
           Next Question →
         </button>
