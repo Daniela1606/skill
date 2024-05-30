@@ -78,6 +78,32 @@ const MenuLogin = () => {
   const [skills, setSkills] = useState([]);
   const [selectedSkills , setSelectedSkills] = useState([]);
 
+
+
+  const [questions, setQuestions] = useState([
+    {
+      title: 'Need a hand refining your skills? Submit an answer to the below question',
+      question: 'What previews roles have you had before your current position?',
+    },
+    {
+      title: 'Need a hand refining your skills? Submit an answer to the below question',
+      question: 'What are your long-term career goals?',
+    },
+    {
+      title: 'Need a hand refining your skills? Submit an answer to the below question',
+      question: 'How do your skills and experience align with this role?',
+    },
+  ]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+  const handleNextQuestion = () => {
+    setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
+  };
+
+
+
+
+
   function handleSearch(value) {
     setSkills(value);
   }
@@ -325,26 +351,51 @@ const MenuLogin = () => {
                     </button>
                 </div>
 
+                <div
+      style={{
+        background: 'linear-gradient(to bottom, #AFDFBB, #58C2C0)',
+        borderRadius: '20px',
+        padding: '20px',
+        marginTop: '2rem',
+      }}
+    >
+      <p style={{ fontWeight: '700', fontSize: '19px' }}>
+        {questions[currentQuestionIndex].title}
+      </p>
+      <p style={{ fontSize: '16px', fontWeight: '500' }}>
+        {questions[currentQuestionIndex].question}
+      </p>
+      <AppsearchTarget />
 
-              <div style={{
-                background: 'linear-gradient(to bottom, #AFDFBB, #58C2C0)',
-                borderRadius: '20px',
-                padding: '20px',
-                marginTop:'2rem',
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <button
+          style={{
+            background: 'white',
+            border: 'solid 1px white',
+            width: '20%',
+            borderRadius: '20px',
+            padding: '10px',
+            fontWeight: '700',
+            marginTop: '2rem',
+          }}
+        >
+          Submit
+        </button>
 
-              }}>
-                <p style={{ fontWeight: '700', fontSize: '19px' }}>Need a hand refining your skills? Submit an answer to the below question</p>
-                <p style={{fontSize:'16px', fontWeight: '500'}}>What previews roles have you had before your current position ?</p>
-                <AppsearchTarget/>
-
-              
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <button style={{ background: 'white', border: 'solid 1px white', width: '20%', borderRadius: '20px', padding: '10px',  fontWeight: '700', marginTop:'2rem' }}>Submit</button>
-
-                  <p style={{ color: '#686B6E', fontSize: '18px' }}>Next Question → </p>
-                </div>
-                
-              </div>
+        <button
+          style={{ color: '#686B6E', fontSize: '18px', background:"#ff000000" , border:'solid 1px #ff000000'}}
+          onClick={handleNextQuestion}
+        >
+          Next Question →
+        </button>
+      </div>
+    </div>
             </div>
           </Content>
           <Sider
