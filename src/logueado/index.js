@@ -67,12 +67,13 @@ const MenuLogin = () => {
   const navigate = useNavigate()
   const [modalVisible, setModalVisible] = useState(false);
   console.log({ status })
+  console.log('')
 
-  const [showOnboardingVideo, setShowOnboardingVideo] = useState(false)
+const [showOnboardingVideo, setShowOnboardingVideo] = useState(false)
 
-  const [employee, setEmployee] = useState(null);
-  const [verifyOpen, setVerifyOpen] = useState(null);
-  const [messageApi, contextHolder] = message.useMessage()
+const [employee, setEmployee] = useState(null);
+const [verifyOpen, setVerifyOpen] = useState(null);
+const [messageApi, contextHolder] = message.useMessage()
   const [validateFormInstance, setValidateFormInstance] = useState(null);
 
   const [skills, setSkills] = useState([]);
