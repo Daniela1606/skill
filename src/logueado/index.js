@@ -67,13 +67,12 @@ const MenuLogin = () => {
   const navigate = useNavigate()
   const [modalVisible, setModalVisible] = useState(false);
   console.log({ status })
-  console.log('')
 
-const [showOnboardingVideo, setShowOnboardingVideo] = useState(false)
+  const [showOnboardingVideo, setShowOnboardingVideo] = useState(false)
 
-const [employee, setEmployee] = useState(null);
-const [verifyOpen, setVerifyOpen] = useState(null);
-const [messageApi, contextHolder] = message.useMessage()
+  const [employee, setEmployee] = useState(null);
+  const [verifyOpen, setVerifyOpen] = useState(null);
+  const [messageApi, contextHolder] = message.useMessage()
   const [validateFormInstance, setValidateFormInstance] = useState(null);
 
   const [skills, setSkills] = useState([]);
@@ -84,15 +83,39 @@ const [messageApi, contextHolder] = message.useMessage()
   const [questions, setQuestions] = useState([
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
-      question: 'What previews roles have you had before your current position?',
+      question: 'What do you consider your main area of expertise to be?',
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
-      question: 'What are your long-term career goals?',
+      question: 'What industries/sectors do you have experience of?',
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
-      question: 'How do your skills and experience align with this role?',
+      question: 'What are you top 5 business skills?',
+    },
+    {
+      title: 'Need a hand refining your skills? Submit an answer to the below question',
+      question: 'What are your top 5 interpersonal skills?',
+    },
+    {
+      title: 'Need a hand refining your skills? Submit an answer to the below question',
+      question: 'What leadership attributes can you contribute?',
+    },
+    {
+      title: 'Need a hand refining your skills? Submit an answer to the below question',
+      question: 'What other expertise and knowledge can you share?',
+    },
+    {
+      title: 'Need a hand refining your skills? Submit an answer to the below question',
+      question: 'What systems have you experience of using?',
+    },
+    {
+      title: 'Need a hand refining your skills? Submit an answer to the below question',
+      question: 'What providers/external vendors have you worked with',
+    },
+    {
+      title: 'Need a hand refining your skills? Submit an answer to the below question',
+      question: 'What languages are you able to speak?',
     },
   ]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -347,8 +370,8 @@ const [messageApi, contextHolder] = message.useMessage()
               <div>
                 <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} skills={selectedSkills} handleSliderChange={handleRateSkill} handleSkillDelete={handleSkillDelete} />
                     <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border:'solid 1px rgb(0, 0, 124)' ,borderRadius:'20px', background: 'rgb(0, 0, 124)', cursor: 'pointer', color:'white',
-                  fontSize:'15px', fontWeight:'600', padding:'0.5rem', marginTop:'1rem' }}>
-                      <span>I’ve added all my skills</span>
+                  fontSize:'15px', fontWeight:'600', padding:'0.5rem' }}>
+                      <span>I'm finished adding</span>
                     </button>
                 </div>
 
