@@ -67,12 +67,13 @@ const MenuLogin = () => {
   const navigate = useNavigate()
   const [modalVisible, setModalVisible] = useState(false);
   console.log({ status })
+  console.log('')
 
-  const [showOnboardingVideo, setShowOnboardingVideo] = useState(false)
+const [showOnboardingVideo, setShowOnboardingVideo] = useState(false)
 
-  const [employee, setEmployee] = useState(null);
-  const [verifyOpen, setVerifyOpen] = useState(null);
-  const [messageApi, contextHolder] = message.useMessage()
+const [employee, setEmployee] = useState(null);
+const [verifyOpen, setVerifyOpen] = useState(null);
+const [messageApi, contextHolder] = message.useMessage()
   const [validateFormInstance, setValidateFormInstance] = useState(null);
 
   const [skills, setSkills] = useState([]);
@@ -346,8 +347,8 @@ const MenuLogin = () => {
               <div>
                 <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} skills={selectedSkills} handleSliderChange={handleRateSkill} handleSkillDelete={handleSkillDelete} />
                     <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border:'solid 1px rgb(0, 0, 124)' ,borderRadius:'20px', background: 'rgb(0, 0, 124)', cursor: 'pointer', color:'white',
-                  fontSize:'15px', fontWeight:'600', padding:'0.5rem' }}>
-                      <span>I'm finished adding</span>
+                  fontSize:'15px', fontWeight:'600', padding:'0.5rem', marginTop:'1rem' }}>
+                      <span>I’ve added all my skills</span>
                     </button>
                 </div>
 
