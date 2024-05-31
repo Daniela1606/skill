@@ -129,10 +129,11 @@ const MenuLogin = () => {
   ]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  const handleNextQuestion = () => {
-    setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
-  };
-
+const handleNextQuestion = () => {
+  setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
+  
+  setInputValue('');
+};
 
 
 
