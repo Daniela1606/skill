@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
 import { Input } from 'antd';
 
-const AppsearchTarget = ({ onInputChange }) => {
-  const [inputValue, setInputValue] = useState('');
+const AppsearchTarget = ({inputValue, onInputChange }) => {
 
-  const handleInputChange = (event) => {
-    const newValue = event.target.value;
-    setInputValue(newValue);
-    onInputChange(newValue); 
-  };
-
-  return <Input className='pruebita' value={inputValue} onChange={handleInputChange} />;
+  return <Input className='pruebita' value={inputValue} onChange={onInputChange} />;
 };
 
 export default AppsearchTarget;

@@ -81,7 +81,7 @@ const MenuLogin = () => {
 
   //cajita verde
   const handleInputChange = (newValue) => {
-    setInputValue(newValue);
+    setInputValue(newValue.target.value);
   };
 
 
@@ -255,10 +255,10 @@ const MenuLogin = () => {
   //cajita verde
 
   const handleQuestionSubmit = async (event, inputValue) => {
-    event.preventDefault();
+    event?.preventDefault();
     
     try {
-      const response = await fetch(`http://13.42.59.26/api/skills/suggestions?itemsPerPage=10&currentPage=1&search=${inputValue}`, {
+      const response = await fetch(`http://13.42.59.26/api/skills/suggestions?itemsPerPage=10&currentPage=1&search=${inputValue ?? ''}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -266,6 +266,8 @@ const MenuLogin = () => {
       });
       
       const data = await response.json();
+      const cards = data.skills? data?.skills?.map(item => ({id: item.id, title: item.name, image: item.image })) : [];
+      handleSearch(cards);
       console.log(data);
     } catch (error) {
       console.error('Error al enviar la solicitud:', error);
@@ -428,7 +430,7 @@ const MenuLogin = () => {
       <p style={{ fontSize: '16px', fontWeight: '500' }}>
         {questions[currentQuestionIndex].question}
       </p>
-      <AppsearchTarget onInputChange={handleInputChange} />
+      <AppsearchTarget onInputChange={handleInputChange} inputValue={inputValue} />
 
       <div
         style={{
@@ -447,7 +449,7 @@ const MenuLogin = () => {
             fontWeight: '700',
             marginTop: '2rem',
           }}
-          onClick={() => handleQuestionSubmit(inputValue)}
+          onClick={(e) => handleQuestionSubmit(e, inputValue)}
         >
           Submit
         </button>
