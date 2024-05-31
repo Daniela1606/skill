@@ -454,7 +454,7 @@ const MenuLogin = () => {
 
         <button
           style={{ color: '#686B6E', fontSize: '18px', background:"#ff000000" , border:'solid 1px #ff000000'}}
-          onClick={(e) => handleQuestionSubmit(e, inputValue)}
+          onClick={(e) => handleNextQuestion(e, inputValue)}
         >
           Next Question →
         </button>
