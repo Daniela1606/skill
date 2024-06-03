@@ -382,3 +382,8 @@ margin-left: 2rem;
    
    
 }
+
+:where(.css-dev-only-do-not-override-1rqg8tf).ant-typography{
+
+ word-break: normal !important;
+}
