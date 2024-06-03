@@ -7,6 +7,7 @@ import Onboarding from "../onboarding";
 /* import Home from "../Home";
  */import Status from "../adminStatus/index";
  import AppMenuLogin from "../logueado/index";
+ import AppProfileUser from "../profileUser";
 
 
 
@@ -51,6 +52,11 @@ const PublicRoute = () => {
                 <Route
                     path="/menu/:id"
                     element={<AppMenuLogin />} 
+                />
+                                  
+              <Route
+                    path="/profile-user"
+                    element={<AppProfileUser />} 
                 />
                     
                     

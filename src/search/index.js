@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AudioOutlined } from '@ant-design/icons';
 import { Input, Space } from 'antd';
+
 const { Search } = Input;
+
 const suffix = (
   <AudioOutlined
     style={{
@@ -10,15 +12,23 @@ const suffix = (
     }}
   />
 );
-const onSearch = (value, _e, info) => console.log(info?.source, value);
-const Appsearch = () => (
-  <Space direction="vertical" style={{width: '100%'}}>
-    <Search
-      placeholder="Search Skills, Vendors, Hobbies"
-      onSearch={onSearch}
-    />
 
+const Appsearch = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState('');
 
-  </Space>
-);
+  const handleSearch = (value) => {
+    setSearchTerm(value);
+    onSearch(value);
+  };
+
+  return (
+    <Space direction="vertical" style={{ width: '60%' }}>
+      <Search
+        placeholder="Search Skills, Vendors, Hobbies"
+        onSearch={handleSearch}
+      />
+    </Space>
+  );
+};
+
 export default Appsearch;

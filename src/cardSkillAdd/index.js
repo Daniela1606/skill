@@ -25,7 +25,9 @@ const CardArrayAdd = () => {
   const lowerCards = cardData.slice(3, 6);
 
   return (
-    <div>
+    <div style={{position: 'absolute',
+      left: '-7rem',
+      width: '400px'}}>
       <Row gutter={[16, 16]}>
         {upperCards.map((card, index) => (
           <Col key={index} span={8}>
@@ -37,11 +39,11 @@ const CardArrayAdd = () => {
                   <div style={{ color: 'black', fontWeight: '700' }}>{card.title}</div>
                 </div>
               }
-              actions={[
+/*               actions={[
                 <Button key="add" type="primary"  style={{ width: '100%' }}>
                   2
                 </Button>
-              ]}
+              ]} */
             >
               <Meta />
             </Card>
@@ -59,11 +61,11 @@ const CardArrayAdd = () => {
                   <div style={{ color: 'black', fontWeight: '700' }}>{card.title}</div>
                 </div>
               }
-              actions={[
+/*               actions={[
                 <Button key="add" type="primary"  style={{ width: '100%' }}>
                   2
                 </Button>
-              ]}
+              ]} */
             >
               <Meta />
             </Card>

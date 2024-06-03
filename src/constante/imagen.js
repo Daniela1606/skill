@@ -25,6 +25,7 @@ import imagenAp from "../Imagenes/apache.png";
 import imagenResearch from "../Imagenes/research.png";
 import imagenWordpress from "../Imagenes/wordpress.png";
 import imagenAtom2 from "../Imagenes/ATOM2.png";
+import imagenTop from "../Imagenes/Topbar.png"
 
 
 
@@ -39,6 +40,14 @@ export const imagenL ={
 
     NOT_FOUND : notFound,
     IMAGENICON: imagenLogin
+
+};
+
+
+export const imagenTopBar ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenTop
 
 };
 
