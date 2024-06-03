@@ -165,7 +165,7 @@ const handleNextQuestion = () => {
 
     const fetchEmployee = async () => {
       try {
-        const response = await fetch(`http://13.42.59.26/Api/users/employees/${id}`);
+        const response = await fetch(`http://3.8.157.187/Api/users/employees/${id}`);
         if (response.ok) {
           const data = await response.json();
           setEmployee(data);
@@ -181,7 +181,7 @@ const handleNextQuestion = () => {
   }, []);
 
   const confirmValidData = async () => {
-    return await fetch('http://13.42.59.26/api/users/employees/verify-correct-data', {
+    return await fetch('http://3.8.157.187/api/users/employees/verify-correct-data', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -197,7 +197,7 @@ const handleNextQuestion = () => {
 
   const reportInvalidData = async (data) => {
     console.log({ token })
-    return fetch('http://13.42.59.26/api/users/employees/report-incorrect-data', {
+    return fetch('http://3.8.157.187/api/users/employees/report-incorrect-data', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -259,7 +259,7 @@ const handleNextQuestion = () => {
     event?.preventDefault();
     
     try {
-      const response = await fetch(`http://13.42.59.26/api/skills/suggestions?itemsPerPage=10&currentPage=1&search=${inputValue ?? ''}`, {
+      const response = await fetch(`http://3.8.157.187/api/skills/suggestions?itemsPerPage=10&currentPage=1&search=${inputValue ?? ''}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
