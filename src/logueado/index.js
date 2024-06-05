@@ -408,7 +408,7 @@ const handleNextQuestion = () => {
               <div>
                 <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} skills={selectedSkills} handleSliderChange={handleRateSkill} handleSkillDelete={handleSkillDelete} />
                     <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border:'solid 1px rgb(0, 0, 124)' ,borderRadius:'20px', background: 'rgb(0, 0, 124)', cursor: 'pointer', color:'white',
-                  fontSize:'15px', fontWeight:'600', padding:'0.5rem' }}>
+                  fontSize:'15px', fontWeight:'600', padding:'0.5rem', marginTop:'2rem' }}>
                       <span>I'm finished adding</span>
                     </button>
                 </div>
