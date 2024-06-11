@@ -25,7 +25,12 @@ import imagenAp from "../Imagenes/apache.png";
 import imagenResearch from "../Imagenes/research.png";
 import imagenWordpress from "../Imagenes/wordpress.png";
 import imagenAtom2 from "../Imagenes/ATOM2.png";
-import imagenTop from "../Imagenes/Topbar.png"
+import imagenTop from "../Imagenes/Topbar.png";
+import imagenBusiness1 from "../Imagenes/Business1.png";
+import imagenBusiness2 from "../Imagenes/Business2.png";
+
+
+
 
 
 
@@ -48,6 +53,24 @@ export const imagenTopBar ={
 
     NOT_FOUND : notFound,
     IMAGENICON: imagenTop
+
+};
+
+
+
+export const imagenBuss2 ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenBusiness2
+
+};
+
+
+
+export const imagenBuss1 ={
+
+    NOT_FOUND : notFound,
+    IMAGENICON: imagenBusiness1
 
 };
 

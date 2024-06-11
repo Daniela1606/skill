@@ -315,13 +315,13 @@ width: 25% !important;
   display: none !important;
 }
 
-
+/* 
 .ant-row.css-dev-only-do-not-override-sk1n6{
 
 
 
   margin-top: 2rem !important;
-}
+} */
 
 
 .ant-tooltip-inner {
@@ -387,3 +387,9 @@ margin-left: 2rem;
 
  word-break: normal !important;
 }
+
+
+/* :where(.css-dev-only-do-not-override-sk1n6).ant-col-8{
+
+  flex:0!important;
+} */
