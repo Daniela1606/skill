@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
-import { AudioOutlined } from '@ant-design/icons';
-import { Input, Space } from 'antd';
-=======
 import React, { useEffect, useState } from 'react';
 import { AudioOutlined } from '@ant-design/icons';
 import { Input, Space } from 'antd';
 import CardArray from '../cardSkill';
 import { imagenDeIcon, imagenDeGit, imagenDeAtom, imagenDeJs, imagenDePhy, imagenDeC, imagenDeMy, imagenAws, imagenSsl, imagenApache, imagenDeResearch, imagenDeWordpress } from '../constante/imagen';
->>>>>>> 259a04d28de0a48da15ffdc7f984f325697116b9
 
 const { Search } = Input;
 
@@ -23,18 +17,6 @@ const suffix = (
 );
 
 const Appsearch = ({ onSearch }) => {
-<<<<<<< HEAD
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const handleSearch = (value) => {
-    setSearchTerm(value);
-    onSearch(value);
-  };
-
-  return (
-    <Space direction="vertical" style={{ width: '60%' }}>
-      <Search
-=======
   const [searchData, setSearchData] = useState(null);
 
   const handleSearch = (value) => {
@@ -72,7 +54,6 @@ const Appsearch = ({ onSearch }) => {
   return (
     <Space direction="vertical" style={{width: '100%'}}>
       <Search 
->>>>>>> 259a04d28de0a48da15ffdc7f984f325697116b9
         placeholder="Search Skills, Vendors, Hobbies"
         onSearch={handleSearch}
       />

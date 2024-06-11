@@ -297,8 +297,6 @@ const handleNextQuestion = () => {
       background: 'linear-gradient(200deg, rgba(73,164,248,0.24) 4%, rgba(15,209,186,0.07) 14%, rgba(255,255,255,1) 27%, rgba(255,255,255,1) 58%, rgba(15,209,186,0.07) 75%, rgba(73,164,248,0.24) 92%)',
     }}
     >
-      <Sider width={350}>
-        <div style={{ margin: '1em', border: '1px solid #ddd', borderRadius: '15px', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: '97.3%', background: 'transparent' }}>
           <Header
             id='header'
             style={{
@@ -345,7 +343,7 @@ const handleNextQuestion = () => {
            </div>
           
 
-      </Sider>
+   
       <Layout id='body-layout' style={{ padding: '1em', overflowY: 'scroll' }}>
         <Header
           style={{
@@ -523,7 +521,6 @@ const handleNextQuestion = () => {
               <img src={imagenDeFooter.IMAGENICON} alt="Logo" style={{ marginLeft: '-5rem', width: '100%' }} />
               </div> */}
 
-            </Content>
 
 
           {contextHolder}
@@ -608,8 +605,7 @@ const handleNextQuestion = () => {
               </Modal>
           </Layout>
         </Layout>
-      </Layout>
-    </Layout>
+ 
   );
 };
 

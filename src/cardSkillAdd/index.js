@@ -104,11 +104,6 @@ const CardArrayAdd = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <div style={{position: 'absolute',
-      left: '-7rem',
-      width: '400px'}}>
-=======
     <div
       style={{
         position: 'absolute',
@@ -116,7 +111,6 @@ const CardArrayAdd = () => {
         width: '400px',
       }}
     >
->>>>>>> 259a04d28de0a48da15ffdc7f984f325697116b9
       <Row gutter={[16, 16]}>
         {upperCards.map((card, index) => (
           <Col key={index} span={8}>
@@ -139,13 +133,6 @@ const CardArrayAdd = () => {
                   </div>
                 </div>
               }
-<<<<<<< HEAD
-/*               actions={[
-                <Button key="add" type="primary"  style={{ width: '100%' }}>
-                  2
-                </Button>
-              ]} */
-=======
               actions={[
                 <Button
                   key="add"
@@ -156,7 +143,6 @@ const CardArrayAdd = () => {
                   onClick={() => handleCardSelect(card)}
                 ></Button>
               ]}
->>>>>>> 259a04d28de0a48da15ffdc7f984f325697116b9
             >
               <Meta />
             </Card>
@@ -185,13 +171,6 @@ const CardArrayAdd = () => {
                   </div>
                 </div>
               }
-<<<<<<< HEAD
-/*               actions={[
-                <Button key="add" type="primary"  style={{ width: '100%' }}>
-                  2
-                </Button>
-              ]} */
-=======
               actions={[
                 <Button
                   key="add"
@@ -202,7 +181,6 @@ const CardArrayAdd = () => {
                   onClick={() => handleCardSelect(card)}
                 ></Button>
               ]}
->>>>>>> 259a04d28de0a48da15ffdc7f984f325697116b9
             >
               <Meta />
             </Card>

@@ -7,11 +7,7 @@ import Onboarding from "../onboarding";
 /* import Home from "../Home";
  */import Status from "../adminStatus/index";
  import AppMenuLogin from "../logueado/index";
-<<<<<<< HEAD
- import AppProfileUser from "../profileUser";
-=======
  import ProfileUser from "../profileUser/index";
->>>>>>> 259a04d28de0a48da15ffdc7f984f325697116b9
 
 
 

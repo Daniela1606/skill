@@ -1,12 +1,6 @@
 import React from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
-<<<<<<< HEAD
-import { imagenTopBar } from '../constante/imagen';
-
-import { Menu } from 'antd';
-=======
 import { Menu, Row, Col } from 'antd';
->>>>>>> 259a04d28de0a48da15ffdc7f984f325697116b9
 const items = [
   {
     key: 'sub1',
@@ -116,34 +110,10 @@ const items = [
     ],
   },
 ];
-<<<<<<< HEAD
-=======
-
->>>>>>> 259a04d28de0a48da15ffdc7f984f325697116b9
 const AppProfileUser = () => {
   const onClick = (e) => {
     console.log('click ', e);
   };
-<<<<<<< HEAD
-  
-  <img src={imagenTopBar.IMAGENICON} alt="Logo" style={{width:'100rem'}} />
-
-  return (
-    <Menu
-      onClick={onClick}
-      style={{
-        width: 256,
-      }}
-      defaultSelectedKeys={['1']}
-      defaultOpenKeys={['sub1']}
-      mode="inline"
-      items={items}
-    />
-  );
-
-
-};
-=======
 
   return (
     <Row>
@@ -209,5 +179,4 @@ const AppProfileUser = () => {
   );
 };
 
->>>>>>> 259a04d28de0a48da15ffdc7f984f325697116b9
 export default AppProfileUser;

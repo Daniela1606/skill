@@ -5,13 +5,9 @@ import { imagenDeIcon, imagenDeGit, imagenDeAtom, imagenDeJs, imagenDePhy, image
 
 const { Meta } = Card;
 
-<<<<<<< HEAD
-const CardArray = ({ searchData }) => {
-=======
 const CardArray = ({ searchData, onCardAdded }) => {
   console.log('lo paso', searchData);
 
->>>>>>> 259a04d28de0a48da15ffdc7f984f325697116b9
   const cardData = [
     { title: 'GitHub ', image: imagenDeGit.IMAGENICON },
     { title: '', image: imagenDeAtom.IMAGENICON },
@@ -38,8 +34,6 @@ const CardArray = ({ searchData, onCardAdded }) => {
     setFilteredCards(searchData || cardData);
   }, [searchData]);
 
-<<<<<<< HEAD
-=======
   return (
     <div>
       <Row gutter={[16, 16]}>
@@ -85,55 +79,10 @@ const CardArray = ({ searchData, onCardAdded }) => {
     </div>
   );
 };
->>>>>>> 259a04d28de0a48da15ffdc7f984f325697116b9
 
 
-    return (
-      <div>
-        <Row gutter={[16, 16]}>
-          {searchData && Array.isArray(searchData) && searchData.map((card, index) => (
+    
 
-            <Col key={index} span={4}>
-              <Card
-                style={{
-                  padding: '0.5rem 1rem',
-                  width: '95%',
-                  border: 'none',
-                  boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px',
-                }}
-                cover={
-                  <div style={{ textAlign: 'center' }}>
-                    <img
-                      style={{ width: '35px', marginTop: '0.5rem' }}
-                      src={card.image}
-                      alt="Logo"
-                    />
-                    <div style={{ color: 'black', fontWeight: '700' }}>
-                      {card.title}
-                    </div>
-                  </div>
-                }
-                actions={[
-                  <Button
-                    key="add"
-                    type="primary"
-                    icon={<PlusOutlined />}
-                    style={{
-                      float: 'right',
-                      marginRight: '2px',
-                      background: '#00007c',
-                    }}
-                    size="small"
-                  ></Button>,
-                ]}
-              >
-                <Meta />
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </div>
-    );
-  };
-  
+
+
   export default CardArray;
