@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import { SearchOutlined, InfoCircleOutlined, MailOutlined, SettingOutlined} from '@ant-design/icons';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
-import { Layout, Menu, Modal, message, theme, Button,  } from 'antd';
-import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando, imagenDeFooter,imagenDeAvatar,imagenDeMagic } from '../constante/imagen';
+import { Layout, Menu, Modal, message, theme, Button, Space, } from 'antd';
+import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando, imagenDeFooter, imagenDeAvatar, imagenDeMagic } from '../constante/imagen';
 import Appsearch from "../search";
 import VerifyForm from '../components/VerifyForm';
 import ReportInvalidDataForm from '../components/ReportInvalidDataForm';
@@ -13,56 +13,45 @@ import AppCard from "../cardSkill/index";
 import AppCardAdd from "../cardSkillAdd/index";
 import AppAvatar from '../imagenAvatar';
 import AppPopup from '../Popup/index';
+import AppsearchTarget from '../searchTarget';
 
 const { Header, Content, Sider } = Layout;
 
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-  const key = String(index + 1);
-  let menuLabel = '';
+const items = [
+  {
+    key: '0',
+    label: 'General',
+    type: 'group',
+    children: [],
+  },
+  {
+    key: '1',
+    icon: <SearchOutlined />,
+    label: 'Search',
+  },
+  {
+    key: '2',
+    label: 'General',
+    type: 'group',
+    children: [],
+  },
+  {
+    key: '3',
+    icon: <InfoCircleOutlined />,
+    label: 'Help',
+  },
+  {
+    key: '4',
+    icon: <MailOutlined />,
+    label: 'Contact',
+  },
+  {
+    key: '5',
+    icon: <SettingOutlined />,
+    label: 'Settings',
+  },
+];
 
-switch (index) {
-    case 0:
-      menuLabel = 'Search';
-      break;
-    case 1:
-      menuLabel = 'Help';
-      break;
-    case 2:
-      menuLabel = 'Contact';
-      break;
-    case 3:
-      menuLabel = 'Settings';
-      break;
-    case 4:
-      menuLabel = 'Option 4';
-      break;
-    case 5:
-      menuLabel = 'Option 5';
-      break;
-    case 6:
-      menuLabel = '';
-      break;
-    default:
-      menuLabel = 'Default Option';
-}
-
-
-
-  return {
-    key: `sub${key}`,
-    icon: React.createElement(icon),
-    label: menuLabel,
-    children: new Array(4).fill(null).map((_, j) => {
-      const subKey = index * 4 + j + 1;
-/*       return {
-        key: subKey,
-        label: `Option ${subKey}`,
-      }; */
-    }),
-    
-  };
-  
-});
 
 
 
@@ -77,13 +66,13 @@ const MenuLogin = () => {
   const [reportIsActive, setReportIsActive] = useState(false);
   const navigate = useNavigate()
   const [modalVisible, setModalVisible] = useState(false);
-  console.log({status})
+  console.log({ status })
 
   const [showOnboardingVideo, setShowOnboardingVideo] = useState(false)
 
   const [employee, setEmployee] = useState(null);
   const [verifyOpen, setVerifyOpen] = useState(null);
-  const [messageApi, contextHolder ] = message.useMessage()
+  const [messageApi, contextHolder] = message.useMessage()
   const [validateFormInstance, setValidateFormInstance] = useState(null);
 
   const [skills, setSkills] = useState([]);
@@ -173,7 +162,7 @@ const handleNextQuestion = () => {
   };
 
   useEffect(() => {
- 
+
     const fetchEmployee = async () => {
       try {
         const response = await fetch(`http://3.8.157.187/Api/users/employees/${id}`);
@@ -190,7 +179,6 @@ const handleNextQuestion = () => {
 
     fetchEmployee();
   }, []);
-  
 
   const confirmValidData = async () => {
     return await fetch('http://3.8.157.187/api/users/employees/verify-correct-data', {
@@ -226,33 +214,33 @@ const handleNextQuestion = () => {
       })
   };
 
-    const onCreate = () => {
-      setVerifyOpen(false)
-      setReportIsActive(false)
+  const onCreate = () => {
+    setVerifyOpen(false)
+    setReportIsActive(false)
 
-      if(reportIsActive) {
-        return Modal.success({
-          okText: 'Log out', 
-          onOk: ()=> {
-            localStorage.clear()
-            sessionStorage.clear()
-            navigate('/')
+    if (reportIsActive) {
+      return Modal.success({
+        okText: 'Log out',
+        onOk: () => {
+          localStorage.clear()
+          sessionStorage.clear()
+          navigate('/')
 
-          },
-          content: 'We have  your issue with your Admin team and will get in contact as soon as it is resolved. Until this is resolved you will not be able to build your profile',
-        })
-      } else {
-        setTimeout(() => {
+        },
+        content: 'We have  your issue with your Admin team and will get in contact as soon as it is resolved. Until this is resolved you will not be able to build your profile',
+      })
+    } else {
+      setTimeout(() => {
         setShowOnboardingVideo(true)
-        }, 1000)
-      }
+      }, 1000)
     }
+  }
 
-   useEffect(() => {
-     if (status === 'Pending') {   
+  useEffect(() => {
+    if (status === 'Pending') {
       setVerifyOpen(true);
-     }  
-  }, [status])   
+    }
+  }, [status])
 
 
 
@@ -297,6 +285,8 @@ const handleNextQuestion = () => {
       background: 'linear-gradient(200deg, rgba(73,164,248,0.24) 4%, rgba(15,209,186,0.07) 14%, rgba(255,255,255,1) 27%, rgba(255,255,255,1) 58%, rgba(15,209,186,0.07) 75%, rgba(73,164,248,0.24) 92%)',
     }}
     >
+      <Sider width={350}>
+        <div style={{ margin: '1em', border: '1px solid #ddd', borderRadius: '15px', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: '97.3%', background: 'transparent' }}>
           <Header
             id='header'
             style={{
@@ -316,34 +306,39 @@ const handleNextQuestion = () => {
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
             style={{
-              height: '100%',
               borderRight: 0,
+              background: 'transparent',
+              flexGrow: 1,
             }}
-            items={items2}
+            items={items}
           />
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              padding: '0 8px',
+              borderRadius: '10px',
+              marginBottom: '1em',
+              boxSizing: 'border-box',
+              justifySelf: 'center',
+              alignSelf: 'center',
+              background: '#58C2C01A',
+              width: '90%'
+            }}>
+            <div>
+              <img src={imagenDeAvatar.IMAGENICON} alt="Logo" />
+            </div>
 
 
 
-          <div 
-          style={{  
-          display: 'flex',
-          alignItems: 'center',
-          padding:'24px',
-          background: '#effcfc',
-          marginTop:'-30%'
-          }}>
-          <div>
-          <img src={imagenDeAvatar.IMAGENICON} alt="Logo" />
-           </div>
+            <p>{employee ? employee.user.firstName : ''}</p>
 
-          
-           
-           <p>{employee ? employee.user.firstName : ''}</p>
-           
-           </div>
-          
+          </div>
 
-   
+        </div>
+
+
+      </Sider>
       <Layout id='body-layout' style={{ padding: '1em', overflowY: 'scroll' }}>
         <Header
           style={{
@@ -388,17 +383,12 @@ const handleNextQuestion = () => {
             </div>
             <div
               style={{
-                paddingLeft:'24px',
-                paddingRight:'0px',
-                margin: '0px 10px 0px 10px',
-                maxHeight: 200,
-                background: colorBgContainer,
-                borderRadius:'20px',
+                marginTop: '3em',
                 display: 'flex',
-                alignItems: 'center',
-                border:'solid 1px #EFEEFC',
-                marginTop:'-2rem'
-              
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                height: '100%',
+                maxWidth: '900px',
               }}
             >
               <div
@@ -416,9 +406,14 @@ const handleNextQuestion = () => {
 
 
               <div>
-                <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} skills={selectedSkills} handleSliderChange={handleRateSkill} handleSkillDelete={handleSkillDelete} />
-                    <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border:'solid 1px rgb(0, 0, 124)' ,borderRadius:'20px', background: 'rgb(0, 0, 124)', cursor: 'pointer', color:'white',
-                  fontSize:'15px', fontWeight:'600', padding:'0.5rem' }}>
+              <AppPopup 
+                    open={modalVisible}
+                    handleCancel={() => setModalVisible(false)}
+                    skills={selectedSkills} 
+                    handleSliderChange={handleRateSkill}
+                    handleSkillDelete={handleSkillDelete}
+                  />                    <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border:'solid 1px rgb(0, 0, 124)' ,borderRadius:'20px', background: 'rgb(0, 0, 124)', cursor: 'pointer', color:'white',
+                  fontSize:'15px', fontWeight:'600', padding:'0.5rem', marginTop:'2rem' }}>
                       <span>I'm finished adding</span>
                     </button>
                 </div>
@@ -501,111 +496,92 @@ const handleNextQuestion = () => {
           </Sider>
         </Layout>
 
-<div style={{ 
-  background: 'linear-gradient(to bottom, #AFDFBB, #58C2C0)', 
-  width: '50%',
-  borderRadius: '20px', 
-  padding: '20px',
- /*  marginBottom:'4rem' */
-
-  }}>
-  <p style={{fontWeight:'700', fontSize:'18px'}}>Need a hand?</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
-  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-  <button style={{ background: 'white', border: 'solid 1px white', width: '20%', borderRadius: '20px', padding: '5px' }}>Submit</button>
-
-    <p style={{color:'white'}}>Next Question → </p>
-  </div>
-</div>
-{/*               <div>
-              <img src={imagenDeFooter.IMAGENICON} alt="Logo" style={{ marginLeft: '-5rem', width: '100%' }} />
-              </div> */}
 
 
 
-          {contextHolder}
-          <Modal 
-  closeIcon={false}
-  width={840}
-  open={verifyOpen}
-  title="Let's check your details are correct"
-  okText={!reportIsActive ? "Everything is correct" : 'Send Report'}
-  cancelText={!reportIsActive ? "Something is not correct" : 'Back'}
-  okButtonProps={{
-    autoFocus: true,
-  }}
-  onCancel={(event) => {
-    const target = event.target.localName;
-    if (target === 'span' || target === 'button') {
-      setReportIsActive(!reportIsActive);
-    }
-  }}
-  destroyOnClose
-  onOk={async () => {
-    let result;
-    try {
-      if (!reportIsActive) {
-        // "Everything is correct"
-        await confirmValidData()
-        messageApi.open({type: 'success', content: 'User data confirmed successfully'})
+        {contextHolder}
+      </Layout>
+      <Modal
+        closeIcon={false}
+        width={840}
+        open={verifyOpen}
+        title="Let's check your details are correct"
+        okText={!reportIsActive ? "Everything is correct" : 'Send Report'}
+        cancelText={!reportIsActive ? "Something is not correct" : 'Back'}
+        okButtonProps={{
+          autoFocus: true,
+        }}
+        onCancel={(event) => {
+          const target = event.target.localName;
+          if (target === 'span' || target === 'button') {
+            setReportIsActive(!reportIsActive);
+          }
+        }}
+        destroyOnClose
+        onOk={async () => {
+          let result;
+          try {
+            if (!reportIsActive) {
+              // "Everything is correct"
+              await confirmValidData()
+              messageApi.open({ type: 'success', content: 'User data confirmed successfully' })
 
-      } else {
-      
-        const formValues = validateFormInstance.getFieldsValue();
-        console.log({ formValues });
-        result = await reportInvalidData(formValues);
+            } else {
 
-        console.log({ result });
-        if (result.error) {
-          throw result.error.message;
-        }
+              const formValues = validateFormInstance.getFieldsValue();
+              console.log({ formValues });
+              result = await reportInvalidData(formValues);
 
-        Modal.success({
-          okText: 'Log out',
-          content: 'We have received your issue with your Admin team and will get in contact as soon as it is resolved. Until this is resolved, you will not be able to build your profile.',
-          onOk: handleLogout, 
-          
+              console.log({ result });
+              if (result.error) {
+                throw result.error.message;
+              }
 
-        });
-/*         messageApi.open({ type: 'success', content: 'prueba2' }); 
- */
-      }
+              Modal.success({
+                okText: 'Log out',
+                content: 'We have received your issue with your Admin team and will get in contact as soon as it is resolved. Until this is resolved, you will not be able to build your profile.',
+                onOk: handleLogout,
 
-      validateFormInstance?.resetFields();
-      onCreate();
-    } catch (error) {
+
+              });
+              /*         messageApi.open({ type: 'success', content: 'prueba2' }); 
+               */
+            }
+
+            validateFormInstance?.resetFields();
+            onCreate();
+          } catch (error) {
 /*       messageApi.open({ type: 'error', content: error.toString() }); 
  */    }
-  }}
->
-  {
-    !reportIsActive ? 
-    <VerifyForm
-      initialValues={{...employee, ...employee?.user, ...employee?.user.address, birthday: employee?.user.birthdate?.split('T')[0]}}
-      onFormInstanceReady={(instance) => {
-        setValidateFormInstance(instance);
-      }}
-    /> : 
-    <ReportInvalidDataForm
-      onFormInstanceReady={(instance) => {
-        setValidateFormInstance(instance);
-      }}
-    />
-  }
-</Modal>
-              <Modal
-                title="Onboarding Video"
-                open={showOnboardingVideo}
-                onCancel={() => setShowOnboardingVideo(false)}
-                destroyOnClose
-                footer={null}
-                style={{minWidth: 'fit-content'}}
-              >
-                <AppOnboarding onConfirmClick={() => (setShowOnboardingVideo(false))} />
-              </Modal>
-          </Layout>
-        </Layout>
- 
+        }}
+      >
+        {
+          !reportIsActive ?
+            <VerifyForm
+              initialValues={{ ...employee, ...employee?.user, ...employee?.user.address, birthday: employee?.user.birthdate?.split('T')[0] }}
+              onFormInstanceReady={(instance) => {
+                setValidateFormInstance(instance);
+              }}
+            /> :
+            <ReportInvalidDataForm
+              onFormInstanceReady={(instance) => {
+                setValidateFormInstance(instance);
+              }}
+            />
+        }
+      </Modal>
+      <Modal
+        title="Onboarding Video"
+        open={showOnboardingVideo}
+        onCancel={() => setShowOnboardingVideo(false)}
+        destroyOnClose
+        footer={null}
+        style={{ minWidth: 'fit-content' }}
+      >
+        <AppOnboarding onConfirmClick={() => (setShowOnboardingVideo(false))} />
+      </Modal>
+
+    </Layout>
   );
 };
 

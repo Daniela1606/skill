@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Modal, Slider, Typography, Progress, Row, Col, Button, Input } from 'antd';
-import { imagenDeIcon, imagenDeGit, imagenDeAtom2, imagenDeJs, imagenDePhy } from '../constante/imagen';
+import { useNavigate } from 'react-router-dom';
 
 const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillDelete }) => {
-
   const [skillsState, setSkillsState] = useState(skills);
-
+  const navigate = useNavigate();
 
   const stepsTexts = [
     'Entry Level',
@@ -19,11 +18,26 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillD
     return stepsTexts[value - 1];
   };
 
-
+  const handleSaveAndRedirect = () => {
+    fetch('/api/users/employees/6b3f410b-2a44-4dc1-8ed0-0401a849bfbf/skills', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(skillsState)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Skills saved:', data);
+      navigate('/profile-user');
+    })
+    .catch(error => {
+      console.error('Error saving skills:', error);
+    });
+  };
 
   return (
     <Modal open={open} onCancel={handleCancel} footer={null}>
-
       <Typography.Title level={4} style={{ marginBottom: '16px', textAlign: 'left', fontSize: '25px' }}>
         My skills
       </Typography.Title>
@@ -71,7 +85,7 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillD
 
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: 16 }}>
         <Button type="primary" style={{ marginRight: 8, width: '50%', color: '#041F72', fontWeight: '700', background: 'white', border: 'solid 1px #041F72', fontSize: '15px' }} onClick={handleCancel}>Cancel</Button>
-        <Button style={{ width: '50%', background: '#041F72', color: 'white', fontWeight: '700', border: 'solid 1px #041F72', fontSize: '15px' }}>Save</Button>
+        <Button style={{ width: '50%', background: '#041F72', color: 'white', fontWeight: '700', border: 'solid 1px #041F72', fontSize: '15px' }} onClick={handleSaveAndRedirect}>Save</Button>
       </div>
     </Modal>
   );
