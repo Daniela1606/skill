@@ -17,6 +17,7 @@ import AppsearchTarget from '../searchTarget';
 
 const { Header, Content, Sider } = Layout;
 
+console.log('hola')
 const items = [
   {
     key: '0',
