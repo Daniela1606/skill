@@ -10,7 +10,7 @@ function CircularProgressBar({children, progress}) {
 
 
     return (
-        <div style={{
+        <div className="circle_upload_responsive" style={{
             aspectRatio: '1 / 1',
             width: '63%',
             overflow: 'hidden',

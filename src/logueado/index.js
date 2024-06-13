@@ -79,6 +79,9 @@ const MenuLogin = () => {
   const [selectedSkills , setSelectedSkills] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
+
+
+  
   //cajita verde
   const handleInputChange = (newValue) => {
     setInputValue(newValue.target.value);
@@ -285,8 +288,9 @@ const handleNextQuestion = () => {
       background: 'linear-gradient(200deg, rgba(73,164,248,0.24) 4%, rgba(15,209,186,0.07) 14%, rgba(255,255,255,1) 27%, rgba(255,255,255,1) 58%, rgba(15,209,186,0.07) 75%, rgba(73,164,248,0.24) 92%)',
     }}
     >
-      <Sider width={350}>
-        <div style={{ margin: '1em', border: '1px solid #ddd', borderRadius: '15px', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: '97.3%', background: 'transparent' }}>
+      <Sider  width={350}>
+        <div className='probandoMobile2' /* style={{ margin: '1em', border: '1px solid #ddd', borderRadius: '15px',
+         overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: '97.3%', background: 'transparent' }} */>
           <Header
             id='header'
             style={{
@@ -297,7 +301,7 @@ const handleNextQuestion = () => {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <img src={imagenLo.IMAGENICON} alt="Logo" />
+              <img className='imagenLogoResponsive' src={imagenLo.IMAGENICON} alt="Logo"  />
             </div>
             <div className="demo-logo" />
           </Header>
@@ -354,8 +358,8 @@ const handleNextQuestion = () => {
             overflow: 'hidden'
           }}
         >
-          <div>
-            <p style={{ fontSize: '40px', fontWeight: '700', color: 'black' }}>
+          <div >
+            <p  className='name_responsive'style={{ fontSize: '40px', fontWeight: '700', color: 'black' }}>
               Welcome, {employee ? employee.user.preferredName : ''}</p>
             <p>Improve your profile by completing the skills section</p>
           </div>
@@ -422,7 +426,7 @@ const handleNextQuestion = () => {
 
 {/* cajita verde
  */}
-       <div
+       <div className='caja_verde_responsive'
       style={{
         background: 'linear-gradient(to bottom, #AFDFBB, #58C2C0)',
         borderRadius: '20px',
@@ -477,21 +481,21 @@ const handleNextQuestion = () => {
             }}
           >
             <div style={{width: 'fit-content',margin: '0 auto'}}> 
-              <img src={imagenBuscar.IMAGENICON} style={{ maxWidth: '100%', borderRadius: '1em' }} width={315} alt="Logo" />
+              <img className='imagen_Buscar' src={imagenBuscar.IMAGENICON} style={{ maxWidth: '100%', borderRadius: '1em' }} width={315} alt="Logo" />
             </div>
               <AppAvatar />
             <div >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-                <p style={{ fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '10px' }}>Skills Added</p>
-                <div style={{ marginLeft: 'auto' }}>
+                <p  className='name_skills' style={{ fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '10px' }}>Skills Added</p>
+                <div  style={{ marginLeft: 'auto' }}>
                 <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} skills={selectedSkills} handleSliderChange={handleRateSkill} handleSkillDelete={handleSkillDelete} />
-                    <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
-                      <img src={imagenDeMagic.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '5px' }} />
-                      <span>Rate Skills</span>
+                    <button  onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
+                      <img className='boton_skill' src={imagenDeMagic.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '5px' }} />
+                      <span className='boton_skill'>Rate Skills</span>
                     </button>
                 </div>
               </div>
-              <AppCardAdd cards={selectedSkills} hideButtons={true}/>
+              <AppCardAdd className='card_skill_responsive' cards={selectedSkills} hideButtons={true}/>
             </div>
           </Sider>
         </Layout>

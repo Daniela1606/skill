@@ -76,7 +76,13 @@ const AppProfileUser = () => {
         <Menu
           onClick={onClick}
           style={{
-            width: 256,
+            width: 100,
+            border: 'solid 1px #EFEEFC',
+            margin:'1em',
+            background:'linear-gradient(to bottom, white, rgb(88 194 192 / 24%))',
+            minHeight:'95%',
+            borderRadius:'20px',
+          
           }}
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['sub1']}
@@ -130,7 +136,7 @@ const AppProfileUser = () => {
         </div>
         </div>
 
-        <Row style={{ marginTop: '6rem' }}>
+        <Row >
           <Col span={12}>
             <div className="text-user-box">
               <div className="text-user">
