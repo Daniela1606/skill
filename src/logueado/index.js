@@ -416,9 +416,10 @@ const handleNextQuestion = () => {
                     skills={selectedSkills} 
                     handleSliderChange={handleRateSkill}
                     handleSkillDelete={handleSkillDelete}
-                  />                    <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border:'solid 1px rgb(0, 0, 124)' ,borderRadius:'20px', background: 'rgb(0, 0, 124)', cursor: 'pointer', color:'white',
-                  fontSize:'15px', fontWeight:'600', padding:'0.5rem', marginTop:'2rem' }}>
-                      <span>I'm finished adding</span>
+                  /> 
+                  <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border:'2px solid rgb(4, 31, 114)' ,borderRadius:'8px', background: 'white', cursor: 'pointer', color:'rgb(4, 31, 114)',paddingRight:'2rem', paddingLeft:'2rem',
+                  fontSize:'15px', fontWeight:'600', padding:'0.5rem', marginTop:'2rem', fontFamily:'Manrope Variable', fontWeight:'700' }}>
+                      <span>I'm Finished Adding</span>
                     </button>
                 </div>
 
