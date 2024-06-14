@@ -16,7 +16,7 @@ const AppsearchTarget = ({ inputValue, onInputChange }) => {
   useEffect(() => {
     const fetchSuggestions = async () => {
       try {
-        const response = await fetch('/api/skills/suggestions/?itemsPerPage=10&currentPage=1&search=HTML&category=skill');
+        const response = await fetch('/api/skills/suggestions/?itemsPerPage=10&currentPage=1&search=HTML&category=Skill');
         const data = await response.json();
         console.log(data);
       } catch (error) {
