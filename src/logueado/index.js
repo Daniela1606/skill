@@ -98,38 +98,61 @@ const MenuLogin = () => {
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What do you consider your main area of expertise to be?',
+      queryCategory: 'Skill'
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What industries/sectors do you have experience of?',
+      queryCategory: 'Skill'
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What are you top 5 business skills?',
+      queryCategory: 'Skill'
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What are your top 5 interpersonal skills?',
+      queryCategory: 'Skill'
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What leadership attributes can you contribute?',
+      queryCategory: 'Skill'
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What other expertise and knowledge can you share?',
+      queryCategory: 'Skill'
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What systems have you experience of using?',
+      queryCategory: 'System'
     },
+    // {
+    //   title: 'Need a hand refining your skills? Submit an answer to the below question',
+    //   question: 'What providers/external vendors have you worked with',
+    // },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
-      question: 'What providers/external vendors have you worked with',
+      question: 'What languages are you able to speak?',
+      queryCategory: 'Language'
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What languages are you able to speak?',
+      queryCategory: 'Language'
+    },
+    {
+      title: 'Need a hand refining your skills? Submit an answer to the below question',
+      question: 'What are your interests and hobbies?',
+      queryCategory: 'Hobbie'
+    },
+    {
+      title: 'Need a hand refining your skills? Submit an answer to the below question',
+      question: 'Do you have any certifications or qualifications?',
+      queryCategory: 'Certification'
     },
   ]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -139,6 +162,11 @@ const handleNextQuestion = () => {
   
   setInputValue('');
 };
+
+useEffect(() => {
+  handleQuestionSubmit(null, '')
+
+}, [currentQuestionIndex])
 
 
 
@@ -151,7 +179,50 @@ const handleNextQuestion = () => {
     if (!selectedSkills.some((selected) => selected.id === value.id)) {
       setSelectedSkills([...selectedSkills, { ...value, rate: 0 }]);
     }
+    console.log({value})
+    const {categories} = value
+    handleSearchSubmit('', categories)
   }
+  
+  const handleSearchSubmit = (value, relations) => {
+    console.log(value);
+    let parsedRelations = ''
+    if (relations && relations.length > 0) {
+      parsedRelations = relations.filter(category => category !== '').map(category => category.toLowerCase()).join(', ')
+    }
+
+    console.log({ categories: relations, parsedCategories: parsedRelations })
+    const token = localStorage.getItem('token');
+
+    fetch(`http://3.8.157.187/api/skills/?itemsPerPage=10&currentPage=1&search=${value + ', ' +parsedRelations}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    })    
+      .then(response => response.json())
+      .then(data => {
+        console.log({data});
+        // const cardData = [
+        //   { title: 'GitHub ', image: imagenDeGit.IMAGENICON },
+        //   { title: 'JavaScript ', image: imagenDeJs.IMAGENICON },
+        //   { title: 'Phyton ', image: imagenDePhy.IMAGENICON },
+        // ]; 
+        console.log({ data: data.skills })
+        const cards = data.skills? data?.skills?.map(item => ({id: item.id, title: item.name, image: item.image, categories: [
+          item.tier1,
+          item.tier2,
+          item.tier3,
+          item.tier4,
+        ] })) : [];
+        handleSearch(cards);
+        // setSearchData(cards);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
 
   function handleRateSkill(idx, value) {
     setSelectedSkills(selectedSkills.map((skill, index) => index === idx ? { ...skill, rate: value} : skill));
@@ -264,7 +335,7 @@ const handleNextQuestion = () => {
     event?.preventDefault();
     
     try {
-      const response = await fetch(`http://3.8.157.187/api/skills/suggestions?itemsPerPage=10&currentPage=1&search=${inputValue ?? ''}`, {
+      const response = await fetch(`http://3.8.157.187/api/skills/suggestions?itemsPerPage=10&currentPage=1&search=${inputValue ?? ''}&category=${questions[currentQuestionIndex].queryCategory}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -385,7 +456,7 @@ const handleNextQuestion = () => {
               <p style={{ fontSize: '20px', marginBottom: '1em', fontWeight: '700', color: 'black' }}>
                 Find your skill
               </p>
-              <Appsearch onSearch={handleSearch} />
+              <Appsearch onSearch={handleSearch} handleSearch={handleSearchSubmit} />
             </div>
             <div
               style={{
