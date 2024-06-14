@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal, Slider, Typography, Progress, Row, Col, Button, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,6 +13,10 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillD
     'Highly Experienced',
     'Expert'
   ];
+
+  useEffect(() => {
+    setSkillsState(skills);
+  }, [skills]);
 
   const getProgressText = (value) => {
     return stepsTexts[value - 1];
@@ -46,20 +50,22 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillD
       <Input.Search
         style={{ marginBottom: '16px' }}
         placeholder="Search Skills, Providers, Hobbies"
+        
         onSearch={(value) => {
-          fetch(`http://3.8.157.187/api/skills/?itemsPerPage=10&currentPage=1&search=${value}&category=Skill`)
-            .then(response => response.json())
-            .then(data => {
-              console.log('Found skills:', data);
-            })
-            .catch(error => {
-              console.error('Error getting skills:', error);
-            });
+
+          console.log('HOLAAAAAA')
+          let filteredSkills = skills.filter(skill => skill.title.toLowerCase().includes(value.toLowerCase()));
+          if(value === '') {
+            filteredSkills = skills;
+          }
+
+          setSkillsState(filteredSkills);
+
         }}
       />
 
       {
-        skills.map((skill, index) => (
+        skillsState.map((skill, index) => (
           <Row gutter={16} key={index}>
             <Col span={8}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
