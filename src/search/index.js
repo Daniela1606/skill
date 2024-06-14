@@ -114,7 +114,7 @@ const Appsearch = ({ onSearch }) => {
   };
 
   useEffect(() => {
-    handleSearch('HTML')
+    handleSearch('')
   }, []);
 
   return (
