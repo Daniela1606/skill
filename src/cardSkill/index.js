@@ -164,7 +164,7 @@ const CardArray = ({ searchData, onCardAdded }) => {
             key={index}
             xs={12}
             sm={12}
-            md={12}
+            md={8}
             lg={4}
             style={{
               display: 'flex',

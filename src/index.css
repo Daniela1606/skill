@@ -520,6 +520,13 @@ margin-bottom: 2rem;
    
   
   }
+  
+
+  .card_add_responsive{
+
+    width: 10rem !important;
+  }
+  
 
 
 
@@ -527,7 +534,7 @@ margin-bottom: 2rem;
 
 
 
-@media (max-width: 1320px) {
+@media (max-width: 1400px) {
   .probandoMobile2 {
   font-size: 10px !important;
   min-height: 3%;
@@ -581,6 +588,7 @@ margin-bottom: 2rem;
 .card_add_responsive{
 
   font-size: 10px !important;
+  width: 50rem !important;
 }
 
 .ant-card.ant-card-bordered.class_responsive.css-dev-only-do-not-override-sk1n6{
