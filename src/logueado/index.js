@@ -69,6 +69,8 @@ const MenuLogin = () => {
   console.log({ status })
 
   const [showOnboardingVideo, setShowOnboardingVideo] = useState(false)
+  const [filteredCards, setFilteredCards] = useState([]);
+
 
   const [employee, setEmployee] = useState(null);
   const [verifyOpen, setVerifyOpen] = useState(null);
@@ -416,6 +418,7 @@ const handleNextQuestion = () => {
                     skills={selectedSkills} 
                     handleSliderChange={handleRateSkill}
                     handleSkillDelete={handleSkillDelete}
+                  
                   /> 
                   <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border:'2px solid rgb(4, 31, 114)' ,borderRadius:'8px', background: 'white', cursor: 'pointer', color:'rgb(4, 31, 114)',paddingRight:'2rem', paddingLeft:'2rem',
                   fontSize:'15px', fontWeight:'600', padding:'0.5rem', marginTop:'2rem', fontFamily:'Manrope Variable', fontWeight:'700' }}>

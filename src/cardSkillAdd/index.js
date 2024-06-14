@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Card, Row, Col } from 'antd';
 import {
@@ -19,12 +19,21 @@ import CardArray from '../cardSkill';
 
 const { Meta } = Card;
 
-const CardArrayAdd = ({ cards, hideButtons }) => {
-  const [selectedCard, setSelectedCard] = useState(null);
+const CardArrayAdd = ({ cards, hideButtons, searchData, onCardAdded  }) => {
+  const [filteredCards, setFilteredCards] = useState([]);
 
-  const handleCardSelect = (card) => {
-    setSelectedCard(card);
+
+
+
+
+  useEffect(() => {
+    setFilteredCards(searchData );
+  }, [searchData]);
+
+  const handleAddCard = (card) => {
+    onCardAdded(card);
   };
+
 
   return (
     <div style={{ left: '-7rem' }}>
@@ -81,6 +90,8 @@ const CardArrayAdd = ({ cards, hideButtons }) => {
                     background: '#00007c',
                   }}
                   size="small"
+                  onClick={() => handleAddCard(card)}
+
                 ></Button>,
               ]}
             >
@@ -94,7 +105,6 @@ const CardArrayAdd = ({ cards, hideButtons }) => {
 };
 
 export default CardArrayAdd;
-
-
+ 
 
 
