@@ -89,7 +89,7 @@ const Appsearch = ({ onSearch }) => {
     console.log(value);
     const token = localStorage.getItem('token');
 
-    fetch(`/api/skills/?itemsPerPage=10&currentPage=1&search=${value}&category=skill&relations=HR,management,certification,system,language`, {
+    fetch(`http://3.8.157.187/api/skills/?itemsPerPage=10&currentPage=1&search=${value}&category=skill&relations=HR,management,certification,system,language`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

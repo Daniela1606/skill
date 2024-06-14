@@ -19,7 +19,7 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillD
   };
 
   const handleSaveAndRedirect = () => {
-    fetch('/api/users/employees/6b3f410b-2a44-4dc1-8ed0-0401a849bfbf/skills', {
+    fetch('http://3.8.157.187/api/users/employees/6b3f410b-2a44-4dc1-8ed0-0401a849bfbf/skills', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
