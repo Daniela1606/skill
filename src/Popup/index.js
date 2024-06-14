@@ -43,7 +43,16 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillD
       </Typography.Title>
       <p style={{ textAlign: 'left', marginTop: '-1rem' }}>Lorem Ipsum</p>
 
-      <Input.Search style={{ marginBottom: '16px' }} placeholder="Search Skills, Vendors, Hobbies" />
+      <Input.Search style={{ marginBottom: '16px' }} placeholder="Search Skills, Vendors, Hobbies"  onSearch={(value) => {
+        fetch(`http://3.8.157.187/api/skills/?itemsPerPage=10&currentPage=1&search=${value}&category=Skill`)
+          .then(response => response.json())
+          .then(data => {
+            console.log('Skills fetched:', data);
+          })
+          .catch(error => {
+            console.error('Error fetching skills:', error);
+          });
+      }} />
 
       {
         skills.map((skill, index) => (
