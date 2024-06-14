@@ -98,38 +98,61 @@ const MenuLogin = () => {
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What do you consider your main area of expertise to be?',
+      queryCategory: 'Skill'
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What industries/sectors do you have experience of?',
+      queryCategory: 'Skill'
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What are you top 5 business skills?',
+      queryCategory: 'Skill'
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What are your top 5 interpersonal skills?',
+      queryCategory: 'Skill'
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What leadership attributes can you contribute?',
+      queryCategory: 'Skill'
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What other expertise and knowledge can you share?',
+      queryCategory: 'Skill'
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What systems have you experience of using?',
+      queryCategory: 'System'
     },
+    // {
+    //   title: 'Need a hand refining your skills? Submit an answer to the below question',
+    //   question: 'What providers/external vendors have you worked with',
+    // },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
-      question: 'What providers/external vendors have you worked with',
+      question: 'What languages are you able to speak?',
+      queryCategory: 'Language'
     },
     {
       title: 'Need a hand refining your skills? Submit an answer to the below question',
       question: 'What languages are you able to speak?',
+      queryCategory: 'Language'
+    },
+    {
+      title: 'Need a hand refining your skills? Submit an answer to the below question',
+      question: 'What are your interests and hobbies?',
+      queryCategory: 'Hobbie'
+    },
+    {
+      title: 'Need a hand refining your skills? Submit an answer to the below question',
+      question: 'Do you have any certifications or qualifications?',
+      queryCategory: 'Certification'
     },
   ]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -139,6 +162,11 @@ const handleNextQuestion = () => {
   
   setInputValue('');
 };
+
+useEffect(() => {
+  handleQuestionSubmit(null, '')
+
+}, [currentQuestionIndex])
 
 
 
@@ -264,7 +292,7 @@ const handleNextQuestion = () => {
     event?.preventDefault();
     
     try {
-      const response = await fetch(`http://3.8.157.187/api/skills/suggestions?itemsPerPage=10&currentPage=1&search=${inputValue ?? ''}`, {
+      const response = await fetch(`http://3.8.157.187/api/skills/suggestions?itemsPerPage=10&currentPage=1&search=${inputValue ?? ''}&category=${questions[currentQuestionIndex].queryCategory}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
