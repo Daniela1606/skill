@@ -82,6 +82,10 @@ const MenuLogin = () => {
   const [inputValue, setInputValue] = useState('');
 
 
+  const [showModal, setShowModal] = useState(false);
+
+
+
 
   
   //cajita verde
@@ -101,33 +105,33 @@ const MenuLogin = () => {
       queryCategory: 'Skill'
     },
     {
-      title: 'Need a hand refining your skills? Submit an answer to the below question',
+     /*  title: 'Need a hand refining your skills? Submit an answer to the below question', */
       question: 'What industries/sectors do you have experience of?',
       queryCategory: 'Skill'
     },
     {
-      title: 'Need a hand refining your skills? Submit an answer to the below question',
-      question: 'What are you top 5 business skills?',
+/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
+ */      question: 'What are you top 5 business skills?',
       queryCategory: 'Skill'
     },
     {
-      title: 'Need a hand refining your skills? Submit an answer to the below question',
-      question: 'What are your top 5 interpersonal skills?',
+/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
+ */      question: 'What are your top 5 interpersonal skills?',
       queryCategory: 'Skill'
     },
     {
-      title: 'Need a hand refining your skills? Submit an answer to the below question',
-      question: 'What leadership attributes can you contribute?',
+/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
+ */      question: 'What leadership attributes can you contribute?',
       queryCategory: 'Skill'
     },
     {
-      title: 'Need a hand refining your skills? Submit an answer to the below question',
-      question: 'What other expertise and knowledge can you share?',
+/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
+ */      question: 'What other expertise and knowledge can you share?',
       queryCategory: 'Skill'
     },
     {
-      title: 'Need a hand refining your skills? Submit an answer to the below question',
-      question: 'What systems have you experience of using?',
+/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
+ */      question: 'What systems have you experience of using?',
       queryCategory: 'System'
     },
     // {
@@ -135,23 +139,23 @@ const MenuLogin = () => {
     //   question: 'What providers/external vendors have you worked with',
     // },
     {
-      title: 'Need a hand refining your skills? Submit an answer to the below question',
-      question: 'What languages are you able to speak?',
+/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
+ */      question: 'What languages are you able to speak?',
       queryCategory: 'Language'
     },
     {
-      title: 'Need a hand refining your skills? Submit an answer to the below question',
-      question: 'What languages are you able to speak?',
+/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
+ */      question: 'What languages are you able to speak?',
       queryCategory: 'Language'
     },
     {
-      title: 'Need a hand refining your skills? Submit an answer to the below question',
-      question: 'What are your interests and hobbies?',
+/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
+ */      question: 'What are your interests and hobbies?',
       queryCategory: 'Hobbie'
     },
     {
-      title: 'Need a hand refining your skills? Submit an answer to the below question',
-      question: 'Do you have any certifications or qualifications?',
+/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
+ */      question: 'Do you have any certifications or qualifications?',
       queryCategory: 'Certification'
     },
   ]);
@@ -168,6 +172,16 @@ useEffect(() => {
 
 }, [currentQuestionIndex])
 
+
+
+const handleButtonClickModal = () => {
+  setShowModal(true);
+};
+
+
+const handleCloseModal = () => {
+  setShowModal(false);
+};
 
 
 
@@ -204,11 +218,7 @@ useEffect(() => {
       .then(response => response.json())
       .then(data => {
         console.log({data});
-        // const cardData = [
-        //   { title: 'GitHub ', image: imagenDeGit.IMAGENICON },
-        //   { title: 'JavaScript ', image: imagenDeJs.IMAGENICON },
-        //   { title: 'Phyton ', image: imagenDePhy.IMAGENICON },
-        // ]; 
+
         console.log({ data: data.skills })
         const cards = data.skills? data?.skills?.map(item => ({id: item.id, title: item.name, image: item.image, categories: [
           item.tier1,
@@ -496,7 +506,130 @@ useEffect(() => {
                   fontSize:'15px', fontWeight:'600', padding:'0.5rem', marginTop:'2rem', fontFamily:'Manrope Variable', fontWeight:'600' }}>
                       <span style={{ paddingRight:'3rem', paddingLeft:'3rem'}}>I'm Finished Adding</span>
                     </button>
+
+
                 </div>
+
+
+                
+                <div>
+      <button
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          border: '1px solid white',
+          borderRadius: '20px',
+          background:
+            'linear-gradient(rgb(175 223 187 / 6%), rgb(88 194 192 / 24%))',
+          cursor: 'pointer',
+          color: 'black',
+          fontSize: '15px',
+          fontWeight: '600',
+          padding: '0.5rem',
+          marginTop: '2rem',
+          fontFamily: 'Manrope Variable',
+          fontWeight: '600',
+        }}
+        onClick={handleButtonClickModal}
+      >
+        <span style={{ paddingRight: '3rem', paddingLeft: '3rem' }}>
+          Create My Skill
+        </span>
+      </button>
+
+      {showModal && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: 'white',
+              padding: '2rem',
+              borderRadius: '8px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1rem',
+            }}
+          >
+            <h3 style={{ margin: 0, fontSize:'20px' }}>Create Your Skill</h3>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <input
+                type="text"
+                placeholder="Skill Name"
+                style={{
+                  padding: '0.5rem',
+                  borderRadius: '4px',
+                  border: '1px solid #ccc',
+                }}
+              />
+            <select
+              style={{
+                padding: '0.5rem',
+                borderRadius: '4px',
+                border: '1px solid #ccc',
+              }}
+            >
+              <option value=""> Select Category</option>
+              <option value="option1">Category 1</option>
+              <option value="option2">Category 2</option>
+              <option value="option3">Category 3</option>
+            </select>
+            </div>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+
+            <button
+                onClick={handleCloseModal}
+                style={{
+                  background: 'white',
+                  border: 'none',
+                  padding: '0.5rem 2rem',
+                  border: 'solid 1px #041F72',
+                  borderRadius: '4px',
+                  color: '#041F72',
+                  fontWeight: '700', 
+                  cursor: 'pointer',
+                  fontSize:'15px'
+              
+                }}
+
+ 
+              >
+                Cancel
+              </button>
+              <button
+                style={{
+                  background: '#041F72',
+                  border: 'none',
+                  padding: '0.5rem 2rem',
+                  border: 'solid 1px #041F72',
+                  borderRadius: '4px',
+                  color: 'white',
+                  fontWeight: '700', 
+                  cursor: 'pointer',
+                  fontSize:'15px'
+              
+                }}
+              >
+                Create
+              </button>
+
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+
 
 
 
