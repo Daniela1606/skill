@@ -533,7 +533,7 @@ const handleCloseModal = () => {
         onClick={handleButtonClickModal}
       >
         <span style={{ paddingRight: '3rem', paddingLeft: '3rem' }}>
-          Create My Skill
+        I can’t find what I’m looking for
         </span>
       </button>
 
