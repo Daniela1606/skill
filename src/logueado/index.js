@@ -85,6 +85,11 @@ const MenuLogin = () => {
   const [showModal, setShowModal] = useState(false);
 
 
+  const [skillName, setSkillName] = useState('');
+  const [skillCategory, setSkillCategory] = useState('');
+  const [addedSkills, setAddedSkills] = useState([]);
+
+
 
 
   
@@ -179,10 +184,23 @@ const handleButtonClickModal = () => {
 };
 
 
+/* const handleCloseModal = () => {
+  setShowModal(false);
+};
+ */
+
+
 const handleCloseModal = () => {
+  setSkillName('');
+  setSkillCategory('');
   setShowModal(false);
 };
 
+
+const handleCreate = () => {
+  setAddedSkills([...addedSkills, { name: skillName, category: skillCategory }]);
+  handleCloseModal();
+};
 
 
   function handleSearch(value) {
@@ -572,6 +590,8 @@ const handleCloseModal = () => {
                   borderRadius: '4px',
                   border: '1px solid #ccc',
                 }}
+                value={skillName}
+                onChange={(e) => setSkillName(e.target.value)}
               />
             <select
               style={{
@@ -579,11 +599,14 @@ const handleCloseModal = () => {
                 borderRadius: '4px',
                 border: '1px solid #ccc',
               }}
+              value={skillCategory}
+              onChange={(e) => setSkillCategory(e.target.value)}
+
             >
               <option value=""> Select Category</option>
-              <option value="option1">Category 1</option>
-              <option value="option2">Category 2</option>
-              <option value="option3">Category 3</option>
+              <option value="Category 1">Category 1</option>
+              <option value="Category 2">Category 2</option>
+              <option value="Category 3">Category 3</option>
             </select>
             </div>
             <div style={{ display: 'flex', gap: '1rem' }}>
@@ -620,6 +643,8 @@ const handleCloseModal = () => {
                   fontSize:'15px'
               
                 }}
+
+                onClick={handleCreate}
               >
                 Create
               </button>
@@ -696,6 +721,10 @@ const handleCloseModal = () => {
             <div >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                 <p  className='name_skills' style={{ fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '10px' }}>Skills Added</p>
+
+
+                
+                
                 <div  style={{ marginLeft: 'auto' }}>
                 <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} skills={selectedSkills} handleSliderChange={handleRateSkill} handleSkillDelete={handleSkillDelete} />
                     <button  onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
@@ -704,7 +733,36 @@ const handleCloseModal = () => {
                     </button>
                 </div>
               </div>
+
+
               <AppCardAdd className='card_skill_responsive' cards={selectedSkills} hideButtons={true}/>
+              <div style={{  padding: '10px', borderRadius: '4px', display: 'inline-block', textAlign:'center' }}>
+              {addedSkills.map((skill, index) => (
+  <div
+    key={index}
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: '10px',
+      boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px',
+      padding: '10px',
+      borderRadius: '4px',
+      width: '8rem',
+      lineHeight:'9px',
+      height:'6.5rem',
+
+      marginLeft:'6%',
+  
+      ...(index > 0 ? { marginTop: '10px' } : {})
+    }}
+  >
+    <p style={{ fontSize: '11px', marginBottom: '5px', fontWeight: '700' }}>{skill.name}</p>
+    <p style={{ fontSize: '11px', fontWeight: '700' }}>{skill.category}</p>
+  </div>
+))}
+</div>
             </div>
           </Sider>
         </Layout>
