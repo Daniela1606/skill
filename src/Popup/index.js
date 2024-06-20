@@ -5,6 +5,12 @@ import { useNavigate } from 'react-router-dom';
 const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillDelete }) => {
   const [skillsState, setSkillsState] = useState(skills);
   const navigate = useNavigate();
+  const [skillName, setSkillName] = useState('');
+  const [skillCategory, setSkillCategory] = useState('');
+  const [addedSkills, setAddedSkills] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+
 
   const stepsTexts = [
     'Entry Level',
@@ -21,6 +27,19 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillD
   const getProgressText = (value) => {
     return stepsTexts[value - 1];
   };
+
+  const handleCloseModal = () => {
+    setSkillName('');
+    setSkillCategory('');
+    setShowModal(false);
+  };
+  
+
+const handleCreate = () => {
+  setAddedSkills([...addedSkills, { name: skillName, category: skillCategory }]);
+  handleCloseModal();
+};
+
 
   const handleSaveAndRedirect = () => {
     fetch('http://3.8.157.187/api/users/employees/6b3f410b-2a44-4dc1-8ed0-0401a849bfbf/skills', {
@@ -50,43 +69,50 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillD
       <Input.Search
         style={{ marginBottom: '16px' }}
         placeholder="Search Skills, Providers, Hobbies"
-        
         onSearch={(value) => {
-
           console.log('HOLAAAAAA')
           let filteredSkills = skills.filter(skill => skill.title.toLowerCase().includes(value.toLowerCase()));
           if(value === '') {
             filteredSkills = skills;
           }
-
           setSkillsState(filteredSkills);
-
         }}
       />
 
-      {
-        skillsState.map((skill, index) => (
-          <Row gutter={16} key={index}>
-            <Col span={8}>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                {skill.image ?
-                  <img style={{ width: '25px', marginTop: '8px' }} src={skill.image} alt="Logo" /> 
-                : <img style={{ width: '25px', marginTop: '8px' }} src='https://skillsat-dev.s3.eu-west-2.amazonaws.com/images/icon-1.png' alt="Logo" /> 
-                }
-                <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop: '0.5rem' }}>{skill.title}</Typography.Text>
+{addedSkills.map((skill, index) => (
+  <div
+    key={index}
+
+  >
+    <p style={{ fontSize: '11px', marginBottom: '5px', fontWeight: '700' }}>{skill.name}</p>
+    <p style={{ fontSize: '11px', fontWeight: '700' }}>{skill.category}</p>
+  </div>
+))}
+
+
+      {skillsState.map((skill, index) => (
+        <Row gutter={16} key={index}>
+          <Col span={8}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              {skill.image ?
+                <img style={{ width: '25px', marginTop: '8px' }} src={skill.image} alt="Logo" /> 
+              : <img style={{ width: '25px', marginTop: '8px' }} src='https://skillsat-dev.s3.eu-west-2.amazonaws.com/images/icon-1.png' alt="Logo" /> 
+              }
+              <Typography.Text style={{ marginBottom: '8px', fontWeight: '700', marginTop: '0.5rem' }}>{skill.title}</Typography.Text>
+            </div>
+          </Col>
+          <Col span={16} style={{ margin: 'auto'}}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <span style={{ fontSize: '12px', whiteSpace: 'nowrap', marginRight: '5px' }} >Entry Level</span>
+              <div style={{ width: '100%' }}>
+                <Slider min={1} max={5} value={skill.rate} onChange={(value) => {handleSliderChange(index, value)}} tipFormatter={getProgressText} /> 
               </div>
-            </Col>
-            <Col span={16} style={{ margin: 'auto'}}>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <span style={{ fontSize: '12px', whiteSpace: 'nowrap', marginRight: '5px' }} >Entry Level</span>
-                <div style={{ width: '100%' }}>
-                  <Slider min={1} max={5} value={skill.rate} onChange={(value) => {handleSliderChange(index, value)}} tipFormatter={getProgressText} /> 
-                </div>
-                <span style={{ fontSize: '12px', display: 'flex', alignItems: 'center' }}>Expert <span style={{ marginLeft: '1rem', cursor: 'pointer', fontSize:'18px' }} onClick={() => handleSkillDelete(skill.id)}>⨯</span></span>
-              </div>
-            </Col>
-          </Row>
-        ))}
+              <span style={{ fontSize: '12px', display: 'flex', alignItems: 'center' }}>Expert <span style={{ marginLeft: '1rem', cursor: 'pointer', fontSize:'18px' }} onClick={() => handleSkillDelete(skill.id)}>⨯</span></span>
+            </div>
+          </Col>
+        </Row>
+      ))}
+      
       <Progress
         trailColor="#fffff"
         strokeWidth={20}

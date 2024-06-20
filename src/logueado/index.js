@@ -105,38 +105,38 @@ const MenuLogin = () => {
 
   const [questions, setQuestions] = useState([
     {
-      title: 'Need a hand refining your skills? Submit an answer to the below question',
+      title: 'Need a hand refining your skills? ',
       question: 'What do you consider your main area of expertise to be?',
       queryCategory: 'Skill'
     },
     {
-     /*  title: 'Need a hand refining your skills? Submit an answer to the below question', */
+      title: 'Need a hand refining your skills? ',
       question: 'What industries/sectors do you have experience of?',
       queryCategory: 'Skill'
     },
     {
-/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
- */      question: 'What are you top 5 business skills?',
+      title: 'Need a hand refining your skills? ',
+       question: 'What are you top 5 business skills?',
       queryCategory: 'Skill'
     },
     {
-/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
- */      question: 'What are your top 5 interpersonal skills?',
+      title: 'Need a hand refining your skills? ',
+      question: 'What are your top 5 interpersonal skills?',
       queryCategory: 'Skill'
     },
     {
-/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
- */      question: 'What leadership attributes can you contribute?',
+       title: 'Need a hand refining your skills? ',
+      question: 'What leadership attributes can you contribute?',
       queryCategory: 'Skill'
     },
     {
-/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
- */      question: 'What other expertise and knowledge can you share?',
+      title: 'Need a hand refining your skills? ',
+      question: 'What other expertise and knowledge can you share?',
       queryCategory: 'Skill'
     },
     {
-/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
- */      question: 'What systems have you experience of using?',
+      title: 'Need a hand refining your skills?',
+       question: 'What systems have you experience of using?',
       queryCategory: 'System'
     },
     // {
@@ -144,23 +144,23 @@ const MenuLogin = () => {
     //   question: 'What providers/external vendors have you worked with',
     // },
     {
-/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
- */      question: 'What languages are you able to speak?',
+      title: 'Need a hand refining your skills?',
+      question: 'What languages are you able to speak?',
       queryCategory: 'Language'
     },
     {
-/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
- */      question: 'What languages are you able to speak?',
+       title: 'Need a hand refining your skills?',
+      question: 'What languages are you able to speak?',
       queryCategory: 'Language'
     },
     {
-/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
- */      question: 'What are your interests and hobbies?',
+      title: 'Need a hand refining your skills?',
+      question: 'What are your interests and hobbies?',
       queryCategory: 'Hobbie'
     },
     {
-/*       title: 'Need a hand refining your skills? Submit an answer to the below question',
- */      question: 'Do you have any certifications or qualifications?',
+       title: 'Need a hand refining your skills? ',
+      question: 'Do you have any certifications or qualifications?',
       queryCategory: 'Certification'
     },
   ]);
@@ -198,8 +198,11 @@ const handleCloseModal = () => {
 
 
 const handleCreate = () => {
-  setAddedSkills([...addedSkills, { name: skillName, category: skillCategory }]);
-  handleCloseModal();
+/*   setAddedSkills([...addedSkills, { name: skillName, category: skillCategory }]);
+ */ 
+handleAddSkill({title: skillName, category: skillCategory, id:selectedSkills.length+1})
+
+handleCloseModal();
 };
 
 
@@ -530,7 +533,7 @@ const handleCreate = () => {
 
 
                 
-                <div>
+    <div>
       <button
         style={{
           display: 'flex',
@@ -544,7 +547,7 @@ const handleCreate = () => {
           fontSize: '15px',
           fontWeight: '600',
           padding: '0.5rem',
-          marginTop: '2rem',
+          marginTop: '1%',
           fontFamily: 'Manrope Variable',
           fontWeight: '600',
         }}
@@ -604,9 +607,13 @@ const handleCreate = () => {
 
             >
               <option value=""> Select Category</option>
-              <option value="Category 1">Category 1</option>
-              <option value="Category 2">Category 2</option>
-              <option value="Category 3">Category 3</option>
+              <option value="Skill">Skill</option>
+              <option value="Hobbie">Hobbie</option>
+              <option value="System">System</option>
+              <option value="Certification">Certification</option>
+              <option value="Language">Language</option>
+
+
             </select>
             </div>
             <div style={{ display: 'flex', gap: '1rem' }}>
@@ -723,8 +730,7 @@ const handleCreate = () => {
                 <p  className='name_skills' style={{ fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '10px' }}>Skills Added</p>
 
 
-                
-                
+              
                 <div  style={{ marginLeft: 'auto' }}>
                 <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} skills={selectedSkills} handleSliderChange={handleRateSkill} handleSkillDelete={handleSkillDelete} />
                     <button  onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
