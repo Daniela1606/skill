@@ -229,7 +229,7 @@ handleCloseModal();
     console.log({ categories: relations, parsedCategories: parsedRelations })
     const token = localStorage.getItem('token');
 
-    fetch(`http://3.8.157.187/api/skills/?itemsPerPage=10&currentPage=1&search=${value + ', ' +parsedRelations}`, {
+    fetch(`http://3.8.157.187/api/skills/?itemsPerPage=10&currentPage=1&search=${parsedRelations.length > 0 ? parsedRelations : value}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -366,7 +366,9 @@ handleCloseModal();
     event?.preventDefault();
     
     try {
-      const response = await fetch(`http://3.8.157.187/api/skills/suggestions?itemsPerPage=10&currentPage=1&search=${inputValue ?? ''}&category=${questions[currentQuestionIndex].queryCategory}`, {
+      console.log({ inputValue })
+      console.log('holaaaaaaaaaaaaa')
+      const response = await fetch(`http://3.8.157.187/api/skills?itemsPerPage=10&currentPage=1&search=${inputValue ?? ''}&category=${questions[currentQuestionIndex].queryCategory}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
