@@ -83,7 +83,7 @@ const MenuLogin = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
   const [currentSearch, setCurrentSearch] = useState('');
-  const [cardsPerPage, setCardsPerPage] = useState(10);
+  const [cardsPerPage, setCardsPerPage] = useState(12);
 
 
   const [showModal, setShowModal] = useState(false);
@@ -230,7 +230,7 @@ handleCloseModal();
   useEffect(() => {
     handleSearchSubmit(currentSearch)
 
-  }, [currentPage])
+  }, [currentPage, currentSearch])
   
   const handleSearchSubmit = (value, relations, itemsPerPage = 10) => {
     console.log(value);
@@ -244,7 +244,7 @@ handleCloseModal();
     console.log({ categories: relations, parsedCategories: parsedRelations });
     const token = localStorage.getItem('token');
   
-    fetch(`http://3.8.157.187/api/skills/?itemsPerPage=${Number(itemsPerPage)}&currentPage=${Number(currentPage)}&search=${parsedRelations.length > 0 ? parsedRelations : value}`, {
+    fetch(`http://3.8.157.187/api/skills/?itemsPerPage=${cardsPerPage}&currentPage=${Number(currentPage)}&search=${parsedRelations.length > 0 ? parsedRelations : value}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -255,7 +255,7 @@ handleCloseModal();
       .then(data => {
         console.log({ data });
 
-        setLastPage(Math.min(data.lastPage, 10))
+        setLastPage(Math.min(data.lastPage, 6))
   
         const cards = data.skills ? data?.skills?.map(item => ({
           id: item.id,
@@ -389,7 +389,7 @@ handleCloseModal();
     try {
       console.log({ inputValue })
       console.log('holaaaaaaaaaaaaa')
-      const response = await fetch(`http://3.8.157.187/api/skills?itemsPerPage=10&currentPage=1&search=${inputValue ?? ''}&category=${questions[currentQuestionIndex].queryCategory}`, {
+      const response = await fetch(`http://3.8.157.187/api/skills?itemsPerPage=${cardsPerPage}&currentPage=1&search=${inputValue ?? ''}&category=${questions[currentQuestionIndex].queryCategory}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -510,7 +510,10 @@ handleCloseModal();
               <p style={{ fontSize: '20px', marginBottom: '1em', fontWeight: '700', color: 'black' }}>
                 Find your skill
               </p>
-              <Appsearch onSearch={handleSearch} handleSearch={handleSearchSubmit} />
+              <Appsearch onSearch={handleSearch} handleSearch={(value) => {
+                setCurrentPage(1)
+                setCurrentSearch(value)
+              }} />
             </div>
             <div
               style={{
@@ -546,7 +549,7 @@ handleCloseModal();
 }}>
     <Pagination 
         defaultCurrent={1}
-        total={lastPage * 10}
+        total={lastPage * cardsPerPage}
         pageSize={10}
         onChange={handlePageChange}
         size='small'
