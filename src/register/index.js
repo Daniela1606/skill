@@ -150,7 +150,7 @@ const AppRegister = () => {
     };
     console.log(values)
     // Make a request to the login endpoint
-    fetch('http://18.169.192.176/api/users/employees', {
+    fetch('http://3.8.157.187/api/users/employees', {
       method: 'POST',
       body: JSON.stringify(values),
       headers: {

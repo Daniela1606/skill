@@ -315,13 +315,13 @@ width: 25% !important;
   display: none !important;
 }
 
-
+/* 
 .ant-row.css-dev-only-do-not-override-sk1n6{
 
 
 
   margin-top: 2rem !important;
-}
+} */
 
 
 .ant-tooltip-inner {
@@ -357,3 +357,248 @@ margin:0px !important;
 
   margin: 0px !important;
 }
+
+
+:where(.css-dev-only-do-not-override-1rqg8tf).ant-col-8{
+
+  flex: 0 !important;
+ 
+}
+
+.text-user{
+
+  background: #ffffffb5;
+  border-radius: 20px;
+  padding: 1rem;
+  margin-top: 1rem;
+   
+   
+}
+
+
+.text-user-box{
+
+margin-left: 2rem;
+margin-bottom: 2rem;
+   
+   
+}
+
+:where(.css-dev-only-do-not-override-1rqg8tf).ant-typography{
+
+ word-break: normal !important;
+}
+
+
+
+/* :where(.css-dev-only-do-not-override-sk1n6).ant-col-8{
+
+  flex:0!important;
+} */
+
+
+.ant-col.ant-col-22.css-dev-only-do-not-override-sk1n6{
+
+  background: linear-gradient(to bottom, white, rgb(88 194 192 / 24%));
+}
+
+
+.ant-col.ant-col-2.css-dev-only-do-not-override-sk1n6{
+
+  background: linear-gradient(to bottom, white, rgb(88 194 192 / 24%));
+
+
+}
+
+
+.menu-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.menu-items .item {
+  margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .menu-items {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .menu-items .item {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-items {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-items .item {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+
+
+
+
+.probandoMobile2{
+
+
+  margin: 1em;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 97.3%;
+  background: transparent;
+
+
+
+
+}
+
+
+
+
+
+@media (max-width: 500px) {
+
+
+:where(.css-dev-only-do-not-override-sk1n6).ant-layout.ant-layout-has-sider{
+
+  flex-direction: column;
+}
+
+:where(.css-dev-only-do-not-override-sk1n6).ant-layout.ant-layout-has-sider >.ant-layout, :where(.css-dev-only-do-not-override-sk1n6).ant-layout.ant-layout-has-sider >.ant-layout-content{
+
+  width: 100% !important;
+}
+
+:where(.css-dev-only-do-not-override-sk1n6).ant-layout-header{
+
+  line-height: 20px !important;
+}
+
+.imagen_Buscar{
+
+  display: none !important;
+}
+
+.name_responsive{
+
+  font-size: 20px !important;
+  width: 20rem !important;
+}
+
+.card_skill_responsive{
+
+  margin-top: 5rem !important;
+}
+
+.boton_skill{
+
+  display: none;} 
+  
+ .circle_upload_responsive{
+  
+    display: none ;
+  } 
+  
+  .imagenLogoResponsive{
+  
+    width: 7rem;
+   
+  
+  }
+  
+
+  .card_add_responsive{
+
+    width: 10rem !important;
+  }
+  
+
+
+
+}
+
+
+
+@media (max-width: 1400px) {
+  .probandoMobile2 {
+  font-size: 10px !important;
+  min-height: 3%;
+  width: 80%;
+
+  }
+
+.imagenLogoResponsive{
+
+  width: 3rem;
+  margin-left: -3rem;
+
+}
+
+.ant-layout-sider.ant-layout-sider-dark{
+
+  flex: 0 !important;
+  min-width: 200px !important;
+}
+
+/*  .caja_verde_responsive{
+
+  width: 25rem !important;
+}  */
+
+:where(.css-dev-only-do-not-override-sk1n6).ant-layout-header{
+
+  line-height: 20px !important;
+}
+
+.name_skills{
+
+  font-size: 15px !important;
+  display: none;
+}
+
+
+
+.name_responsive{
+
+  font-size: 20px !important;
+  width: 20rem !important;
+}
+
+.class_responsive{
+
+  width: 100% !important;
+  font-size: 10px !important;
+}
+
+.card_add_responsive{
+
+  font-size: 10px !important;
+  width: 50rem !important;
+}
+
+.ant-card.ant-card-bordered.class_responsive.css-dev-only-do-not-override-sk1n6{
+
+
+  width: 100% !important;
+}
+
+
+
+}
+
+

@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from 'react';
 import { AudioOutlined } from '@ant-design/icons';
 import { Input, Space } from 'antd';
@@ -16,36 +18,9 @@ const suffix = (
   />
 );
 
-const Appsearch = ({ onSearch }) => {
+const Appsearch = ({ onSearch, handleSearch }) => {
   const [searchData, setSearchData] = useState(null);
 
-  const handleSearch = (value) => {
-    console.log(value);
-    const token = localStorage.getItem('token');
-
-    fetch(`http://18.169.192.176/api/skills/?itemsPerPage=10&currentPage=1&search=${value}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
-    })    
-      .then(response => response.json())
-      .then(data => {
-        console.log({data});
-        const cardData = [
-          { title: 'GitHub ', image: imagenDeGit.IMAGENICON },
-          { title: 'JavaScript ', image: imagenDeJs.IMAGENICON },
-          { title: 'Phyton ', image: imagenDePhy.IMAGENICON },
-          ]; 
-        const cards = data.skills? data?.skills?.map(item => ({id: item.id, title: item.name, image: item.image })) : [];
-        onSearch(cards);
-        setSearchData(cards);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  };
 
   useEffect(() => {
     handleSearch('')
