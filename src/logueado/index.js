@@ -255,7 +255,7 @@ handleCloseModal();
       .then(data => {
         console.log({ data });
 
-        setLastPage(Math.min(data.lastPage, 6))
+        setLastPage(Math.min(data.lastPage, 4))
   
         const cards = data.skills ? data?.skills?.map(item => ({
           id: item.id,
@@ -555,7 +555,7 @@ handleCloseModal();
         size='small'
         itemRender={(page, type, originalElement) => {
             if (type === 'page') {
-                return <a>●</a>;
+                return <a ></a>;
             }
             return originalElement;
         }}
