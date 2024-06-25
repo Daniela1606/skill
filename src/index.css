@@ -626,10 +626,18 @@ background: #f5deb300 !important;}
 
 
 
-  .anticon{
+.ant-pagination-item-link{
 
-display: none !important; }
+display: none !important;
+
+
+
+}
+
+
+
   
+
 
 
 
