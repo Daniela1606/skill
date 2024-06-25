@@ -608,17 +608,38 @@ margin-bottom: 2rem;
 display: none !important; }
 
 
+:where(.css-dev-only-do-not-override-sk1n6).ant-pagination .ant-pagination-item-link,
+:where(.css-dev-only-do-not-override-sk1n6).ant-pagination .ant-pagination-next
+{
+  display: none !important;
+}
+
 :where(.css-dev-only-do-not-override-sk1n6).ant-pagination .ant-pagination-item-active
 {
 
 border: solid 0px white !important;
-  border-color:white !important; }
+  border-color:white !important;
+}
   
-  :where(.css-dev-only-do-not-override-sk1n6).ant-pagination .ant-pagination-item-active a{
-
-color: #4bedfd !important;
+:where(.css-dev-only-do-not-override-sk1n6).ant-pagination .ant-pagination-item {
 font-size: 1.5rem; 
-background-color: transparent !important;}
+border-radius: 50%;
+min-width: initial !important;
+width: 11px;
+height: 11px !important;
+margin: 5px !important;
+background-color: lightgray !important;
+transition: 0.3s ease width, 0.3s ease border-radius;
+}
+
+
+:where(.css-dev-only-do-not-override-sk1n6).ant-pagination .ant-pagination-item-active {
+max-height: max-content;
+border-radius: 8px;
+width: 48px;
+background-color: transparent !important;
+background-color: #58C2C0 !important;
+}
 :where(.css-dev-only-do-not-override-sk1n6).ant-pagination .ant-pagination-item a{
 
   color: #bababac7;
@@ -628,13 +649,6 @@ background-color: transparent !important;}
 .anticon.anticon-right{
 
 display: none ; }
-
-:where(.css-dev-only-do-not-override-sk1n6).ant-pagination .ant-pagination-item-active {
-  font-weight: 600;
-  background-color: #ffffff00 !important;
-  border-color: #1677ff;
-}
-  
 
 
 
