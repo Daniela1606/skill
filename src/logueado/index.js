@@ -105,7 +105,7 @@ const MenuLogin = () => {
 
     const fetchEmployee = async () => {
       try {
-        const response = await fetch(`http://18.169.192.176/Api/users/employees/${id}`);
+        const response = await fetch(`http://13.42.59.26/Api/users/employees/${id}`);
         if (response.ok) {
           const data = await response.json();
           setEmployee(data);
@@ -121,7 +121,7 @@ const MenuLogin = () => {
   }, []);
 
   const confirmValidData = async () => {
-    return await fetch('http://18.169.192.176/api/users/employees/verify-correct-data', {
+    return await fetch('http://13.42.59.26/api/users/employees/verify-correct-data', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ const MenuLogin = () => {
 
   const reportInvalidData = async (data) => {
     console.log({ token })
-    return fetch('http://18.169.192.176/api/users/employees/report-incorrect-data', {
+    return fetch('http://13.42.59.26/api/users/employees/report-incorrect-data', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
