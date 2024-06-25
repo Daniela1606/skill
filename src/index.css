@@ -618,7 +618,7 @@ border: solid 0px white !important;
 
 color: #4bedfd !important;
 font-size: 1.5rem; 
-background: #f5deb300 !important;}
+background-color: transparent !important;}
 :where(.css-dev-only-do-not-override-sk1n6).ant-pagination .ant-pagination-item a{
 
   color: #bababac7;
@@ -629,7 +629,11 @@ background: #f5deb300 !important;}
 
 display: none ; }
 
-
+:where(.css-dev-only-do-not-override-sk1n6).ant-pagination .ant-pagination-item-active {
+  font-weight: 600;
+  background-color: #ffffff00 !important;
+  border-color: #1677ff;
+}
   
 
 
