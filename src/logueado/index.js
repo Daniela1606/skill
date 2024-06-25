@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SearchOutlined, InfoCircleOutlined, MailOutlined, SettingOutlined} from '@ant-design/icons';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
-import { Layout, Menu, Modal, message, theme, Button, Space, } from 'antd';
+import { Layout, Menu, Modal, message, theme, Button, Space, Pagination, } from 'antd';
 import { imagenLo, imagenLogoAzul, imagenBuscar, imagenEmpleo, imagenProbando, imagenDeFooter, imagenDeAvatar, imagenDeMagic } from '../constante/imagen';
 import Appsearch from "../search";
 import VerifyForm from '../components/VerifyForm';
@@ -81,6 +81,8 @@ const MenuLogin = () => {
   const [selectedSkills , setSelectedSkills] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [lastPage, setLastPage] = useState(1);
+  const [currentSearch, setCurrentSearch] = useState('');
   const [cardsPerPage, setCardsPerPage] = useState(10);
 
 
@@ -220,18 +222,29 @@ handleCloseModal();
     const {categories} = value
     handleSearchSubmit('', categories)
   }
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  useEffect(() => {
+    handleSearchSubmit(currentSearch)
+
+  }, [currentPage])
   
-  const handleSearchSubmit = (value, relations, currentPage = 1, itemsPerPage = 10) => {
+  const handleSearchSubmit = (value, relations, itemsPerPage = 10) => {
     console.log(value);
     let parsedRelations = '';
     if (relations && relations.length > 0) {
       parsedRelations = relations.filter(category => category !== '').map(category => category.toLowerCase()).join(', ');
     }
+
+    setCurrentSearch(value)
   
     console.log({ categories: relations, parsedCategories: parsedRelations });
     const token = localStorage.getItem('token');
   
-    fetch(`http://3.8.157.187/api/skills/?itemsPerPage=${itemsPerPage}&currentPage=${currentPage}&search=${parsedRelations.length > 0 ? parsedRelations : value}`, {
+    fetch(`http://3.8.157.187/api/skills/?itemsPerPage=${Number(itemsPerPage)}&currentPage=${Number(currentPage)}&search=${parsedRelations.length > 0 ? parsedRelations : value}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -241,8 +254,9 @@ handleCloseModal();
       .then(response => response.json())
       .then(data => {
         console.log({ data });
+
+        setLastPage(Math.min(data.lastPage, 10))
   
-        console.log({ data: data.skills });
         const cards = data.skills ? data?.skills?.map(item => ({
           id: item.id,
           title: item.name,
@@ -523,6 +537,14 @@ handleCloseModal();
     setCurrentPage={setCurrentPage}
     cardsPerPage={cardsPerPage}
   />
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '1em',
+    marginBottom: '1em',
+  }}>
+    <Pagination defaultCurrent={1} total={lastPage * 10} pageSize={10} onChange={handlePageChange} size='small' />
+  </div>
 </div>
                 
               </div>
