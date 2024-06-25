@@ -602,3 +602,40 @@ margin-bottom: 2rem;
 }
 
 
+.ant-select-selector{
+
+
+display: none !important; }
+
+
+:where(.css-dev-only-do-not-override-sk1n6).ant-pagination .ant-pagination-item-active
+{
+
+border: solid 0px white !important;
+  border-color:white !important; }
+  
+  :where(.css-dev-only-do-not-override-sk1n6).ant-pagination .ant-pagination-item-active a{
+
+color: #4bedfd !important;
+font-size: 1.5rem; 
+background: #f5deb300 !important;}
+:where(.css-dev-only-do-not-override-sk1n6).ant-pagination .ant-pagination-item a{
+
+  color: #bababac7;
+  font-size: 1.5rem; }
+
+
+
+  .anticon{
+
+display: none !important; }
+  
+
+
+
+
+
+
+
+
+

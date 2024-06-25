@@ -537,14 +537,27 @@ handleCloseModal();
     setCurrentPage={setCurrentPage}
     cardsPerPage={cardsPerPage}
   />
-  <div style={{
+<div style={{
     display: 'flex',
     justifyContent: 'center',
     marginTop: '1em',
     marginBottom: '1em',
-  }}>
-    <Pagination defaultCurrent={1} total={lastPage * 10} pageSize={10} onChange={handlePageChange} size='small' />
-  </div>
+    border: 'solid 0px white'
+}}>
+    <Pagination 
+        defaultCurrent={1}
+        total={lastPage * 10}
+        pageSize={10}
+        onChange={handlePageChange}
+        size='small'
+        itemRender={(page, type, originalElement) => {
+            if (type === 'page') {
+                return <a>●</a>;
+            }
+            return originalElement;
+        }}
+    />
+</div>
 </div>
                 
               </div>
