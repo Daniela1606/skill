@@ -550,8 +550,9 @@ handleCloseModal();
     <Pagination 
         defaultCurrent={1}
         total={lastPage * cardsPerPage}
-        pageSize={10}
+        pageSize={cardsPerPage}
         onChange={handlePageChange}
+        current={currentPage}
         size='small'
         itemRender={(page, type, originalElement) => {
             if (type === 'page') {
