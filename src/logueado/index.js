@@ -568,154 +568,135 @@ handleCloseModal();
 
 
               <div>
-              <AppPopup 
-                    open={modalVisible}
-                    handleCancel={() => setModalVisible(false)}
-                    skills={selectedSkills} 
-                    handleSliderChange={handleRateSkill}
-                    handleSkillDelete={handleSkillDelete}
-                  
-                  /> 
-                  <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border:'1px solid white' ,borderRadius:'20px', background: 'linear-gradient(rgb(175 223 187 / 6%), rgb(88 194 192 / 24%))', cursor: 'pointer', color:'black',
-                  
-                  fontSize:'15px', fontWeight:'600', padding:'0.5rem', marginTop:'2rem', fontFamily:'Manrope Variable', fontWeight:'600' }}>
-                      <span style={{ paddingRight:'3rem', paddingLeft:'3rem'}}>I'm Finished Adding</span>
-                    </button>
+  <AppPopup 
+    open={modalVisible}
+    handleCancel={() => setModalVisible(false)}
+    skills={selectedSkills} 
+    handleSliderChange={handleRateSkill}
+    handleSkillDelete={handleSkillDelete}
+  /> 
+  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2rem' }}>
+    <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border:'1px solid white' ,borderRadius:'20px', background: 'linear-gradient(rgb(175 223 187 / 6%), rgb(88 194 192 / 24%))', cursor: 'pointer', color:'black', fontSize:'15px', fontWeight:'600', padding:'0.5rem', fontFamily:'Manrope Variable', fontWeight:'600' }}>
+      <span style={{ paddingRight:'3rem', paddingLeft:'3rem' }}>I'm Finished Adding</span>
+    </button>
+    <button
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        border: '1px solid white',
+        borderRadius: '20px',
+        background: 'linear-gradient(rgb(175 223 187 / 6%), rgb(88 194 192 / 24%))',
+        cursor: 'pointer',
+        color: 'black',
+        fontSize: '15px',
+        fontWeight: '600',
+        padding: '0.5rem',
+        fontFamily: 'Manrope Variable',
+        fontWeight: '600',
+      }}
+      onClick={handleButtonClickModal}
+    >
+      <span style={{ paddingRight: '3rem', paddingLeft: '3rem' }}>
+        I can't find what I'm looking for
+      </span>
+    </button>
+  </div>
+</div>
 
-
-                </div>
-
-
-                
-    <div>
-      <button
+<div>
+  {showModal && (
+    <div
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <div
         style={{
+          backgroundColor: 'white',
+          padding: '2rem',
+          borderRadius: '8px',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
-          border: '1px solid white',
-          borderRadius: '20px',
-          background:
-            'linear-gradient(rgb(175 223 187 / 6%), rgb(88 194 192 / 24%))',
-          cursor: 'pointer',
-          color: 'black',
-          fontSize: '15px',
-          fontWeight: '600',
-          padding: '0.5rem',
-          marginTop: '1%',
-          fontFamily: 'Manrope Variable',
-          fontWeight: '600',
+          gap: '1rem',
         }}
-        onClick={handleButtonClickModal}
       >
-        <span style={{ paddingRight: '3rem', paddingLeft: '3rem' }}>
-        I can’t find what I’m looking for
-        </span>
-      </button>
-
-      {showModal && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <div
+        <h3 style={{ margin: 0, fontSize:'20px' }}>Create Your Skill</h3>
+        <div style={{ display: 'flex', gap: '1rem' }}>
+          <input
+            type="text"
+            placeholder="Skill Name"
             style={{
-              backgroundColor: 'white',
-              padding: '2rem',
-              borderRadius: '8px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '1rem',
+              padding: '0.5rem',
+              borderRadius: '4px',
+              border: '1px solid #ccc',
+            }}
+            value={skillName}
+            onChange={(e) => setSkillName(e.target.value)}
+          />
+          <select
+            style={{
+              padding: '0.5rem',
+              borderRadius: '4px',
+              border: '1px solid #ccc',
+            }}
+            value={skillCategory}
+            onChange={(e) => setSkillCategory(e.target.value)}
+          >
+            <option value=""> Select Category</option>
+            <option value="Skill">Skill</option>
+            <option value="Hobbie">Hobbie</option>
+            <option value="System">System</option>
+            <option value="Certification">Certification</option>
+            <option value="Language">Language</option>
+          </select>
+        </div>
+        <div style={{ display: 'flex', gap: '1rem' }}>
+          <button
+            onClick={handleCloseModal}
+            style={{
+              background: 'white',
+              border: 'none',
+              padding: '0.5rem 2rem',
+              border: 'solid 1px #041F72',
+              borderRadius: '4px',
+              color: '#041F72',
+              fontWeight: '700', 
+              cursor: 'pointer',
+              fontSize:'15px'
             }}
           >
-            <h3 style={{ margin: 0, fontSize:'20px' }}>Create Your Skill</h3>
-            <div style={{ display: 'flex', gap: '1rem' }}>
-              <input
-                type="text"
-                placeholder="Skill Name"
-                style={{
-                  padding: '0.5rem',
-                  borderRadius: '4px',
-                  border: '1px solid #ccc',
-                }}
-                value={skillName}
-                onChange={(e) => setSkillName(e.target.value)}
-              />
-            <select
-              style={{
-                padding: '0.5rem',
-                borderRadius: '4px',
-                border: '1px solid #ccc',
-              }}
-              value={skillCategory}
-              onChange={(e) => setSkillCategory(e.target.value)}
-
-            >
-              <option value=""> Select Category</option>
-              <option value="Skill">Skill</option>
-              <option value="Hobbie">Hobbie</option>
-              <option value="System">System</option>
-              <option value="Certification">Certification</option>
-              <option value="Language">Language</option>
-
-
-            </select>
-            </div>
-            <div style={{ display: 'flex', gap: '1rem' }}>
-
-            <button
-                onClick={handleCloseModal}
-                style={{
-                  background: 'white',
-                  border: 'none',
-                  padding: '0.5rem 2rem',
-                  border: 'solid 1px #041F72',
-                  borderRadius: '4px',
-                  color: '#041F72',
-                  fontWeight: '700', 
-                  cursor: 'pointer',
-                  fontSize:'15px'
-              
-                }}
-
- 
-              >
-                Cancel
-              </button>
-              <button
-                style={{
-                  background: '#041F72',
-                  border: 'none',
-                  padding: '0.5rem 2rem',
-                  border: 'solid 1px #041F72',
-                  borderRadius: '4px',
-                  color: 'white',
-                  fontWeight: '700', 
-                  cursor: 'pointer',
-                  fontSize:'15px'
-              
-                }}
-
-                onClick={handleCreate}
-              >
-                Create
-              </button>
-
-            </div>
-          </div>
+            Cancel
+          </button>
+          <button
+            style={{
+              background: '#041F72',
+              border: 'none',
+              padding: '0.5rem 2rem',
+              border: 'solid 1px #041F72',
+              borderRadius: '4px',
+              color: 'white',
+              fontWeight: '700', 
+              cursor: 'pointer',
+              fontSize:'15px'
+            }}
+            onClick={handleCreate}
+          >
+            Create
+          </button>
         </div>
-      )}
+      </div>
     </div>
-
+  )}
+</div>
 
 
 

@@ -60,7 +60,7 @@ const handleCreate = () => {
   };
 
   return (
-    <Modal open={open} onCancel={handleCancel} footer={null}>
+    <Modal open={open} onCancel={handleCancel} footer={null} width="35%" >
       <Typography.Title level={4} style={{ marginBottom: '16px', textAlign: 'left', fontSize: '25px' }}>
         My skills
       </Typography.Title>
