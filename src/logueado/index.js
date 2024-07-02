@@ -230,7 +230,7 @@ handleCloseModal();
   useEffect(() => {
     handleSearchSubmit(currentSearch)
 
-  }, [currentPage, currentSearch])
+  }, [currentPage, currentSearch, selectedSkills])
   
   const handleSearchSubmit = (value, relations, itemsPerPage = 10) => {
     console.log(value);
@@ -243,8 +243,12 @@ handleCloseModal();
   
     console.log({ categories: relations, parsedCategories: parsedRelations });
     const token = localStorage.getItem('token');
+
+    console.log({selectedSkills})
+
+    const ignoredParams = selectedSkills.map(skill => '&ignored[]=' + skill.id).join('')
   
-    fetch(`http://3.8.157.187/api/skills/?itemsPerPage=${cardsPerPage}&currentPage=${Number(currentPage)}&search=${parsedRelations.length > 0 ? parsedRelations : value}`, {
+    fetch(`http://3.8.157.187/api/skills/?itemsPerPage=${cardsPerPage}&currentPage=${Number(currentPage)}&search=${parsedRelations.length > 0 ? parsedRelations : value}${ignoredParams}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -389,7 +393,8 @@ handleCloseModal();
     try {
       console.log({ inputValue })
       console.log('holaaaaaaaaaaaaa')
-      const response = await fetch(`http://3.8.157.187/api/skills?itemsPerPage=${cardsPerPage}&currentPage=1&search=${inputValue ?? ''}&category=${questions[currentQuestionIndex].queryCategory}`, {
+      const ignoredParams = selectedSkills.map(skill => '&ignored[]=' + skill.id).join('')
+      const response = await fetch(`http://3.8.157.187/api/skills?itemsPerPage=${cardsPerPage}&currentPage=1&search=${inputValue ?? ''}&category=${questions[currentQuestionIndex].queryCategory}${ignoredParams}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
