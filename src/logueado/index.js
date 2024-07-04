@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { SearchOutlined, InfoCircleOutlined, MailOutlined, SettingOutlined} from '@ant-design/icons';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
@@ -14,6 +14,7 @@ import AppCardAdd from "../cardSkillAdd/index";
 import AppAvatar from '../imagenAvatar';
 import AppPopup from '../Popup/index';
 import AppsearchTarget from '../searchTarget';
+import debounce from 'just-debounce-it';
 
 const { Header, Content, Sider } = Layout;
 
@@ -53,6 +54,10 @@ const items = [
 ];
 
 
+const searchTypes = {
+  search: 'search',
+  question: 'question',
+};
 
 
 const MenuLogin = () => {
@@ -69,7 +74,7 @@ const MenuLogin = () => {
   console.log({ status })
 
   const [showOnboardingVideo, setShowOnboardingVideo] = useState(false)
-  const [filteredCards, setFilteredCards] = useState([]);
+  const lastSearchType = useRef(searchTypes.search);
 
 
   const [employee, setEmployee] = useState(null);
@@ -220,7 +225,6 @@ handleCloseModal();
     }
     console.log({value})
     const {categories} = value
-    handleSearchSubmit('', categories)
   }
 
   const handlePageChange = (page) => {
@@ -228,25 +232,38 @@ handleCloseModal();
   };
 
   useEffect(() => {
-    handleSearchSubmit(currentSearch)
+    if (lastSearchType.current === searchTypes.search) {
+      handleSearchSubmit(currentSearch, selectedSkills)
+    } else {
+      handleQuestionSubmit(null, currentSearch, selectedSkills)
+    }
 
-  }, [currentPage, currentSearch, selectedSkills])
+  }, [currentPage])
+
+  useEffect(() => {
+    if (lastSearchType.current === searchTypes.search) {
+      handleSearchDebounced(currentSearch, selectedSkills)
+    } else {
+      handleQuestionSubmitDebounced(currentSearch, selectedSkills)
+    }
+  }, [selectedSkills])
   
-  const handleSearchSubmit = (value, relations, itemsPerPage = 10) => {
+  const handleSearchSubmit = useCallback((value, relations, ignoredValues=[], itemsPerPage = 10) => {
     console.log(value);
     let parsedRelations = '';
     if (relations && relations.length > 0) {
-      parsedRelations = relations.filter(category => category !== '').map(category => category.toLowerCase()).join(', ');
+      parsedRelations = relations.filter(category => category !== '').map(category => category?.toLowerCase()).join(', ');
     }
 
     setCurrentSearch(value)
+    lastSearchType.current = searchTypes.search;
   
     console.log({ categories: relations, parsedCategories: parsedRelations });
     const token = localStorage.getItem('token');
 
     console.log({selectedSkills})
 
-    const ignoredParams = selectedSkills.map(skill => '&ignored[]=' + skill.id).join('')
+    const ignoredParams = ignoredValues.map(skill => '&ignored[]=' + skill.id).join('')
   
     fetch(`http://3.8.157.187/api/skills/?itemsPerPage=${cardsPerPage}&currentPage=${Number(currentPage)}&search=${parsedRelations.length > 0 ? parsedRelations : value}${ignoredParams}`, {
       method: 'GET',
@@ -279,7 +296,14 @@ handleCloseModal();
       .catch(error => {
         console.error(error);
       });
-  };
+  }, [currentPage, selectedSkills]);
+
+  const handleSearchDebounced = useCallback(
+    debounce((value, selectedSkills) => {
+     handleSearchSubmit(value , [], selectedSkills)
+  }, 300)
+  , [])
+
   function handleRateSkill(idx, value) {
     setSelectedSkills(selectedSkills.map((skill, index) => index === idx ? { ...skill, rate: value} : skill));
   }
@@ -387,14 +411,13 @@ handleCloseModal();
 
   //cajita verde
 
-  const handleQuestionSubmit = async (event, inputValue) => {
+  const handleQuestionSubmit = async (event, inputValue, selectedSkills=[]) => {
     event?.preventDefault();
+    lastSearchType.current = searchTypes.question;
     
     try {
-      console.log({ inputValue })
-      console.log('holaaaaaaaaaaaaa')
       const ignoredParams = selectedSkills.map(skill => '&ignored[]=' + skill.id).join('')
-      const response = await fetch(`http://3.8.157.187/api/skills?itemsPerPage=${cardsPerPage}&currentPage=1&search=${inputValue ?? ''}&category=${questions[currentQuestionIndex].queryCategory}${ignoredParams}`, {
+      const response = await fetch(`http://3.8.157.187/api/skills?itemsPerPage=${cardsPerPage}&currentPage=${Number(currentPage)}&search=${inputValue ?? ''}&category=${questions[currentQuestionIndex].queryCategory}${ignoredParams}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -409,10 +432,12 @@ handleCloseModal();
       console.error('Error al enviar la solicitud:', error);
     }
   };
-  
- 
 
-
+  const handleQuestionSubmitDebounced = useCallback(
+    debounce((value, selectedSkills) => {
+     handleQuestionSubmit(null, value, selectedSkills)
+  }, 300)
+  , [])
 
   return (
     <Layout id='main-layout' style={{
@@ -516,8 +541,7 @@ handleCloseModal();
                 Find your skill
               </p>
               <Appsearch onSearch={handleSearch} handleSearch={(value) => {
-                setCurrentPage(1)
-                setCurrentSearch(value)
+                handleSearchSubmit(value, [], selectedSkills)
               }} />
             </div>
             <div
