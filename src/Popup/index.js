@@ -10,6 +10,7 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillD
   const [addedSkills, setAddedSkills] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
+  const TOKEN = 'Basic bDNiTFVSLXpfSFZyTkFmMmE0U3lrcVJhLUp1OVB6am9RRXBad05HYm5IZGRhTnBFQk5DZFVFa3lJWk9hOGJWTXFLTW5zZG9nWGFHVzdxOWxGOXZtQnBXUGE5V0lfcjBBM25HOElxUU1tT1U9Oj';
 
 
   const stepsTexts = [
@@ -41,23 +42,24 @@ const handleCreate = () => {
 };
 
 
-  const handleSaveAndRedirect = () => {
-    fetch('http://3.8.157.187/api/users/employees/6b3f410b-2a44-4dc1-8ed0-0401a849bfbf/skills', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(skillsState)
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Skills saved:', data);
-      navigate('/profile-user');
-    })
-    .catch(error => {
-      console.error('Error saving skills:', error);
-    });
-  };
+const handleSaveAndRedirect = () => {
+  fetch('http://3.8.157.187/api/users/employees/6b3f410b-2a44-4dc1-8ed0-0401a849bfbf/skills', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': TOKEN
+    },
+    body: JSON.stringify(skillsState)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Skills saved:', data);
+    navigate('/profile-user');
+  })
+  .catch(error => {
+    console.error('Error saving skills:', error);
+  });
+};
 
   return (
     <Modal open={open} onCancel={handleCancel} footer={null} width="65%" >
