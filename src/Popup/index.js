@@ -42,7 +42,7 @@ const handleCreate = () => {
 const handleSaveAndRedirect = () => {
   const token = localStorage.getItem('token');
   const data = {
-    skills: skillsState
+    skills: skillsState.map(skill => ({ name: skill.title, category: skill.category, rating: skill.rate, id: skill.id }))
   }
   fetch('http://3.8.157.187/api/users/employees/6b3f410b-2a44-4dc1-8ed0-0401a849bfbf/skills', {
     method: 'POST',

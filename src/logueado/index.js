@@ -209,7 +209,7 @@ const handleCloseModal = () => {
 const handleCreate = () => {
 /*   setAddedSkills([...addedSkills, { name: skillName, category: skillCategory }]);
  */ 
-handleAddSkill({title: skillName, category: skillCategory, id:selectedSkills.length+1})
+handleAddSkill({title: skillName, category: skillCategory})
 
 handleCloseModal();
 };
@@ -233,9 +233,9 @@ handleCloseModal();
 
   useEffect(() => {
     if (lastSearchType.current === searchTypes.search) {
-      handleSearchSubmit(currentSearch, selectedSkills)
+      handleSearchSubmit(currentSearch, selectedSkills.filter(skill => skill.id != null))
     } else {
-      handleQuestionSubmit(null, currentSearch, selectedSkills)
+      handleQuestionSubmit(null, currentSearch, selectedSkills.filter(skill => skill.id != null))
     }
 
   }, [currentPage])
@@ -300,7 +300,7 @@ handleCloseModal();
 
   const handleSearchDebounced = useCallback(
     debounce((value, selectedSkills) => {
-     handleSearchSubmit(value , [], selectedSkills)
+     handleSearchSubmit(value , [], selectedSkills.filter(skill => skill.id != null))
   }, 300)
   , [])
 
@@ -435,7 +435,7 @@ handleCloseModal();
 
   const handleQuestionSubmitDebounced = useCallback(
     debounce((value, selectedSkills) => {
-     handleQuestionSubmit(null, value, selectedSkills)
+     handleQuestionSubmit(null, value, selectedSkills.filter(skill => skill.id != null))
   }, 300)
   , [])
 
@@ -541,7 +541,7 @@ handleCloseModal();
                 Find your skill
               </p>
               <Appsearch onSearch={handleSearch} handleSearch={(value) => {
-                handleSearchSubmit(value, [], selectedSkills)
+                handleSearchSubmit(value, [], selectedSkills.filter(skill => skill.id != null))
               }} />
             </div>
             <div
