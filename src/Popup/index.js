@@ -63,7 +63,8 @@ const handleSaveAndRedirect = () => {
 };
 
   return (
-    <Modal open={open} onCancel={handleCancel} footer={null} width="65%" >
+    <Modal open={open} onCancel={handleCancel} footer={null} width="65%"  maskClosable={false}   className="modal-container"
+    >
       <Typography.Title level={4} style={{ marginBottom: '16px', textAlign: 'left', fontSize: '25px' }}>
         My skills
       </Typography.Title>
