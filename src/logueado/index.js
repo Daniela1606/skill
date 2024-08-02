@@ -581,9 +581,7 @@ handleCloseModal();
     handleSkillDelete={handleSkillDelete}
   /> 
   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2rem' }}>
-    <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border:'1px solid white' ,borderRadius:'20px', background: 'linear-gradient(rgb(175 223 187 / 6%), rgb(88 194 192 / 24%))', cursor: 'pointer', color:'black', fontSize:'15px', fontWeight:'600', padding:'0.5rem', fontFamily:'Manrope Variable', fontWeight:'600' }}>
-      <span style={{ paddingRight:'3rem', paddingLeft:'3rem' }}>I'm Finished Adding</span>
-    </button>
+ 
     <button
       style={{
         display: 'flex',
@@ -605,6 +603,10 @@ handleCloseModal();
         I can't find what I'm looking for
       </span>
     </button>
+    <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border:'1px solid white' ,borderRadius:'20px', background: 'linear-gradient(rgb(175 223 187 / 6%), rgb(88 194 192 / 24%))', cursor: 'pointer', color:'black', fontSize:'15px', fontWeight:'600', padding:'0.5rem', fontFamily:'Manrope Variable', fontWeight:'600' }}>
+      <span style={{ paddingRight:'3rem', paddingLeft:'3rem' }}>I'm Finished Adding</span>
+    </button>
+
   </div>
 </div>
 
