@@ -182,7 +182,11 @@ const handleNextQuestion = () => {
 };
 
 useEffect(() => {
-  handleQuestionSubmit(null, '')
+  if(currentPage > 1) {
+    setCurrentPage(1)
+    return
+  }
+  handleQuestionSubmit(null, '', selectedSkills.filter(skill => skill.id != null))
 
 }, [currentQuestionIndex])
 
@@ -459,7 +463,7 @@ handleCloseModal();
     debounce((value, selectedSkills) => {
      handleQuestionSubmit(null, value, selectedSkills.filter(skill => skill.id != null))
   }, 300)
-  , [])
+  , [currentQuestionIndex])
 
   return (
     <Layout id='main-layout' style={{
@@ -788,7 +792,7 @@ handleCloseModal();
             fontWeight: '700',
             marginTop: '2rem',
           }}
-          onClick={(e) => handleQuestionSubmit(e, inputValue)}
+          onClick={(e) => handleQuestionSubmit(e, inputValue, selectedSkills.filter(skill => skill.id != null))}
         >
           Submit
         </button>
