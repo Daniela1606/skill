@@ -211,11 +211,8 @@ const handleCloseModal = () => {
 
 
 const handleCreate = () => {
-/*   setAddedSkills([...addedSkills, { name: skillName, category: skillCategory }]);
- */ 
-handleAddSkill({title: skillName, category: skillCategory})
-
-handleCloseModal();
+  handleAddSkill({title: skillName, category: skillCategory})
+  handleCloseModal();
 };
 
 
@@ -224,11 +221,9 @@ handleCloseModal();
   }
 
   function handleAddSkill(value) {
-    if (!selectedSkills.some((selected) => selected.id === value.id)) {
+    if (!selectedSkills.some((selected) => selected.id === value.id) || value.id == null) {
       setSelectedSkills([...selectedSkills, { ...value, rate: 0 }]);
     }
-    console.log({value})
-    const {categories} = value
   }
 
   const handlePageChange = (page) => {
