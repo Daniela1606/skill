@@ -819,7 +819,6 @@ const handleCreate = () => {
 
               
                 <div  style={{ marginLeft: 'auto' }}>
-                <AppPopup open={modalVisible} handleCancel={() => setModalVisible(false)} skills={selectedSkills} handleSliderChange={handleRateSkill} handleSkillDelete={handleSkillDelete} />
                     <button  onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
                       <img className='boton_skill' src={imagenDeMagic.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '5px' }} />
                       <span className='boton_skill'>Rate Skills</span>
