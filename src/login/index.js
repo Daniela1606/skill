@@ -115,8 +115,7 @@ const AppLogin = () => {
           
           >
 
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
-          do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Welcome to your SkillSat professional profile page. Capture your Skills, knowledge and experience to support your career.
 
           </p>
 

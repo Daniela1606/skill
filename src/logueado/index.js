@@ -527,7 +527,7 @@ const handleCreate = () => {
             paddingLeft: '24px',
             height: 'fit-content',
             paddingRight: '0px',
-            maxHeight: 200,
+            maxHeight: 350,
             background: '#ffffff75',
             borderRadius: '20px',
             display: 'flex',
@@ -536,12 +536,17 @@ const handleCreate = () => {
             overflow: 'hidden'
           }}
         >
-          <div >
-            <p  className='name_responsive'style={{ fontSize: '40px', fontWeight: '700', color: 'black' }}>
-              Welcome, {employee ? employee.user.preferredName : ''}</p>
-            <p>Improve your profile by completing the skills section</p>
-          </div>
-          <img src={imagenLogoAzul.IMAGENICON} alt="Logo" style={{ marginLeft: 'auto', height: '100%' }} />
+<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+  <div style={{ flexGrow: 1, marginRight: '2rem' }}>
+    <p className="name_responsive" style={{ fontSize: '40px', fontWeight: '700', color: 'black' }}>
+      Hello, {employee ? employee.user.preferredName : ''} and welcome to your personal profile page
+    </p>
+    <p style={{ lineHeight: '1.5', marginTop: '-2rem', paddingBottom: '2rem' }}>
+      You are invited to build your profile by simply completing the sections below. You will see prompts in the form of questions to help your thinking, in the green box at the foot of the page. In addition, to the right of the screen there is a short video providing hints and tips on how best to complete each section and the importance of grading your skills, knowledge and experience effectively. So, let's get started!
+    </p>
+  </div>
+  <img src={imagenLogoAzul.IMAGENICON} alt="Logo" style={{ maxWidth: '100%', maxHeight: '150px', objectFit: 'contain' }} />
+</div>
         </Header>
         <Layout
           style={{

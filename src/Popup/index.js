@@ -8,7 +8,6 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillD
   const [skillName, setSkillName] = useState('');
   const [skillCategory, setSkillCategory] = useState('');
   const [addedSkills, setAddedSkills] = useState([]);
-  const [showModal, setShowModal] = useState(false);
 
   const stepsTexts = [
     'Entry Level',
@@ -26,45 +25,39 @@ const AppPopup = ({ open, handleCancel, skills, handleSliderChange, handleSkillD
     return stepsTexts[value - 1];
   };
 
-  const handleCloseModal = () => {
+  const handleCreate = () => {
+    setSkillsState([...skillsState, { title: skillName, category: skillCategory, rate: 1, id: `new-skill-${addedSkills.length}` }]);
+    setAddedSkills([...addedSkills, { name: skillName, category: skillCategory }]);
     setSkillName('');
     setSkillCategory('');
-    setShowModal(false);
+    handleCancel();
   };
-  
 
-const handleCreate = () => {
-  setAddedSkills([...addedSkills, { name: skillName, category: skillCategory }]);
-  handleCloseModal();
-};
-
-
-const handleSaveAndRedirect = () => {
-  const token = localStorage.getItem('token');
-  const data = {
-    skills: skillsState.map(skill => ({ name: skill.title, category: skill.category, rating: skill.rate, id: skill.id }))
-  }
-  fetch('http://3.8.157.187/api/users/employees/6b3f410b-2a44-4dc1-8ed0-0401a849bfbf/skills', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    },
-    body: JSON.stringify(data)
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log('Skills saved:', data);
-    navigate('/profile-user');
-  })
-  .catch(error => {
-    console.error('Error saving skills:', error);
-  });
-};
+  const handleSaveAndRedirect = () => {
+    const token = localStorage.getItem('token');
+    const data = {
+      skills: skillsState.map(skill => ({ name: skill.title, category: skill.category, rating: skill.rate, id: skill.id }))
+    };
+    fetch('http://3.8.157.187/api/users/employees/6b3f410b-2a44-4dc1-8ed0-0401a849bfbf/skills', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Skills saved:', data);
+      navigate('/profile-user');
+    })
+    .catch(error => {
+      console.error('Error saving skills:', error);
+    });
+  };
 
   return (
-    <Modal open={open} onCancel={handleCancel} footer={null} width="65%"  maskClosable={false}   className="modal-container"
-    >
+    <Modal open={open} onCancel={handleCancel} footer={null} width="65%"  maskClosable={false}>
       <Typography.Title level={4} style={{ marginBottom: '16px', textAlign: 'left', fontSize: '25px' }}>
         My skills
       </Typography.Title>
@@ -74,7 +67,6 @@ const handleSaveAndRedirect = () => {
         style={{ marginBottom: '16px' }}
         placeholder="Search Skills, Providers, Hobbies"
         onSearch={(value) => {
-          console.log('HOLAAAAAA')
           let filteredSkills = skills.filter(skill => skill.title.toLowerCase().includes(value.toLowerCase()));
           if(value === '') {
             filteredSkills = skills;
@@ -83,16 +75,12 @@ const handleSaveAndRedirect = () => {
         }}
       />
 
-{addedSkills.map((skill, index) => (
-  <div
-    key={index}
-
-  >
-    <p style={{ fontSize: '11px', marginBottom: '5px', fontWeight: '700' }}>{skill.name}</p>
-    <p style={{ fontSize: '11px', fontWeight: '700' }}>{skill.category}</p>
-  </div>
-))}
-
+      {addedSkills.map((skill, index) => (
+        <div key={index}>
+          <p style={{ fontSize: '11px', marginBottom: '5px', fontWeight: '700' }}>{skill.name}</p>
+          <p style={{ fontSize: '11px', fontWeight: '700' }}>{skill.category}</p>
+        </div>
+      ))}
 
       {skillsState.map((skill, index) => (
         <Row gutter={16} key={index}>
