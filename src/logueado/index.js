@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { SearchOutlined, InfoCircleOutlined, MailOutlined, SettingOutlined} from '@ant-design/icons';
+import { SearchOutlined, InfoCircleOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
 import { Layout, Menu, Modal, message, theme, Button, Space, Pagination, } from 'antd';
@@ -82,7 +82,7 @@ const MenuLogin = () => {
   const [validateFormInstance, setValidateFormInstance] = useState(null);
 
   const [skills, setSkills] = useState([]);
-  const [selectedSkills , setSelectedSkills] = useState([]);
+  const [selectedSkills, setSelectedSkills] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
@@ -101,7 +101,7 @@ const MenuLogin = () => {
 
 
 
-  
+
   //cajita verde
   const handleInputChange = (newValue) => {
     setInputValue(newValue.target.value);
@@ -109,43 +109,43 @@ const MenuLogin = () => {
 
 
 
-  
-//cajita verde
+
+  //cajita verde
 
   const [questions, setQuestions] = useState([
     {
       title: 'Need a hand refining your skills? ',
       question: 'What do you consider your main area of expertise to be?',
-      queryCategory: 'Skill'
+      queryCategory: 'All'
     },
     {
       title: 'Need a hand refining your skills? ',
       question: 'What industries/sectors do you have experience of?',
-      queryCategory: 'Skill'
+      queryCategory: 'All'
     },
     {
       title: 'Need a hand refining your skills? ',
-       question: 'What are you top 5 business skills?',
-      queryCategory: 'Skill'
+      question: 'What are you top 5 business skills?',
+      queryCategory: 'All'
     },
     {
       title: 'Need a hand refining your skills? ',
       question: 'What are your top 5 interpersonal skills?',
-      queryCategory: 'Skill'
+      queryCategory: 'All'
     },
     {
-       title: 'Need a hand refining your skills? ',
+      title: 'Need a hand refining your skills? ',
       question: 'What leadership attributes can you contribute?',
-      queryCategory: 'Skill'
+      queryCategory: 'All'
     },
     {
       title: 'Need a hand refining your skills? ',
       question: 'What other expertise and knowledge can you share?',
-      queryCategory: 'Skill'
+      queryCategory: 'All'
     },
     {
       title: 'Need a hand refining your skills?',
-       question: 'What systems have you experience of using?',
+      question: 'What systems have you experience of using?',
       queryCategory: 'System'
     },
     // {
@@ -158,7 +158,7 @@ const MenuLogin = () => {
       queryCategory: 'Language'
     },
     {
-       title: 'Need a hand refining your skills?',
+      title: 'Need a hand refining your skills?',
       question: 'What languages are you able to speak?',
       queryCategory: 'Language'
     },
@@ -168,52 +168,52 @@ const MenuLogin = () => {
       queryCategory: 'Hobbie'
     },
     {
-       title: 'Need a hand refining your skills? ',
+      title: 'Need a hand refining your skills? ',
       question: 'Do you have any certifications or qualifications?',
       queryCategory: 'Certification'
     },
   ]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-const handleNextQuestion = () => {
-  setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
-  
-  setInputValue('');
-};
+  const handleNextQuestion = () => {
+    setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
 
-useEffect(() => {
-  if(currentPage > 1) {
-    setCurrentPage(1)
-    return
-  }
-  handleQuestionSubmit(null, '', selectedSkills.filter(skill => skill.id != null))
+    setInputValue('');
+  };
 
-}, [currentQuestionIndex])
+  useEffect(() => {
+    if (currentPage > 1) {
+      setCurrentPage(1)
+      return
+    }
+    handleQuestionSubmit(null, '', selectedSkills.filter(skill => skill.id != null))
 
-
-
-const handleButtonClickModal = () => {
-  setShowModal(true);
-};
+  }, [currentQuestionIndex])
 
 
-/* const handleCloseModal = () => {
-  setShowModal(false);
-};
- */
+
+  const handleButtonClickModal = () => {
+    setShowModal(true);
+  };
 
 
-const handleCloseModal = () => {
-  setSkillName('');
-  setSkillCategory('');
-  setShowModal(false);
-};
+  /* const handleCloseModal = () => {
+    setShowModal(false);
+  };
+   */
 
 
-const handleCreate = () => {
-  handleAddSkill({title: skillName, category: skillCategory})
-  handleCloseModal();
-};
+  const handleCloseModal = () => {
+    setSkillName('');
+    setSkillCategory('');
+    setShowModal(false);
+  };
+
+
+  const handleCreate = () => {
+    handleAddSkill({ title: skillName, category: skillCategory })
+    handleCloseModal();
+  };
 
 
   function handleSearch(value) {
@@ -231,7 +231,7 @@ const handleCreate = () => {
   };
 
   useEffect(() => {
-    console.log({lastSearchType: lastSearchType.current})
+    console.log({ lastSearchType: lastSearchType.current })
     if (lastSearchType.current === searchTypes.search) {
       handleSearchSubmit(currentSearch, selectedSkills.filter(skill => skill.id != null))
     } else {
@@ -247,8 +247,8 @@ const handleCreate = () => {
       handleQuestionSubmitDebounced(currentQuestionSearch.current, selectedSkills.filter(skill => skill.id != null))
     }
   }, [selectedSkills])
-  
-  const handleSearchSubmit = useCallback((value, relations, ignoredValues=[], itemsPerPage = 10) => {
+
+  const handleSearchSubmit = useCallback((value, relations, ignoredValues = [], itemsPerPage = 10) => {
     console.log(value);
     let parsedRelations = '';
     if (relations && relations.length > 0) {
@@ -258,22 +258,22 @@ const handleCreate = () => {
     setCurrentSearch(value)
     const previousSearchType = lastSearchType.current;
     lastSearchType.current = searchTypes.search;
-    
+
     console.log({ categories: relations, parsedCategories: parsedRelations });
     const token = localStorage.getItem('token');
 
-    console.log({selectedSkills})
-    
+    console.log({ selectedSkills })
+
     const ignoredParams = ignoredValues.map(skill => '&ignored[]=' + skill.id).join('')
 
-    if ( value !== currentSearch || previousSearchType !== searchTypes.search) {
+    if (value !== currentSearch || previousSearchType !== searchTypes.search) {
       setCurrentPage(1)
-      if(currentPage > 1) {
+      if (currentPage > 1) {
         return
       }
     }
 
-  
+
     fetch(`http://3.8.157.187/api/skills/?itemsPerPage=${cardsPerPage}&currentPage=${Number(currentPage)}&search=${parsedRelations.length > 0 ? parsedRelations : value}${ignoredParams}`, {
       method: 'GET',
       headers: {
@@ -286,7 +286,7 @@ const handleCreate = () => {
         console.log({ data });
 
         setLastPage(Math.min(data.lastPage, 4))
-  
+
         const cards = data.skills ? data?.skills?.map(item => ({
           id: item.id,
           title: item.name,
@@ -309,12 +309,12 @@ const handleCreate = () => {
 
   const handleSearchDebounced = useCallback(
     debounce((value, selectedSkills) => {
-     handleSearchSubmit(value , [], selectedSkills.filter(skill => skill.id != null))
-  }, 300)
-  , [])
+      handleSearchSubmit(value, [], selectedSkills.filter(skill => skill.id != null))
+    }, 300)
+    , [])
 
   function handleRateSkill(idx, value) {
-    setSelectedSkills(selectedSkills.map((skill, index) => index === idx ? { ...skill, rate: value} : skill));
+    setSelectedSkills(selectedSkills.map((skill, index) => index === idx ? { ...skill, rate: value } : skill));
   }
 
   const handleSkillDelete = (skillId) => {
@@ -420,33 +420,34 @@ const handleCreate = () => {
 
   //cajita verde
 
-  const handleQuestionSubmit = async (event, inputValue, selectedSkills=[]) => {
+  const handleQuestionSubmit = async (event, inputValue, selectedSkills = []) => {
     event?.preventDefault();
     const previousSearchType = lastSearchType.current;
     lastSearchType.current = searchTypes.question;
     currentQuestionSearch.current = inputValue;
-    
+
     try {
       const ignoredParams = selectedSkills.map(skill => '&ignored[]=' + skill.id).join('')
-      
-      if ( inputValue !== currentQuestionSearch.current || previousSearchType !== searchTypes.question) {
+
+      if (inputValue !== currentQuestionSearch.current || previousSearchType !== searchTypes.question) {
         setCurrentPage(1)
-        if(currentPage > 1) {
+        if (currentPage > 1) {
           return
         }
       }
-      
 
-      const response = await fetch(`http://3.8.157.187/api/skills?itemsPerPage=${cardsPerPage}&currentPage=${Number(currentPage)}&search=${inputValue ?? ''}&category=${questions[currentQuestionIndex].queryCategory}${ignoredParams}`, {
+
+      const currentQuestion = questions[currentQuestionIndex].queryCategory === 'All' ? '' : '&category=' + questions[currentQuestionIndex].queryCategory;
+      const response = await fetch(`http://3.8.157.187/api/skills?itemsPerPage=${cardsPerPage}&currentPage=${Number(currentPage)}&search=${inputValue ?? ''}${currentQuestion}${ignoredParams}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
         }
       });
-      
+
       const data = await response.json();
       setLastPage(Math.min(data.lastPage, 4))
-      const cards = data.skills? data?.skills?.map(item => ({id: item.id, title: item.name, image: item.image })) : [];
+      const cards = data.skills ? data?.skills?.map(item => ({ id: item.id, title: item.name, image: item.image })) : [];
       handleSearch(cards);
       console.log(data);
     } catch (error) {
@@ -456,9 +457,9 @@ const handleCreate = () => {
 
   const handleQuestionSubmitDebounced = useCallback(
     debounce((value, selectedSkills) => {
-     handleQuestionSubmit(null, value, selectedSkills.filter(skill => skill.id != null))
-  }, 300)
-  , [currentQuestionIndex])
+      handleQuestionSubmit(null, value, selectedSkills.filter(skill => skill.id != null))
+    }, 300)
+    , [currentQuestionIndex])
 
   return (
     <Layout id='main-layout' style={{
@@ -466,7 +467,7 @@ const handleCreate = () => {
       background: 'linear-gradient(200deg, rgba(73,164,248,0.24) 4%, rgba(15,209,186,0.07) 14%, rgba(255,255,255,1) 27%, rgba(255,255,255,1) 58%, rgba(15,209,186,0.07) 75%, rgba(73,164,248,0.24) 92%)',
     }}
     >
-      <Sider  width={350}>
+      <Sider width={350}>
         <div className='probandoMobile2' /* style={{ margin: '1em', border: '1px solid #ddd', borderRadius: '15px',
          overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: '97.3%', background: 'transparent' }} */>
           <Header
@@ -479,7 +480,7 @@ const handleCreate = () => {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <img className='imagenLogoResponsive' src={imagenLo.IMAGENICON} alt="Logo"  />
+              <img className='imagenLogoResponsive' src={imagenLo.IMAGENICON} alt="Logo" />
             </div>
             <div className="demo-logo" />
           </Header>
@@ -537,7 +538,7 @@ const handleCreate = () => {
           }}
         >
           <div >
-            <p  className='name_responsive'style={{ fontSize: '40px', fontWeight: '700', color: 'black' }}>
+            <p className='name_responsive' style={{ fontSize: '40px', fontWeight: '700', color: 'black' }}>
               Welcome, {employee ? employee.user.preferredName : ''}</p>
             <p>Improve your profile by completing the skills section</p>
           </div>
@@ -581,225 +582,225 @@ const handleCreate = () => {
               >
                 <p style={{ fontSize: '20px', fontWeight: '700', color: 'black' }}>Suggestions</p>
                 <div style={{
-  marginTop: '2em'
-}}>
-  <AppCard
-    searchData={skills.filter(skill => (!selectedSkills.some((selected) => selected.id === skill.id)))}
-    onCardAdded={handleAddSkill}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-    cardsPerPage={cardsPerPage}
-  />
-<div style={{
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '1em',
-    marginBottom: '1em',
-    border: 'solid 0px white'
-}}>
-    <Pagination 
-        defaultCurrent={1}
-        total={lastPage * cardsPerPage}
-        pageSize={cardsPerPage}
-        onChange={handlePageChange}
-        current={currentPage}
-        size='small'
-        itemRender={(page, type, originalElement) => {
-            if (type === 'page') {
-                return <a ></a>;
-            }
-            return originalElement;
-        }}
-    />
-</div>
-</div>
-                
+                  marginTop: '2em'
+                }}>
+                  <AppCard
+                    searchData={skills.filter(skill => (!selectedSkills.some((selected) => selected.id === skill.id)))}
+                    onCardAdded={handleAddSkill}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                    cardsPerPage={cardsPerPage}
+                  />
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginTop: '1em',
+                    marginBottom: '1em',
+                    border: 'solid 0px white'
+                  }}>
+                    <Pagination
+                      defaultCurrent={1}
+                      total={lastPage * cardsPerPage}
+                      pageSize={cardsPerPage}
+                      onChange={handlePageChange}
+                      current={currentPage}
+                      size='small'
+                      itemRender={(page, type, originalElement) => {
+                        if (type === 'page') {
+                          return <a ></a>;
+                        }
+                        return originalElement;
+                      }}
+                    />
+                  </div>
+                </div>
+
               </div>
 
 
               <div>
-  <AppPopup 
-    open={modalVisible}
-    handleCancel={() => setModalVisible(false)}
-    skills={selectedSkills} 
-    handleSliderChange={handleRateSkill}
-    handleSkillDelete={handleSkillDelete}
-  /> 
-  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2rem' }}>
- 
-    <button
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        border: '1px solid white',
-        borderRadius: '20px',
-        background: 'linear-gradient(rgb(175 223 187 / 6%), rgb(88 194 192 / 24%))',
-        cursor: 'pointer',
-        color: 'black',
-        fontSize: '15px',
-        fontWeight: '600',
-        padding: '0.5rem',
-        fontFamily: 'Manrope Variable',
-        fontWeight: '600',
-      }}
-      onClick={handleButtonClickModal}
-    >
-      <span style={{ paddingRight: '3rem', paddingLeft: '3rem' }}>
-        I can't find what I'm looking for
-      </span>
-    </button>
-    <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border:'1px solid white' ,borderRadius:'20px', background: 'linear-gradient(rgb(175 223 187 / 6%), rgb(88 194 192 / 24%))', cursor: 'pointer', color:'black', fontSize:'15px', fontWeight:'600', padding:'0.5rem', fontFamily:'Manrope Variable', fontWeight:'600' }}>
-      <span style={{ paddingRight:'3rem', paddingLeft:'3rem' }}>I'm Finished Adding</span>
-    </button>
+                <AppPopup
+                  open={modalVisible}
+                  handleCancel={() => setModalVisible(false)}
+                  skills={selectedSkills}
+                  handleSliderChange={handleRateSkill}
+                  handleSkillDelete={handleSkillDelete}
+                />
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2rem' }}>
 
-  </div>
-</div>
+                  <button
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      border: '1px solid white',
+                      borderRadius: '20px',
+                      background: 'linear-gradient(rgb(175 223 187 / 6%), rgb(88 194 192 / 24%))',
+                      cursor: 'pointer',
+                      color: 'black',
+                      fontSize: '15px',
+                      fontWeight: '600',
+                      padding: '0.5rem',
+                      fontFamily: 'Manrope Variable',
+                      fontWeight: '600',
+                    }}
+                    onClick={handleButtonClickModal}
+                  >
+                    <span style={{ paddingRight: '3rem', paddingLeft: '3rem' }}>
+                      I can't find what I'm looking for
+                    </span>
+                  </button>
+                  <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border: '1px solid white', borderRadius: '20px', background: 'linear-gradient(rgb(175 223 187 / 6%), rgb(88 194 192 / 24%))', cursor: 'pointer', color: 'black', fontSize: '15px', fontWeight: '600', padding: '0.5rem', fontFamily: 'Manrope Variable', fontWeight: '600' }}>
+                    <span style={{ paddingRight: '3rem', paddingLeft: '3rem' }}>I'm Finished Adding</span>
+                  </button>
 
-<div>
-  {showModal && (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: 'white',
-          padding: '2rem',
-          borderRadius: '8px',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '1rem',
-        }}
-      >
-        <h3 style={{ margin: 0, fontSize:'20px' }}>Create Your Skill</h3>
-        <div style={{ display: 'flex', gap: '1rem' }}>
-          <input
-            type="text"
-            placeholder="Skill Name"
-            style={{
-              padding: '0.5rem',
-              borderRadius: '4px',
-              border: '1px solid #ccc',
-            }}
-            value={skillName}
-            onChange={(e) => setSkillName(e.target.value)}
-          />
-          <select
-            style={{
-              padding: '0.5rem',
-              borderRadius: '4px',
-              border: '1px solid #ccc',
-            }}
-            value={skillCategory}
-            onChange={(e) => setSkillCategory(e.target.value)}
-          >
-            <option value=""> Select Category</option>
-            <option value="Skill">Skill</option>
-            <option value="Hobbie">Hobbie</option>
-            <option value="System">System</option>
-            <option value="Certification">Certification</option>
-            <option value="Language">Language</option>
-          </select>
-        </div>
-        <div style={{ display: 'flex', gap: '1rem' }}>
-          <button
-            onClick={handleCloseModal}
-            style={{
-              background: 'white',
-              border: 'none',
-              padding: '0.5rem 2rem',
-              border: 'solid 1px #041F72',
-              borderRadius: '4px',
-              color: '#041F72',
-              fontWeight: '700', 
-              cursor: 'pointer',
-              fontSize:'15px'
-            }}
-          >
-            Cancel
-          </button>
-          <button
-            style={{
-              background: '#041F72',
-              border: 'none',
-              padding: '0.5rem 2rem',
-              border: 'solid 1px #041F72',
-              borderRadius: '4px',
-              color: 'white',
-              fontWeight: '700', 
-              cursor: 'pointer',
-              fontSize:'15px'
-            }}
-            onClick={handleCreate}
-          >
-            Create
-          </button>
-        </div>
-      </div>
-    </div>
-  )}
-</div>
+                </div>
+              </div>
+
+              <div>
+                {showModal && (
+                  <div
+                    style={{
+                      position: 'fixed',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <div
+                      style={{
+                        backgroundColor: 'white',
+                        padding: '2rem',
+                        borderRadius: '8px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '1rem',
+                      }}
+                    >
+                      <h3 style={{ margin: 0, fontSize: '20px' }}>Create Your Skill</h3>
+                      <div style={{ display: 'flex', gap: '1rem' }}>
+                        <input
+                          type="text"
+                          placeholder="Skill Name"
+                          style={{
+                            padding: '0.5rem',
+                            borderRadius: '4px',
+                            border: '1px solid #ccc',
+                          }}
+                          value={skillName}
+                          onChange={(e) => setSkillName(e.target.value)}
+                        />
+                        <select
+                          style={{
+                            padding: '0.5rem',
+                            borderRadius: '4px',
+                            border: '1px solid #ccc',
+                          }}
+                          value={skillCategory}
+                          onChange={(e) => setSkillCategory(e.target.value)}
+                        >
+                          <option value=""> Select Category</option>
+                          <option value="Skill">Skill</option>
+                          <option value="Hobbie">Hobbie</option>
+                          <option value="System">System</option>
+                          <option value="Certification">Certification</option>
+                          <option value="Language">Language</option>
+                        </select>
+                      </div>
+                      <div style={{ display: 'flex', gap: '1rem' }}>
+                        <button
+                          onClick={handleCloseModal}
+                          style={{
+                            background: 'white',
+                            border: 'none',
+                            padding: '0.5rem 2rem',
+                            border: 'solid 1px #041F72',
+                            borderRadius: '4px',
+                            color: '#041F72',
+                            fontWeight: '700',
+                            cursor: 'pointer',
+                            fontSize: '15px'
+                          }}
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          style={{
+                            background: '#041F72',
+                            border: 'none',
+                            padding: '0.5rem 2rem',
+                            border: 'solid 1px #041F72',
+                            borderRadius: '4px',
+                            color: 'white',
+                            fontWeight: '700',
+                            cursor: 'pointer',
+                            fontSize: '15px'
+                          }}
+                          onClick={handleCreate}
+                        >
+                          Create
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
 
 
 
-{/* cajita verde
+              {/* cajita verde
  */}
-       <div className='caja_verde_responsive'
-      style={{
-        background: 'linear-gradient(to bottom, #AFDFBB, #58C2C0)',
-        borderRadius: '20px',
-        padding: '20px',
-        marginTop: '2rem',
-      }}
-    >
-      <p style={{ fontWeight: '700', fontSize: '19px' }}>
-        {questions[currentQuestionIndex].title}
-      </p>
-      <p style={{ fontSize: '16px', fontWeight: '500' }}>
-        {questions[currentQuestionIndex].question}
-      </p>
-      <AppsearchTarget onInputChange={handleInputChange} inputValue={inputValue} />
+              <div className='caja_verde_responsive'
+                style={{
+                  background: 'linear-gradient(to bottom, #AFDFBB, #58C2C0)',
+                  borderRadius: '20px',
+                  padding: '20px',
+                  marginTop: '2rem',
+                }}
+              >
+                <p style={{ fontWeight: '700', fontSize: '19px' }}>
+                  {questions[currentQuestionIndex].title}
+                </p>
+                <p style={{ fontSize: '16px', fontWeight: '500' }}>
+                  {questions[currentQuestionIndex].question}
+                </p>
+                <AppsearchTarget onInputChange={handleInputChange} inputValue={inputValue} />
 
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
-        <button
-          style={{
-            background: 'white',
-            border: 'solid 1px white',
-            width: '20%',
-            borderRadius: '20px',
-            padding: '10px',
-            fontWeight: '700',
-            marginTop: '2rem',
-          }}
-          onClick={(e) => handleQuestionSubmit(e, inputValue, selectedSkills.filter(skill => skill.id != null))}
-        >
-          Submit
-        </button>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
+                  <button
+                    style={{
+                      background: 'white',
+                      border: 'solid 1px white',
+                      width: '20%',
+                      borderRadius: '20px',
+                      padding: '10px',
+                      fontWeight: '700',
+                      marginTop: '2rem',
+                    }}
+                    onClick={(e) => handleQuestionSubmit(e, inputValue, selectedSkills.filter(skill => skill.id != null))}
+                  >
+                    Submit
+                  </button>
 
-        <button
-          style={{ color: '#686B6E', fontSize: '18px', background:"#ff000000" , border:'solid 1px #ff000000'}}
-          onClick={(e) => handleNextQuestion(e, inputValue)}
-        >
-          Next Question →
-        </button>
-      </div>
-    </div>
+                  <button
+                    style={{ color: '#686B6E', fontSize: '18px', background: "#ff000000", border: 'solid 1px #ff000000' }}
+                    onClick={(e) => handleNextQuestion(e, inputValue)}
+                  >
+                    Next Question →
+                  </button>
+                </div>
+              </div>
             </div>
           </Content>
           <Sider
@@ -808,53 +809,53 @@ const handleCreate = () => {
               paddingLeft: '1em',
             }}
           >
-            <div style={{width: 'fit-content',margin: '0 auto'}}> 
+            <div style={{ width: 'fit-content', margin: '0 auto' }}>
               <img className='imagen_Buscar' src={imagenBuscar.IMAGENICON} style={{ maxWidth: '100%', borderRadius: '1em' }} width={315} alt="Logo" />
             </div>
-              <AppAvatar />
+            <AppAvatar />
             <div >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-                <p  className='name_skills' style={{ fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '10px' }}>Skills Added</p>
+                <p className='name_skills' style={{ fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '10px' }}>Skills Added</p>
 
 
-              
-                <div  style={{ marginLeft: 'auto' }}>
-                    <button  onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
-                      <img className='boton_skill' src={imagenDeMagic.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '5px' }} />
-                      <span className='boton_skill'>Rate Skills</span>
-                    </button>
+
+                <div style={{ marginLeft: 'auto' }}>
+                  <button onClick={() => setModalVisible(true)} style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
+                    <img className='boton_skill' src={imagenDeMagic.IMAGENICON} alt="Logo" style={{ width: '25px', marginRight: '5px' }} />
+                    <span className='boton_skill'>Rate Skills</span>
+                  </button>
                 </div>
               </div>
 
 
-              <AppCardAdd className='card_skill_responsive' cards={selectedSkills} hideButtons={true}/>
-              <div style={{  padding: '10px', borderRadius: '4px', display: 'inline-block', textAlign:'center' }}>
-              {addedSkills.map((skill, index) => (
-  <div
-    key={index}
-    style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginBottom: '10px',
-      boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px',
-      padding: '10px',
-      borderRadius: '4px',
-      width: '8rem',
-      lineHeight:'9px',
-      height:'6.5rem',
+              <AppCardAdd className='card_skill_responsive' cards={selectedSkills} hideButtons={true} />
+              <div style={{ padding: '10px', borderRadius: '4px', display: 'inline-block', textAlign: 'center' }}>
+                {addedSkills.map((skill, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: '10px',
+                      boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px',
+                      padding: '10px',
+                      borderRadius: '4px',
+                      width: '8rem',
+                      lineHeight: '9px',
+                      height: '6.5rem',
 
-      marginLeft:'6%',
-  
-      ...(index > 0 ? { marginTop: '10px' } : {})
-    }}
-  >
-    <p style={{ fontSize: '11px', marginBottom: '5px', fontWeight: '700' }}>{skill.name}</p>
-    <p style={{ fontSize: '11px', fontWeight: '700' }}>{skill.category}</p>
-  </div>
-))}
-</div>
+                      marginLeft: '6%',
+
+                      ...(index > 0 ? { marginTop: '10px' } : {})
+                    }}
+                  >
+                    <p style={{ fontSize: '11px', marginBottom: '5px', fontWeight: '700' }}>{skill.name}</p>
+                    <p style={{ fontSize: '11px', fontWeight: '700' }}>{skill.category}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </Sider>
         </Layout>
