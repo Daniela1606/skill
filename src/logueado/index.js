@@ -542,7 +542,7 @@ const MenuLogin = () => {
               <p className="name_responsive" style={{ fontSize: '40px', fontWeight: '700', color: 'black' }}>
                 Hello, {employee ? employee.user.preferredName : ''} and welcome to your personal profile page
               </p>
-              <p style={{ lineHeight: '1.5', marginTop: '-2rem', paddingBottom: '2rem' }}>
+              <p style={{ lineHeight: '1.5', paddingBottom: '2rem' }}>
                 You are invited to build your profile by simply completing the sections below. You will see prompts in the form of questions to help your thinking, in the green box at the foot of the page. In addition, to the right of the screen there is a short video providing hints and tips on how best to complete each section and the importance of grading your skills, knowledge and experience effectively. So, let's get started!
               </p>
             </div>
